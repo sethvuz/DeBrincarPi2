@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "427352528164",
+    "firebase_url": "https://debrincarapp-c12bb.firebaseio.com",
+    "project_id": "debrincarapp-c12bb",
+    "storage_bucket": "debrincarapp-c12bb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:427352528164:android:3b3f32e2f9012f4d",
+        "android_client_info": {
+          "package_name": "com.honda.debrincar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "427352528164-mit4p0o7os20fvg4d4okr7q8uhn4vekn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMMpd_DuW9Up1QO6JXtTKCXkOtV9Ila5Y"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
