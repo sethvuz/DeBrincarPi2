@@ -16,6 +16,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".CadastroUsuario">
+           <intent-filter>
+            <action android:name="TELA_CADASTRO_ACT"/>
+            <category android:name="TELA_CADASTRO_CTG"/>
+               <category android:name="android.intent.category.DEFAULT"/>
+           </intent-filter>
+        </activity>
     </application>
 
 </manifest>
