@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.TelaLogin"
+    android:background="@drawable/background_1440p"
     >
 
     <android.support.constraint.Guideline
@@ -17,12 +18,19 @@
     <EditText
         android:id="@+id/senhaLogin"
         android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="3dp"
-        android:background="@color/colorText"
+        android:layout_height="@dimen/caixa_texto_alt"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/caixas_arredondadas"
         android:ems="10"
         android:hint="Senha"
         android:inputType="textPassword"
+        android:paddingLeft="@dimen/left_padding_caixa"
+        android:textColorHint="@color/branco"
+        android:textSize="@dimen/caixa_text_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,15 +38,17 @@
 
     <Button
         android:id="@+id/loginBtn"
-        style="@style/BotaoAzul"
+        style="@style/LoginBtn"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/botao_alt"
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="100dp"
         android:layout_marginRight="100dp"
+        android:background="@drawable/botao_amarelo"
         android:text="LOGIN"
+        android:textSize="@dimen/caixa_text_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/senhaLogin" />
@@ -46,45 +56,22 @@
     <EditText
         android:id="@+id/emailLogin"
         android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="3dp"
-        android:background="@color/colorText"
+        android:layout_height="@dimen/caixa_texto_alt"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="2dp"
+        android:background="@drawable/caixas_arredondadas"
         android:ems="10"
         android:hint="E-mail"
         android:inputType="textPersonName"
+        android:paddingLeft="@dimen/left_padding_caixa"
+        android:textColorHint="@color/branco"
+        android:textSize="@dimen/caixa_text_size"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="152dp"
-        android:layout_marginLeft="152dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="152dp"
-        android:layout_marginRight="152dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/ic_launcher_round" />
-
-    <TextView
-        android:id="@+id/bemVindoLogin"
-        style="@style/TextoPrincipal"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="120dp"
-        android:layout_marginLeft="120dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="120dp"
-        android:layout_marginRight="120dp"
-        android:text="Bem vindo!"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <TextView
         android:id="@+id/btnSemCadastro"
@@ -105,12 +92,26 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:text="Esqueci a senha"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginBtn" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="0dp"
+        android:layout_height="166dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginBottom="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/emailLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/debrincar_logo" />
 
 </android.support.constraint.ConstraintLayout>
