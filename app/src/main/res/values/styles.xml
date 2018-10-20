@@ -3,32 +3,31 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/azulEscuro</item>
+        <item name="colorPrimaryDark">@color/azulMedio</item>
+        <item name="colorAccent">@color/amareloEscuro</item>
     </style>
 
     <style name="LoginTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/azulEscuro</item>
+        <item name="colorPrimaryDark">@color/azulMedio</item>
+        <item name="colorAccent">@color/amareloEscuro</item>
     </style>
 
 
     <style name="TextoPrincipal">
-        <item name="android:textColor">@color/colorText</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textSize">20dp</item>
-        <item name="android:textAlignment">center</item>
-    </style>
-
-    <style name="BotaoAzul">
-        <item name="android:background">@color/colorText</item>
-        <item name="android:textColor">#ffff</item>
+        <item name="android:textColor">@color/azulEscuro</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">15dp</item>
         <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="LoginBtn">
+        <item name="android:background">@color/amareloEscuro</item>
+        <item name="android:textColor">#ffff</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">15dp</item>
     </style>
 
     <style name="AppTheme.NoActionBar">

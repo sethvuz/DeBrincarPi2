@@ -1,6 +1,6 @@
 package com.honda.debrincar.Objetos;
 
-public class Instituiçao implements Usuario {
+public class Instituiçao {
 
     private String codigo;
 

@@ -4,4 +4,14 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorText">#2D9FE1</color>
+    <color name="branco">#ffff</color>
+
+    <!-- TONS DE AZUL -->
+    <color name="azulEscuro">#0d1846</color>
+    <color name="azulMedio">#324969</color>
+    <color name="azulClaro">#8190a5</color>
+
+    <!-- TONS DE AMARELO -->
+    <color name="amareloEscuro">#ffb73f</color>
+    <color name="amareloClaro">#fad86a</color>
 </resources>

@@ -6,4 +6,8 @@
     <dimen name="nav_header_height">176dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="cadastro_text_size">12sp</dimen>
+    <dimen name="caixa_text_size">15sp</dimen>
+    <dimen name="caixa_texto_alt">30dp</dimen>
+    <dimen name="botao_alt">30dp</dimen>
+    <dimen name="left_padding_caixa">10dp</dimen>
 </resources>

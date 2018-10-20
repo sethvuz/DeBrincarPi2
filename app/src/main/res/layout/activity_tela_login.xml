@@ -49,9 +49,13 @@
         android:background="@drawable/botao_amarelo"
         android:text="LOGIN"
         android:textSize="@dimen/caixa_text_size"
+        android:textAlignment="center"
+        android:paddingLeft="50dp"
+        android:drawableRight="@drawable/aviao_log_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/senhaLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/senhaLogin"
+    />
 
     <EditText
         android:id="@+id/emailLogin"
@@ -78,12 +82,12 @@
         style="@style/TextoPrincipal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
         android:background="@color/common_google_signin_btn_text_dark_disabled"
         android:text="NÃO POSSUI CONTA? CLIQUE AQUI!"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnEsqueciSenha" />
+        tools:layout_editor_absoluteY="415dp" />
 
     <TextView
         android:id="@+id/btnEsqueciSenha"
@@ -92,7 +96,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:text="Esqueci a senha"
@@ -113,5 +117,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/debrincar_logo" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="221dp"
+        android:layout_height="95dp"
+        app:srcCompat="@drawable/nuvem_cadastro_final"
+        tools:layout_editor_absoluteX="150dp"
+        tools:layout_editor_absoluteY="476dp" />
 
 </android.support.constraint.ConstraintLayout>

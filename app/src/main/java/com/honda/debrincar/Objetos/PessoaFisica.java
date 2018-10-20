@@ -1,8 +1,12 @@
 package com.honda.debrincar.Objetos;
 
-public class PessoaFisica implements Usuario {
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.Exclude;
+import com.honda.debrincar.Config.ConfiguraçaoFirebase;
 
-    private String codigo;
+public class PessoaFisica {
+
+    private String id;
 
     private String nome;
     private String sobrenome;
@@ -20,12 +24,13 @@ public class PessoaFisica implements Usuario {
 
     }
 
-    public String getCodigo() {
-        return codigo;
+    @Exclude
+    public String getId() {
+        return id;
     }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
+    public void setId(String codigo) {
+        this.id = codigo;
     }
 
     public String getNome() {
@@ -76,6 +81,7 @@ public class PessoaFisica implements Usuario {
         this.cep = cep;
     }
 
+    @Exclude
     public String getCidade() {
         return cidade;
     }
@@ -84,6 +90,7 @@ public class PessoaFisica implements Usuario {
         this.cidade = cidade;
     }
 
+    @Exclude
     public String getEstado() {
         return estado;
     }
@@ -92,6 +99,7 @@ public class PessoaFisica implements Usuario {
         this.estado = estado;
     }
 
+    @Exclude
     public String getEmail() {
         return email;
     }
@@ -100,11 +108,20 @@ public class PessoaFisica implements Usuario {
         this.email = email;
     }
 
+    @Exclude
     public String getSenha() {
         return senha;
     }
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+
+    public void salvarDados(){
+        //Salva os dados do usuário no Firebase no nó RAIZ/USUÁRIOS/PF/ID DO USUÁRIO
+        DatabaseReference referenciaFirebase = ConfiguraçaoFirebase.getFirebaseData();
+        referenciaFirebase.child("Usuário").child("PF").child(id).setValue(this);
+
     }
 }
