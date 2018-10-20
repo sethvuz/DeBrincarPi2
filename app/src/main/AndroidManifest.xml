@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.honda.debrincar">
 
     <application
@@ -7,21 +8,45 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".TelaLogin">
+        android:supportsRtl="true">
+        <activity
+            android:name=".Activities.TelaLogin"
+            android:theme="@style/LoginTheme">
+            <intent-filter>
+                <action android:name="TELA_LOGIN_ACT" />
+
+                <category android:name="TELA_LOGIN_CTG" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Activities.CadastroUsuario"
+            android:theme="@style/LoginTheme">
+            <intent-filter>
+                <action android:name="TELA_CADASTRO_ACT" />
+
+                <category android:name="TELA_CADASTRO_CTG" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Activities.FirstActivity"
+            android:theme="@style/LoginTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CadastroUsuario">
-           <intent-filter>
-            <action android:name="TELA_CADASTRO_ACT"/>
-            <category android:name="TELA_CADASTRO_CTG"/>
-               <category android:name="android.intent.category.DEFAULT"/>
-           </intent-filter>
+        <activity
+            android:name=".Activities.PrincipalAnuncios"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="TELA_ANUNCIOS_ACT" />
+
+                <category android:name="TELA_ANUNCIOS_CTG" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
     </application>
 

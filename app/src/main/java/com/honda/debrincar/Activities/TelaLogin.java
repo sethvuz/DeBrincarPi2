@@ -1,7 +1,6 @@
-package com.honda.debrincar;
+package com.honda.debrincar.Activities;
 
 import android.content.Intent;
-import android.hardware.biometrics.BiometricPrompt;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +13,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.honda.debrincar.R;
 
 public class TelaLogin extends AppCompatActivity {
 
@@ -55,7 +55,9 @@ public class TelaLogin extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
-                    Toast.makeText(TelaLogin.this, "Login efetuado!", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent("TELA_ANUNCIOS_ACT");
+                    intent.addCategory("TELA_ANUNCIOS_CTG");
+                    startActivity(intent);
                 } else {
                     Toast.makeText(TelaLogin.this, task.getException().getLocalizedMessage(), Toast.LENGTH_LONG).show();
                 }
