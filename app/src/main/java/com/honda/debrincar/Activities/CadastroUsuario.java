@@ -58,7 +58,6 @@ public class CadastroUsuario extends AppCompatActivity {
     public void cadastraUsuario(String email, String senha){
 
         Task<AuthResult> tarefa = FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, senha);
-
         tarefa.addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
