@@ -46,10 +46,15 @@ public class TelaLogin extends AppCompatActivity {
         TextView emailText = findViewById(R.id.emailLogin);
         TextView senhaText = findViewById(R.id.senhaLogin);
 
-        String email = emailText.getText().toString();
-        String senha = senhaText.getText().toString();
+        String email = "";
+                if (emailText!= null)
+                    email = emailText.getText().toString();
+        String senha = "";
+                if (senhaText != null)
+                    senhaText.getText().toString();
 
-        Task<AuthResult> tarefa = FirebaseAuth.getInstance().signInWithEmailAndPassword(email, senha);
+        
+                Task<AuthResult> tarefa = FirebaseAuth.getInstance().signInWithEmailAndPassword(email, senha);
 
         tarefa.addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override

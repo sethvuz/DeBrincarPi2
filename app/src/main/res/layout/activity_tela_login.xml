@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.TelaLogin"
-    android:background="@drawable/background_1440p_claro"
+    android:background="@drawable/background_1080p_claro"
     >
 
     <android.support.constraint.Guideline
@@ -119,11 +119,13 @@
     <TextView
         android:id="@+id/btnSemCadastro"
         style="@style/TextoPrincipal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="65dp"
+        android:layout_width="208dp"
+        android:layout_height="78dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="52dp"
+        android:paddingTop="17dp"
+        android:paddingRight="27dp"
         android:text="NÃO POSSUI CONTA?\nTOQUE AQUI!"
         android:textAlignment="textEnd"
         app:layout_constraintStart_toStartOf="@+id/nuvem_cadastro"

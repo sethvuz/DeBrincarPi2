@@ -14,4 +14,6 @@
     <!-- TONS DE AMARELO -->
     <color name="amareloEscuro">#ffb73f</color>
     <color name="amareloClaro">#fad86a</color>
+
+    <color name="cinzaClaro">#c3bfd6</color>
 </resources>

@@ -23,6 +23,19 @@
         <item name="android:textAlignment">center</item>
     </style>
 
+    <style name="TextoCadastro">
+        <item name="android:textColor">@color/azulEscuro</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="CaixaCadastro">
+        <item name="android:textColor">@color/azulEscuro</item>
+        <item name="android:textSize">12dp</item>
+        <item name="android:width">220dp</item>
+        <item name="android:height">@dimen/caixa_cadastro_alt</item>
+    </style>
+
     <style name="LoginBtn">
         <item name="android:background">@color/amareloEscuro</item>
         <item name="android:textColor">#ffff</item>
