@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.TelaLogin"
-    android:background="@drawable/background_1440p"
+    android:background="@drawable/background_1440p_claro"
     >
 
     <android.support.constraint.Guideline
@@ -21,7 +21,7 @@
         android:layout_height="@dimen/caixa_texto_alt"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
         android:background="@drawable/caixas_arredondadas"
@@ -43,19 +43,18 @@
         android:layout_height="@dimen/botao_alt"
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="100dp"
         android:layout_marginRight="100dp"
         android:background="@drawable/botao_amarelo"
-        android:text="LOGIN"
-        android:textSize="@dimen/caixa_text_size"
-        android:textAlignment="center"
-        android:paddingLeft="50dp"
         android:drawableRight="@drawable/aviao_log_btn"
+        android:paddingLeft="50dp"
+        android:text="LOGIN"
+        android:textAlignment="center"
+        android:textSize="@dimen/caixa_text_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/senhaLogin"
-    />
+        app:layout_constraintTop_toBottomOf="@+id/senhaLogin" />
 
     <EditText
         android:id="@+id/emailLogin"
@@ -65,7 +64,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="2dp"
+        android:layout_marginBottom="4dp"
         android:background="@drawable/caixas_arredondadas"
         android:ems="10"
         android:hint="E-mail"
@@ -77,17 +76,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/btnSemCadastro"
-        style="@style/TextoPrincipal"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@color/common_google_signin_btn_text_dark_disabled"
-        android:text="NÃO POSSUI CONTA? CLIQUE AQUI!"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="415dp" />
 
     <TextView
         android:id="@+id/btnEsqueciSenha"
@@ -96,7 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:text="Esqueci a senha"
@@ -119,11 +107,26 @@
         app:srcCompat="@drawable/debrincar_logo" />
 
     <ImageView
-        android:id="@+id/imageView8"
+        android:id="@+id/nuvem_cadastro"
         android:layout_width="269dp"
         android:layout_height="132dp"
-        app:srcCompat="@drawable/nuvem_cadastro_final"
-        tools:layout_editor_absoluteX="107dp"
-        tools:layout_editor_absoluteY="444dp" />
+        android:layout_marginBottom="-1dp"
+        android:text="NÃO POSSUI CONTA? CLIQUE AQUI!"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/nuvem_cadastro_final" />
+
+    <TextView
+        android:id="@+id/btnSemCadastro"
+        style="@style/TextoPrincipal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="65dp"
+        android:text="NÃO POSSUI CONTA?\nTOQUE AQUI!"
+        android:textAlignment="textEnd"
+        app:layout_constraintStart_toStartOf="@+id/nuvem_cadastro"
+        app:layout_constraintTop_toTopOf="@+id/nuvem_cadastro" />
 
 </android.support.constraint.ConstraintLayout>
