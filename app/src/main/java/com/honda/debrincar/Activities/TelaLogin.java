@@ -51,22 +51,28 @@ public class TelaLogin extends AppCompatActivity {
                     email = emailText.getText().toString();
         String senha = "";
                 if (senhaText != null)
-                    senhaText.getText().toString();
+                     senha = senhaText.getText().toString();
 
-        
-                Task<AuthResult> tarefa = FirebaseAuth.getInstance().signInWithEmailAndPassword(email, senha);
+        if ( email != "" && senha != "") {
+            Task<AuthResult> tarefa = FirebaseAuth.getInstance().signInWithEmailAndPassword(email, senha);
 
-        tarefa.addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()){
-                    Intent intent = new Intent("TELA_ANUNCIOS_ACT");
-                    intent.addCategory("TELA_ANUNCIOS_CTG");
-                    startActivity(intent);
-                } else {
-                    Toast.makeText(TelaLogin.this, task.getException().getLocalizedMessage(), Toast.LENGTH_LONG).show();
+            tarefa.addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()){
+                        Intent intent = new Intent("TELA_ANUNCIOS_ACT");
+                        intent.addCategory("TELA_ANUNCIOS_CTG");
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(TelaLogin.this, task.getException().getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                    }
                 }
-            }
-        });
+            });
+        } else {
+            Toast.makeText(TelaLogin.this, "É necessário preencher e-mail e senha!", Toast.LENGTH_LONG).show();
+        }
+
+
+
     }
 }
