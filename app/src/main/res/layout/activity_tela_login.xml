@@ -120,10 +120,10 @@
 
     <ImageView
         android:id="@+id/imageView8"
-        android:layout_width="221dp"
-        android:layout_height="95dp"
+        android:layout_width="269dp"
+        android:layout_height="132dp"
         app:srcCompat="@drawable/nuvem_cadastro_final"
-        tools:layout_editor_absoluteX="150dp"
-        tools:layout_editor_absoluteY="476dp" />
+        tools:layout_editor_absoluteX="107dp"
+        tools:layout_editor_absoluteY="444dp" />
 
 </android.support.constraint.ConstraintLayout>
