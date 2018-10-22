@@ -8,5 +8,8 @@
         android:height="@dimen/caixa_texto_alt"/>
     <solid
         android:color="@color/cinzaClaro"/>
+    <stroke
+        android:width="0.5dp"
+        android:color="@color/azulEscuro"/>
 
 </shape>
