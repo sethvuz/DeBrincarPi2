@@ -198,7 +198,7 @@
         android:layout_height="75dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -208,7 +208,7 @@
         app:srcCompat="@drawable/carinha_adc_foto" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/text_adfoto"
         style="@style/TextoCadastro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -228,6 +228,13 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.5" />
 
+    <TextView
+        android:id="@+id/text_teste"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="62dp" />
 
 
 </android.support.constraint.ConstraintLayout>

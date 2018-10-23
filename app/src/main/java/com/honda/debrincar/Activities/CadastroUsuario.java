@@ -20,6 +20,10 @@ import com.honda.debrincar.R;
 
 public class CadastroUsuario extends AppCompatActivity {
 
+   public String userType;
+   private TextView textView;
+
+
     private PessoaFisica usuario = new PessoaFisica();
 
     private EditText nome;
@@ -37,6 +41,14 @@ public class CadastroUsuario extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_usuario);
+
+        //Resgata o tipo de usuário passado pela Dialog
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        userType = bundle.getString("userType");
+
+        textView = findViewById(R.id.text_teste);
+        textView.setText(userType);
 
         Button btnCadastrar = findViewById(R.id.btn_cadastro);
         btnCadastrar.setOnClickListener(new View.OnClickListener() {

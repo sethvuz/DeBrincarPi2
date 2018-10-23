@@ -17,6 +17,8 @@ import com.honda.debrincar.R;
 
 public class TelaLogin extends AppCompatActivity {
 
+    public String userMod;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,9 +36,12 @@ public class TelaLogin extends AppCompatActivity {
         btnSemCadastro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent in = new Intent("TELA_CADASTRO_ACT");
+                preCadastro_dialog dialog = new preCadastro_dialog();
+                dialog.show(getSupportFragmentManager(), "Opção");
+
+                /*Intent in = new Intent("TELA_CADASTRO_ACT");
                 in.addCategory("TELA_CADASTRO_CTG");
-                startActivity(in);
+                startActivity(in);*/
             }
         });
 
