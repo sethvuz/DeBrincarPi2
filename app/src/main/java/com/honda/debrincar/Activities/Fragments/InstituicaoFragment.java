@@ -19,6 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.honda.debrincar.Objetos.Instituicao;
 import com.honda.debrincar.R;
+import com.rengwuxian.materialedittext.MaterialEditText;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -54,27 +55,27 @@ public class InstituicaoFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_instituicao, container, false);
 
         //Funções de cadastro quando o botão de cadastrar é pressionado
-        Button btnCadastrar = view.findViewById(R.id.btn_cadastro);
+        Button btnCadastrar = view.findViewById(R.id.btn_cadastro_inst);
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 //SALVA OS CAMPOS EM VARIÁVEIS.
-                nome = view.findViewById(R.id.cad_nome);
-                cnpj = view.findViewById(R.id.cad_cnpj);
-                descricao = view.findViewById(R.id.cad_descricao);
-                endereco = view.findViewById(R.id.cad_endereço);
-                cep = view.findViewById(R.id.cad_cep);
+                nome = getActivity().findViewById(R.id.cad_nome_inst);
+                cnpj = getActivity().findViewById(R.id.cad_cnpj_inst);
+                descricao = getActivity().findViewById(R.id.cad_descricao_inst);
+                endereco = getActivity().findViewById(R.id.cad_endereço_inst);
+                cep = getActivity().findViewById(R.id.cad_cep_inst);
 
                 //DADOS DO RESPONSÁVEL
-                nomeResponsavel = view.findViewById(R.id.cad_nome_responsavel);
-                cpfResponsavel = view.findViewById(R.id.cad_cpf_responsavel);
-                enderecoResponsavel = view.findViewById(R.id.cad_endereco_responsavel);
+                nomeResponsavel = getActivity().findViewById(R.id.cad_nome_responsavel);
+                cpfResponsavel = getActivity().findViewById(R.id.cad_cpf_responsavel);
+                enderecoResponsavel = getActivity().findViewById(R.id.cad_endereco_responsavel);
 
                 //CAMPOS PARA LOGIN
-                email = view.findViewById(R.id.cad_email);
-                senha = view.findViewById(R.id.cad_senha);
-                confSenha = view.findViewById(R.id.cad_conf_senha);
+                email = getActivity().findViewById(R.id.cad_email_inst);
+                senha = getActivity().findViewById(R.id.cad_senha_inst);
+                confSenha = getActivity().findViewById(R.id.cad_conf_senha_inst);
 
                 usuario.setEmail(email.getText().toString());
                 usuario.setSenha(senha.getText().toString());

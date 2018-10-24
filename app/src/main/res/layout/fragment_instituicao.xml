@@ -4,8 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.Fragments.InstituicaoFragment"
-    android:background="@drawable/background_1080p_claro">
+    tools:context=".Activities.Fragments.InstituicaoFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -22,7 +21,7 @@
 
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/set_imagem_inst"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_marginStart="8dp"
@@ -33,7 +32,7 @@
                 app:srcCompat="@drawable/carinha_adc_foto" />
 
             <TextView
-                android:id="@+id/text_adfoto"
+                android:id="@+id/text_adfoto_inst"
                 style="@style/TextoCadastro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -46,7 +45,7 @@
                 />
 
             <com.rengwuxian.materialedittext.MaterialEditText
-                android:id="@+id/cad_nome"
+                android:id="@+id/cad_nome_inst"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -60,7 +59,7 @@
 
 
             <com.rengwuxian.materialedittext.MaterialEditText
-                android:id="@+id/cad_cnpj"
+                android:id="@+id/cad_cnpj_inst"
                 android:theme="@style/TextoCadastro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -74,7 +73,7 @@
                 android:inputType="number" />
 
             <com.rengwuxian.materialedittext.MaterialEditText
-                android:id="@+id/cad_descricao"
+                android:id="@+id/cad_descricao_inst"
                 android:theme="@style/TextoCadastro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -88,7 +87,7 @@
                 android:inputType="text" />
 
             <com.rengwuxian.materialedittext.MaterialEditText
-                android:id="@+id/cad_endereço"
+                android:id="@+id/cad_endereço_inst"
                 android:theme="@style/TextoCadastro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -102,7 +101,7 @@
                 android:inputType="textPersonName" />
 
             <com.rengwuxian.materialedittext.MaterialEditText
-                android:id="@+id/cad_cep"
+                android:id="@+id/cad_cep_inst"
                 android:theme="@style/TextoCadastro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -184,7 +183,7 @@
                 android:inputType="textPersonName" />
 
             <EditText
-                android:id="@+id/cad_email"
+                android:id="@+id/cad_email_inst"
                 style="@style/CaixaCadastro"
                 android:layout_width="match_parent"
                 android:layout_marginStart="30dp"
@@ -197,7 +196,7 @@
                 />
 
             <EditText
-                android:id="@+id/cad_senha"
+                android:id="@+id/cad_senha_inst"
                 style="@style/CaixaCadastro"
                 android:layout_width="match_parent"
                 android:layout_marginStart="30dp"
@@ -209,7 +208,7 @@
                 android:inputType="textPassword" />
 
             <EditText
-                android:id="@+id/cad_conf_senha"
+                android:id="@+id/cad_conf_senha_inst"
                 style="@style/CaixaCadastro"
                 android:layout_width="match_parent"
                 android:layout_marginStart="30dp"
@@ -222,7 +221,7 @@
 
 
             <Button
-                android:id="@+id/btn_cadastro"
+                android:id="@+id/btn_cadastro_inst"
                 style="@style/LoginBtn"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/botao_alt"

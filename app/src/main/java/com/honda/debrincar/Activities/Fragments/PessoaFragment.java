@@ -57,17 +57,17 @@ public class PessoaFragment extends Fragment {
             public void onClick(View view) {
 
                 //SALVA OS CAMPOS EM VARIÁVEIS.
-                nome = view.findViewById(R.id.cad_nome);
-                sobrenome = view.findViewById(R.id.cad_sobrenome);
-                cpf = view.findViewById(R.id.cad_cpf);
-                nascimento = view.findViewById(R.id.cad_nascimento);
-                endereço = view.findViewById(R.id.cad_endereço);
-                cep = view.findViewById(R.id.cad_cep);
+                nome = getActivity().findViewById(R.id.cad_nome);
+                sobrenome = getActivity().findViewById(R.id.cad_sobrenome);
+                cpf = getActivity().findViewById(R.id.cad_cpf);
+                nascimento = getActivity().findViewById(R.id.cad_nascimento);
+                endereço = getActivity().findViewById(R.id.cad_endereço);
+                cep = getActivity().findViewById(R.id.cad_cep);
 
                 //CAMPOS PARA LOGIN
-                email = view.findViewById(R.id.cad_email);
-                senha = view.findViewById(R.id.cad_senha);
-                confSenha = view.findViewById(R.id.cad_conf_senha);
+                email = getActivity().findViewById(R.id.cad_email);
+                senha = getActivity().findViewById(R.id.cad_senha);
+                confSenha = getActivity().findViewById(R.id.cad_conf_senha);
 
                 usuario.setEmail(email.getText().toString());
                 usuario.setSenha(senha.getText().toString());

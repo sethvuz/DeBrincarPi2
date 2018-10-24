@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.CadastroUser"
-    android:id="@+id/container_cadastro">
+    android:id="@+id/container_cadastro"
+    android:background="@drawable/background_1080p_claro">
 
 </RelativeLayout>
