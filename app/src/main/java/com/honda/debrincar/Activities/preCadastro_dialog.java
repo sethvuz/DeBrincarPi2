@@ -39,7 +39,23 @@ public class preCadastro_dialog extends DialogFragment {
 
                 //Chama a tela de cadastro passando o tipo de usuário.
                 userType = "pessoafisica";
-                Intent intent = new Intent(getActivity(), CadastroUsuario.class);
+                Intent intent = new Intent("CADASTRO_ACT");
+                //intent.addCategory("CADASTRO_CTG");
+                Bundle bundle = new Bundle();
+                bundle.putString("userType", userType);
+                intent.putExtras(bundle);
+                startActivity(intent);
+                getDialog().dismiss();
+            }
+        });
+
+        btnINST.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Chama a tela de cadastro passando o tipo de usuário.
+                userType = "instiuição";
+                Intent intent = new Intent("CADASTRO_ACT");
+                //intent.addCategory("CADASTRO_CTG");
                 Bundle bundle = new Bundle();
                 bundle.putString("userType", userType);
                 intent.putExtras(bundle);

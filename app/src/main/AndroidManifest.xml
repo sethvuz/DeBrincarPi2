@@ -22,16 +22,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activities.CadastroUsuario"
-            android:theme="@style/LoginTheme">
-            <intent-filter>
-                <action android:name="TELA_CADASTRO_ACT" />
-
-                <category android:name="TELA_CADASTRO_CTG" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
             android:name=".Activities.FirstActivity"
             android:theme="@style/LoginTheme">
             <intent-filter>
@@ -50,7 +40,14 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.CadastroUser"></activity>
+        <activity android:name=".Activities.CadastroUser">
+            <intent-filter>
+                <action android:name="CADASTRO_ACT" />
+
+                <category android:name="CADASTRO_CTG" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
