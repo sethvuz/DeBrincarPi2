@@ -1,33 +1,36 @@
 package com.honda.debrincar.Objetos;
 
-public class Instituiçao {
+import com.google.firebase.database.DatabaseReference;
+import com.honda.debrincar.Config.ConfiguraçaoFirebase;
 
-    private String codigo;
+public class Instituicao {
+
+    private String id;
 
     private String nome;
     private String cnpj;
-    private String endereço;
+    private String endereco;
     private String cep;
     private String cidade;
     private String estado;
-    private String descriçao;
+    private String descricao;
 
     private String nomeResponsavel;
     private String cpfResponsavel;
-    private String endereçoResponsavel;
+    private String enderecoResponsavel;
 
     private String email;
     private String senha;
 
-    public Instituiçao() {
+    public Instituicao() {
     }
 
-    public String getCodigo() {
-        return codigo;
+    public String getId() {
+        return id;
     }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -46,12 +49,12 @@ public class Instituiçao {
         this.cnpj = cnpj;
     }
 
-    public String getEndereço() {
-        return endereço;
+    public String getEndereco() {
+        return endereco;
     }
 
-    public void setEndereço(String endereço) {
-        this.endereço = endereço;
+    public void setEndereco(String endereço) {
+        this.endereco = endereço;
     }
 
     public String getCep() {
@@ -78,12 +81,12 @@ public class Instituiçao {
         this.estado = estado;
     }
 
-    public String getDescriçao() {
-        return descriçao;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setDescriçao(String descriçao) {
-        this.descriçao = descriçao;
+    public void setDescricao(String descriçao) {
+        this.descricao = descriçao;
     }
 
     public String getNomeResponsavel() {
@@ -102,12 +105,12 @@ public class Instituiçao {
         this.cpfResponsavel = cpfResponsavel;
     }
 
-    public String getEndereçoResponsavel() {
-        return endereçoResponsavel;
+    public String getEnderecoResponsavel() {
+        return enderecoResponsavel;
     }
 
-    public void setEndereçoResponsavel(String endereçoResponsavel) {
-        this.endereçoResponsavel = endereçoResponsavel;
+    public void setEnderecoResponsavel(String endereçoResponsavel) {
+        this.enderecoResponsavel = endereçoResponsavel;
     }
 
     public String getEmail() {
@@ -124,5 +127,12 @@ public class Instituiçao {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public void salvarDados(){
+        //Salva os dados do usuário no Firebase no nó RAIZ/USUÁRIOS/PF/ID DO USUÁRIO
+        DatabaseReference referenciaFirebase = ConfiguraçaoFirebase.getFirebaseData();
+        referenciaFirebase.child("Usuário").child("INST").child(id).setValue(this);
+
     }
 }

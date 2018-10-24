@@ -21,4 +21,10 @@
     <string name="cad_confsenha_hint">Confirma Senha</string>
     <string name="btn_cadastrar">Cadastrar</string>
     <string name="adicionar_foto">Adicionar Foto</string>
+    <string name="cad_cnpj_hint">CNPJ</string>
+    <string name="cad_nomeresp_hint">Nome do Responsável</string>
+    <string name="cad_sobrenomeresp_hint">Sobrenome do Responsável</string>
+    <string name="cad_enderecoresp_hint">Endereço do Responsável</string>
+    <string name="cad_cpfresp_hint">CPF do Responsável</string>
+    <string name="cad_atuação_hint">Descrição da Atuação</string>
 </resources>

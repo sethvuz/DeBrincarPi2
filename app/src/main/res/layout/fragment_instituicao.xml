@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.Fragments.InstituicaoFragment">
+    tools:context=".Activities.Fragments.InstituicaoFragment"
+    android:background="@drawable/background_1080p_claro">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -29,10 +30,6 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.493"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/carinha_adc_foto" />
 
             <TextView
@@ -59,28 +56,11 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:theme="@style/TextoCadastro"
-                app:layout_constraintBottom_toTopOf="@+id/cad_sobrenome"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
                 app:met_floatingLabelText="@string/cad_nome_hint" />
 
-            <com.rengwuxian.materialedittext.MaterialEditText
-                android:id="@+id/cad_sobrenome"
-                android:theme="@style/TextoCadastro"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginBottom="2dp"
-                android:ems="10"
-                app:met_floatingLabelText="@string/cad_sobrenome_hint"
-                android:inputType="textPersonName" />
 
             <com.rengwuxian.materialedittext.MaterialEditText
-                android:id="@+id/cad_cpf"
+                android:id="@+id/cad_cnpj"
                 android:theme="@style/TextoCadastro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -90,11 +70,11 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="2dp"
                 android:ems="10"
-                app:met_floatingLabelText="@string/cad_cpf_hint"
+                app:met_floatingLabelText="@string/cad_cnpj_hint"
                 android:inputType="number" />
 
             <com.rengwuxian.materialedittext.MaterialEditText
-                android:id="@+id/cad_nascimento"
+                android:id="@+id/cad_descricao"
                 android:theme="@style/TextoCadastro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -104,8 +84,8 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="1dp"
                 android:ems="10"
-                app:met_floatingLabelText="@string/cad_nascimento_hint"
-                android:inputType="date" />
+                app:met_floatingLabelText="@string/cad_atuação_hint"
+                android:inputType="text" />
 
             <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/cad_endereço"
@@ -135,6 +115,73 @@
                 app:met_floatingLabelText="@string/cad_cep_hint"
                 android:inputType="number" />
 
+            <TextView
+                android:id="@+id/dados_responsavel"
+                style="@style/TextoCadastro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="30dp"
+                android:text="Informações do Responsável pela Instituição"
+                android:textAlignment="center"
+                />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/cad_nome_responsavel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="15dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:theme="@style/TextoCadastro"
+                app:met_floatingLabelText="@string/cad_nomeresp_hint" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/cad_sobrenome_responsavel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:theme="@style/TextoCadastro"
+                app:met_floatingLabelText="@string/cad_sobrenomeresp_hint" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/cad_cpf_responsavel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:ems="10"
+                android:inputType="number"
+                android:theme="@style/TextoCadastro"
+                app:met_floatingLabelText="@string/cad_cpfresp_hint" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/cad_endereco_responsavel"
+                android:theme="@style/TextoCadastro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="2dp"
+                android:ems="10"
+                app:met_floatingLabelText="@string/cad_enderecoresp_hint"
+                android:inputType="textPersonName" />
 
             <EditText
                 android:id="@+id/cad_email"
