@@ -4,7 +4,7 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/amareloEscuro</item>
-        <item name="colorPrimaryDark">@color/azulMedio</item>
+        <item name="colorPrimaryDark">@color/azulClaro</item>
         <item name="colorAccent">@color/amareloClaro</item>
         <item name="android:textColor">@color/azulEscuro</item>
     </style>

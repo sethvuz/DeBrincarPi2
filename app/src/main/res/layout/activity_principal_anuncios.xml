@@ -13,13 +13,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <include
+            android:id="@+id/anuncios_list_toolbar"
+            layout="@layout/app_bar_layout">
+
+
+        </include>
+
         <FrameLayout
             android:id="@+id/container_principal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="511dp"
+            android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
+            android:layout_marginTop="56dp"
             android:layout_marginEnd="0dp"
             android:layout_marginRight="0dp"
             android:layout_marginBottom="0dp">
@@ -27,7 +36,7 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/lista_todos_anuncios"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="557dp" />
         </FrameLayout>
     </RelativeLayout>
 
