@@ -67,7 +67,9 @@ public class TelaLogin extends AppCompatActivity {
                     if (task.isSuccessful()){
                         Intent intent = new Intent("TELA_ANUNCIOS_ACT");
                         intent.addCategory("TELA_ANUNCIOS_CTG");
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
+                        finish();
                     } else {
                         Toast.makeText(TelaLogin.this, task.getException().getLocalizedMessage(), Toast.LENGTH_LONG).show();
                     }

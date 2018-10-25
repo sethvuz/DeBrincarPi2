@@ -10,16 +10,26 @@
     </style>
 
 
+    <style name="ToolbarTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/amareloEscuro</item>
+        <item name="colorPrimaryDark">@color/azulClaro</item>
+        <item name="colorAccent">@color/amareloClaro</item>
+        <item name="android:textColorPrimary">@color/azulMedio</item>
+        <item name="android:textColorSecondary">@color/azulMedio</item>
+    </style>
+
+
     <style name="TextoPrincipal">
-        <item name="android:textColor">@color/azulEscuro</item>
+        <item name="android:textColor">@color/azulMedio</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">15sp</item>
         <item name="android:textAlignment">center</item>
     </style>
 
     <style name="TextoCadastro">
-        <item name="met_underlineColor">@color/azulEscuro</item>
-        <item name="met_textColor">@color/azulEscuro</item>
+        <item name="met_underlineColor">@color/azulMedio</item>
+        <item name="met_textColor">@color/azulMedio</item>
         <item name="met_floatingLabel">highlight</item>
         <item name="met_floatingLabelAlwaysShown">true</item>
         <item name="met_floatingLabelTextColor">@color/azulClaro</item>

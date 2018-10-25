@@ -22,10 +22,12 @@ public class FirstActivity extends AppCompatActivity {
         if (ConfiguraçaoFirebase.isLogged()){
             intent = new Intent("TELA_ANUNCIOS_ACT");
             intent.addCategory("TELA_ANUNCIOS_CTG");
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         } else {
             intent = new Intent("TELA_LOGIN_ACT");
             intent.addCategory("TELA_LOGIN_CTG");
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         }
     }

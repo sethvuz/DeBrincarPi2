@@ -1,5 +1,7 @@
 package com.honda.debrincar.Activities;
 
+import android.content.Intent;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -12,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.honda.debrincar.Config.ConfiguraçaoFirebase;
 import com.honda.debrincar.R;
 
 public class PrincipalAnuncios extends AppCompatActivity {
@@ -30,6 +33,11 @@ public class PrincipalAnuncios extends AppCompatActivity {
         mToolbar = findViewById(R.id.anuncios_list_toolbar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle("Anúncios");
+
+        //Checando a compatibilidade
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+            mToolbar.setElevation(30.0f);
+        }
 
 
         drawerLayout = findViewById(R.id.drawable_layout);
@@ -91,7 +99,11 @@ public class PrincipalAnuncios extends AppCompatActivity {
                 break;
 
             case R.id.nav_logout:
-                Toast.makeText(this, "Sair", Toast.LENGTH_LONG).show();
+                ConfiguraçaoFirebase.getFirebaseAuth().signOut();
+                Intent intent = new Intent("TELA_LOGIN_ACT");
+                intent.addCategory("TELA_LOGIN_CTG");
+                startActivity(intent);
+                finish();
                 break;
 
                 default:
