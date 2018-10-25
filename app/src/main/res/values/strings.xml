@@ -27,4 +27,11 @@
     <string name="cad_enderecoresp_hint">Endereço do Responsável</string>
     <string name="cad_cpfresp_hint">CPF do Responsável</string>
     <string name="cad_atuação_hint">Descrição da Atuação</string>
+    <string name="nav_anuncios">Anúncios</string>
+    <string name="nav_inserir_anuncio">Inserir Anúncio</string>
+    <string name="nav_favoritos">Favoritos</string>
+    <string name="nav_minha_conta">Minha Conta</string>
+    <string name="nav_config">Configurações</string>
+    <string name="nav_logout">Sair</string>
+    <string name="nav_seguidores">Seguidores</string>
 </resources>

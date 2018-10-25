@@ -12,8 +12,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".Activities.TelaLogin"
-            android:theme="@style/LoginTheme">
+            android:name=".Activities.TelaLogin">
             <intent-filter>
                 <action android:name="TELA_LOGIN_ACT" />
 
@@ -22,8 +21,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activities.FirstActivity"
-            android:theme="@style/LoginTheme">
+            android:name=".Activities.FirstActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,8 +29,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activities.PrincipalAnuncios"
-            android:theme="@style/AppTheme">
+            android:name=".Activities.PrincipalAnuncios">
             <intent-filter>
                 <action android:name="TELA_ANUNCIOS_ACT" />
 

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/nav_menu_top">
+        <item
+            android:id="@+id/nav_anuncios"
+            android:title="@string/nav_anuncios" />
+
+        <item
+            android:id="@+id/nav_ins_anuncios"
+            android:title="@string/nav_inserir_anuncio"/>
+
+        <item
+            android:id="@+id/nav_favoritos"
+            android:title="@string/nav_favoritos"/>
+
+        <item
+            android:id="@+id/nav_seguidores"
+            android:title="@string/nav_seguidores"/>
+
+        <item
+            android:id="@+id/nav_minha_conta"
+            android:title="@string/nav_minha_conta"/>
+    </group>
+
+    <group android:id="@+id/nav_menu_bottom">
+        <item
+            android:id="@+id/nav_config"
+            android:title="@string/nav_config"/>
+
+        <item
+            android:id="@+id/nav_logout"
+            android:title="@string/nav_logout"/>
+    </group>
+
+
+</menu>
