@@ -3,7 +3,10 @@ package com.honda.debrincar.Activities;
 import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.honda.debrincar.Config.Anun_Adapter;
 import com.honda.debrincar.Config.ConfiguraçaoFirebase;
 import com.honda.debrincar.R;
 
@@ -25,19 +29,15 @@ public class PrincipalAnuncios extends AppCompatActivity {
     private RecyclerView listaAnuncios;
     private Toolbar mToolbar;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal_anuncios);
 
-        mToolbar = findViewById(R.id.anuncios_list_toolbar);
+        mToolbar = findViewById(R.id.app_bar_principal);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle("Anúncios");
-
-        //Checando a compatibilidade
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
-            mToolbar.setElevation(30.0f);
-        }
 
 
         drawerLayout = findViewById(R.id.drawable_layout);
@@ -49,6 +49,18 @@ public class PrincipalAnuncios extends AppCompatActivity {
         navigationView = findViewById(R.id.navegation_view);
         View headView = navigationView.inflateHeaderView(R.layout.menu_nav_header);
 
+        TabLayout tabLayout = findViewById(R.id.tabs_anuncios);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            tabLayout.setElevation(30.0f);
+        }
+
+        ViewPager viewPager = findViewById(R.id.viewpager_anuncios);
+        Anun_Adapter anunAdapter = new Anun_Adapter(getSupportFragmentManager(), getResources().getStringArray(R.array.tab_titulos));
+
+                //Adicionar o FragmentAdapter ao ViewPager
+                viewPager.setAdapter(anunAdapter);
+                //Vincula o TabLayout e o ViewPager para que trabalhem juntos
+                tabLayout.setupWithViewPager(viewPager);
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override

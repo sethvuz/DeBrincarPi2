@@ -38,8 +38,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activities.CadastroUser"
-            android:windowSoftInputMode="stateHidden|adjustResize|adjustPan">
+            android:name=".Activities.CadastroUser">
             <intent-filter>
                 <action android:name="CADASTRO_ACT" />
 

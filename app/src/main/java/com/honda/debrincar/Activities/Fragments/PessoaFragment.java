@@ -1,7 +1,6 @@
 package com.honda.debrincar.Activities.Fragments;
 
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -33,7 +32,7 @@ public class PessoaFragment extends Fragment {
     private EditText sobrenome;
     private EditText cpf;
     private EditText nascimento;
-    private EditText endereço;
+    private EditText endereco;
     private EditText cep;
     private EditText email;
     private EditText senha;
@@ -62,7 +61,7 @@ public class PessoaFragment extends Fragment {
                 sobrenome = getActivity().findViewById(R.id.cad_sobrenome);
                 cpf = getActivity().findViewById(R.id.cad_cpf);
                 nascimento = getActivity().findViewById(R.id.cad_nascimento);
-                endereço = getActivity().findViewById(R.id.cad_endereço);
+                endereco = getActivity().findViewById(R.id.cad_endereço);
                 cep = getActivity().findViewById(R.id.cad_cep);
 
                 //CAMPOS PARA LOGIN
@@ -80,7 +79,7 @@ public class PessoaFragment extends Fragment {
                     usuario.setSobrenome(sobrenome.getText().toString());
                     usuario.setCpf(cpf.getText().toString());
                     usuario.setDataNascimento(nascimento.getText().toString());
-                    usuario.setEndereço(endereço.getText().toString());
+                    usuario.setEndereço(endereco.getText().toString());
                     usuario.setCep(cep.getText().toString());
 
                     //FUNÇÃO DE CADASTRO DO USUÁRIO NO FIREBASE.

@@ -5,9 +5,7 @@
         android:radius="20dp"/>
     <size
         android:height="@dimen/caixa_texto_alt"/>
-    <solid
-        android:color="@color/azulClaro"/>
     <stroke
-        android:width="0.5dp"
+        android:width="1dp"
         android:color="@color/azulEscuro"/>
 </shape>
