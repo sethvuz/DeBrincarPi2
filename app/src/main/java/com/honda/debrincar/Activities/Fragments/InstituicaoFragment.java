@@ -64,7 +64,7 @@ public class InstituicaoFragment extends Fragment {
                 nome = getActivity().findViewById(R.id.cad_nome_inst);
                 cnpj = getActivity().findViewById(R.id.cad_cnpj_inst);
                 descricao = getActivity().findViewById(R.id.cad_descricao_inst);
-                endereco = getActivity().findViewById(R.id.cad_endereço_inst);
+                endereco = getActivity().findViewById(R.id.cad_endereco_inst);
                 cep = getActivity().findViewById(R.id.cad_cep_inst);
 
                 //DADOS DO RESPONSÁVEL

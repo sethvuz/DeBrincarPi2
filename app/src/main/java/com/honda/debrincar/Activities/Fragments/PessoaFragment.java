@@ -2,6 +2,7 @@ package com.honda.debrincar.Activities.Fragments;
 
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -19,6 +20,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.honda.debrincar.Objetos.PessoaFisica;
 import com.honda.debrincar.R;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
+
+import de.hdodenhof.circleimageview.CircleImageView;
+
+import static android.app.Activity.RESULT_OK;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -38,6 +45,8 @@ public class PessoaFragment extends Fragment {
     private EditText senha;
     private EditText confSenha;
 
+    final static int GALLERY_PICK = 1;
+
 
     public PessoaFragment() {
         // Required empty public constructor
@@ -50,18 +59,26 @@ public class PessoaFragment extends Fragment {
         // Inflate the layout for this fragment and save it on a View
         View view =  inflater.inflate(R.layout.fragment_pessoa, container, false);
 
+        //CARREGAR IMAGEM
+        CircleImageView userImage = view.findViewById(R.id.set_imagem);
+        userImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                acessarGaleria();
+            }
+        });
+
         //Funções de cadastro quando o botão de cadastrar é pressionado
         Button btnCadastrar = view.findViewById(R.id.btn_cadastro);
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 //SALVA OS CAMPOS EM VARIÁVEIS.
                 nome = getActivity().findViewById(R.id.cad_nome);
                 sobrenome = getActivity().findViewById(R.id.cad_sobrenome);
                 cpf = getActivity().findViewById(R.id.cad_cpf);
                 nascimento = getActivity().findViewById(R.id.cad_nascimento);
-                endereco = getActivity().findViewById(R.id.cad_endereço);
+                endereco = getActivity().findViewById(R.id.cad_endereco);
                 cep = getActivity().findViewById(R.id.cad_cep);
 
                 //CAMPOS PARA LOGIN
@@ -93,6 +110,36 @@ public class PessoaFragment extends Fragment {
         });
 
         return view;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode==GALLERY_PICK && resultCode== RESULT_OK && data!=null){
+
+            Uri imageUri = data.getData();
+            CropImage.activity()
+                    .setGuidelines(CropImageView.Guidelines.ON)
+                    .setAspectRatio(1,1)
+                    .start(getContext(), this);
+        }
+
+        if(requestCode==CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE){
+
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (requestCode == RESULT_OK){
+
+                Uri resultUri = result.getUri();
+            }
+        }
+    }
+
+    private void acessarGaleria() {
+        Intent imageIntent = new Intent();
+        imageIntent.setAction(Intent.ACTION_GET_CONTENT);
+        imageIntent.setType("image/*");
+        startActivityForResult(imageIntent, GALLERY_PICK);
     }
 
     //FUNÇÃO DE CADASTRO DO USUÁRIO NO FIREBASE
