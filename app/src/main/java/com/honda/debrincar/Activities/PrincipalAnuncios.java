@@ -15,11 +15,20 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 import com.honda.debrincar.Config.Anun_Adapter;
 import com.honda.debrincar.Config.ConfiguraçaoFirebase;
 import com.honda.debrincar.R;
+import com.squareup.picasso.Picasso;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PrincipalAnuncios extends AppCompatActivity {
 
@@ -28,6 +37,18 @@ public class PrincipalAnuncios extends AppCompatActivity {
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private RecyclerView listaAnuncios;
     private Toolbar mToolbar;
+
+    private CircleImageView menuImagemUser;
+    private TextView menuNomeUser;
+   // private String imageUrl, nomeUser;
+
+
+    //Encapsular?
+    private DatabaseReference userRef;
+    private FirebaseAuth userAuth;
+    private String userID;
+
+
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -48,6 +69,37 @@ public class PrincipalAnuncios extends AppCompatActivity {
 
         navigationView = findViewById(R.id.navegation_view);
         View headView = navigationView.inflateHeaderView(R.layout.menu_nav_header);
+        menuImagemUser = headView.findViewById(R.id.menu_img_usuario);
+        menuNomeUser = headView.findViewById(R.id.menu_header_username);
+
+        userAuth = ConfiguraçaoFirebase.getFirebaseAuth();
+        userID = userAuth.getCurrentUser().getUid();
+
+        userRef = ConfiguraçaoFirebase.getFirebaseData().child("Usuário").child("PF");
+        userRef.child(userID).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+                    //Salva em Strings o nome do usuário e o endereço da imagem do perfil
+                    String nomeCompleto = dataSnapshot.child("nome").getValue().toString()
+                            + dataSnapshot.child("sobrenome").getValue().toString();
+                    String imagemPerfil = dataSnapshot.child("imagemUsuarioUrl").getValue().toString();
+
+                    //Seta o nome e a imagem do usuário no menu de navegação
+                    menuNomeUser.setText(nomeCompleto);
+                    Picasso.get().load(imagemPerfil).into(menuImagemUser);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+
 
         TabLayout tabLayout = findViewById(R.id.tabs_anuncios);
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

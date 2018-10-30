@@ -28,7 +28,7 @@
               android:src="@drawable/carinha_adc_foto"
               app:civ_border_color="@color/azulMedio"
               app:civ_border_width="1dp" />
-
+f
          <TextView
              android:id="@+id/text_adfoto"
              style="@style/TextoCadastro"
@@ -118,7 +118,7 @@
                   android:textColor="@color/azulEscuro"
                   android:textStyle="bold"
                   android:textSize="12sp"
-                  android:inputType="textPersonName"
+                  android:inputType="date"
                   android:hint="@string/cad_nascimento_hint" />
           </android.support.design.widget.TextInputLayout>
 

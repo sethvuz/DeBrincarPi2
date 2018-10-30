@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
 
     <group android:id="@+id/nav_menu_top">
         <item
@@ -9,7 +11,7 @@
 
         <item
             android:id="@+id/nav_ins_anuncios"
-            android:title="@string/nav_inserir_anuncio"/>
+            android:title="@string/nav_inserir_anuncio" />
 
         <item
             android:id="@+id/nav_favoritos"
@@ -24,7 +26,8 @@
             android:title="@string/nav_minha_conta"/>
     </group>
 
-    <group android:id="@+id/nav_menu_bottom">
+    <group android:id="@+id/nav_menu_bottom"
+        android:actionLayout="@layout/menu_button_layout">
         <item
             android:id="@+id/nav_config"
             android:title="@string/nav_config"/>

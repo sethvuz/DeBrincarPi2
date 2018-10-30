@@ -69,6 +69,7 @@
         <item name="android:textSize">15sp</item>
     </style>
 
+
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

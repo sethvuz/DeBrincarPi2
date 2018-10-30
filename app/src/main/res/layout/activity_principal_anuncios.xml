@@ -21,6 +21,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:layout_marginBottom="3dp"
+        app:itemHorizontalPadding="40dp"
         app:menu="@menu/menu_navegacao" />
 
 </android.support.v4.widget.DrawerLayout>

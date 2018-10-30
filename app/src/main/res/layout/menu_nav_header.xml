@@ -8,11 +8,12 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/menu_img_usuario"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="12dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="35dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginBottom="45dp"
         android:src="@drawable/carinha_adc_foto"
         app:civ_border_color="@color/azulMedio"
         app:civ_border_width="1dp" />
@@ -20,11 +21,12 @@
     <TextView
         android:id="@+id/menu_header_username"
         style="@style/TextoPrincipal"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="27dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
         android:text="Usuário" />
 
 </RelativeLayout>

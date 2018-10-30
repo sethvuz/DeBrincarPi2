@@ -20,6 +20,8 @@ public class PessoaFisica {
     private String email;
     private String senha;
 
+    private String imagemUsuarioUrl = "";
+
     public PessoaFisica(){
 
     }
@@ -117,11 +119,24 @@ public class PessoaFisica {
         this.senha = senha;
     }
 
+    public String getImagemUsuarioUrl() {
+        return imagemUsuarioUrl;
+    }
+
+    public void setImagemUsuarioUrl(String imagemUsuarioUrl) {
+        this.imagemUsuarioUrl = imagemUsuarioUrl;
+    }
+
 
     public void salvarDados(){
         //Salva os dados do usuário no Firebase no nó RAIZ/USUÁRIOS/PF/ID DO USUÁRIO
         DatabaseReference referenciaFirebase = ConfiguraçaoFirebase.getFirebaseData();
         referenciaFirebase.child("Usuário").child("PF").child(id).setValue(this);
+    }
 
+    public void salvarDados(String imageUrl){
+        //Seta url da imagem do usuário no Firebase
+        DatabaseReference referenciaFirebase = ConfiguraçaoFirebase.getFirebaseData();
+        referenciaFirebase.child("Usuário").child("PF").child(id).child("imagemUsuarioUrl").setValue(imageUrl);
     }
 }
