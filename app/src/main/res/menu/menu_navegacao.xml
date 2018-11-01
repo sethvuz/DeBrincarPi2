@@ -26,8 +26,7 @@
             android:title="@string/nav_minha_conta"/>
     </group>
 
-    <group android:id="@+id/nav_menu_bottom"
-        android:actionLayout="@layout/menu_button_layout">
+    <group android:id="@+id/nav_menu_bottom">
         <item
             android:id="@+id/nav_config"
             android:title="@string/nav_config"/>

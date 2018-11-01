@@ -23,7 +23,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
-import com.honda.debrincar.Config.Anun_Adapter;
+import com.honda.debrincar.Config.Anun_PageAdapter;
 import com.honda.debrincar.Config.ConfiguraçaoFirebase;
 import com.honda.debrincar.R;
 import com.squareup.picasso.Picasso;
@@ -107,7 +107,7 @@ public class PrincipalAnuncios extends AppCompatActivity {
         }
 
         ViewPager viewPager = findViewById(R.id.viewpager_anuncios);
-        Anun_Adapter anunAdapter = new Anun_Adapter(getSupportFragmentManager(), getResources().getStringArray(R.array.tab_titulos));
+        Anun_PageAdapter anunAdapter = new Anun_PageAdapter(getSupportFragmentManager(), getResources().getStringArray(R.array.tab_titulos));
 
                 //Adicionar o FragmentAdapter ao ViewPager
                 viewPager.setAdapter(anunAdapter);

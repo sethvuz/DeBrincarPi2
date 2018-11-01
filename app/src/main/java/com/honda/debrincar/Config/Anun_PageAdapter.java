@@ -9,11 +9,11 @@ import com.honda.debrincar.Activities.Fragments.Anun_CampanhaFragment;
 import com.honda.debrincar.Activities.Fragments.Anun_DoacaoFragment;
 import com.honda.debrincar.Activities.Fragments.Anun_SolicitacaoFragment;
 
-public class Anun_Adapter extends FragmentPagerAdapter {
+public class Anun_PageAdapter extends FragmentPagerAdapter {
 
     private String[] tabTitulos;
 
-    public Anun_Adapter(FragmentManager fm, String[] tabTitulos){
+    public Anun_PageAdapter(FragmentManager fm, String[] tabTitulos){
         super(fm);
         this.tabTitulos = tabTitulos;
 
