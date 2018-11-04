@@ -3,14 +3,13 @@ package com.honda.debrincar.Activities.Fragments;
 
 import android.Manifest;
 import android.app.Activity;
-import android.content.ActivityNotFoundException;
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.ResultReceiver;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -20,9 +19,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.google.android.gms.auth.api.signin.internal.Storage;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -30,12 +29,14 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.honda.debrincar.BuildConfig;
 import com.honda.debrincar.Config.ConfiguraçaoFirebase;
-import com.honda.debrincar.Objetos.PessoaFisica;
+import com.honda.debrincar.Objetos.Usuario;
 import com.honda.debrincar.R;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
+import java.io.File;
 import java.io.IOException;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -48,7 +49,7 @@ import static android.app.Activity.RESULT_OK;
 public class PessoaFragment extends Fragment {
 
 
-    private PessoaFisica usuario = new PessoaFisica();
+    private Usuario usuario = new Usuario();
 
     private EditText nome;
     private EditText sobrenome;
@@ -63,7 +64,8 @@ public class PessoaFragment extends Fragment {
 
     private StorageReference ImagemContaUsuarioRef;
 
-    final static int GALLERY_PICK = 1;
+    private ProgressBar progressBar;
+
 
 
 
@@ -116,7 +118,7 @@ public class PessoaFragment extends Fragment {
                     usuario.setSobrenome(sobrenome.getText().toString());
                     usuario.setCpf(cpf.getText().toString());
                     usuario.setDataNascimento(nascimento.getText().toString());
-                    usuario.setEndereço(endereco.getText().toString());
+                    usuario.setEndereco(endereco.getText().toString());
                     usuario.setCep(cep.getText().toString());
 
                     //FUNÇÃO DE CADASTRO DO USUÁRIO NO FIREBASE.
@@ -204,6 +206,11 @@ public class PessoaFragment extends Fragment {
     //FUNÇÃO DE CADASTRO DO USUÁRIO NO FIREBASE
     public void cadastraUsuario(String email, String senha){
 
+        //INICIALIZA A BARRA DE CARREGAMENTO
+        progressBar = getActivity().findViewById(R.id.pb_pessoafisica);
+        progressBar.setIndeterminate(true);
+        progressBar.setVisibility(View.VISIBLE);
+
         //Cria um novo usuário no Firebase
         Task<AuthResult> tarefa = FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, senha);
         tarefa.addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -213,52 +220,65 @@ public class PessoaFragment extends Fragment {
 
                     //Resgata o ID do usuário cadastrado.
                     final FirebaseUser usuarioFirebase = task.getResult().getUser();
-                    usuario.setId(usuarioFirebase.getUid());
+                    String userID = usuarioFirebase.getUid();
+                    usuario.setId(userID);
                     usuario.salvarDados();//Função para salvar dados do usuário no Firebase
 
                     //Salva imagem do usuário no FireStorage
-                    ImagemContaUsuarioRef = ConfiguraçaoFirebase.getFirebaseStorage().child("Imagens Usuário");
-                    StorageReference pastaStorage = ImagemContaUsuarioRef.child(usuario.getId() + ".jpg");
-                    UploadTask uploadTask = pastaStorage.putFile(imagemUsuario);
-                    uploadTask.addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                            if(task.isSuccessful()){
-                                Toast.makeText(getActivity(),"Imagem do usuário salva com sucesso!", Toast.LENGTH_LONG).show();
-                                Task<Uri> imageUrl = task.getResult().getStorage().getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Uri> task) {
+                        ImagemContaUsuarioRef = ConfiguraçaoFirebase.getFirebaseStorage().child("Imagem Usuário");
+                        StorageReference pastaStorage = ImagemContaUsuarioRef.child(usuario.getId() + ".jpg");
 
-                                        if(task.isSuccessful()){
-                                            usuario.setImagemUsuarioUrl(task.getResult().toString());
-                                            usuario.salvarDados(usuario.getImagemUsuarioUrl());
-                                            Toast.makeText(getActivity(),"Url salva com sucesso!", Toast.LENGTH_LONG).show();
-                                        }else{
-                                            Toast.makeText(getActivity(),"Falha em salvar a Url da imagem", Toast.LENGTH_LONG).show();
-                                        }
-                                    }
-                                });
-                            } else {
-                                Toast.makeText(getActivity(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                            }
+                        if(imagemUsuario == null){
+                                imagemUsuario = getUriresource();
                         }
-                    });
 
+                        pastaStorage.putFile(imagemUsuario).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(getActivity(), "Imagem do usuário salva com sucesso!", Toast.LENGTH_LONG).show();
+                                    Task<Uri> imageUrl = task.getResult().getStorage().getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Uri> task) {
+                                            if (task.isSuccessful()) {
+                                                usuario.setImagemUsuarioUrl(task.getResult().toString());
+                                                usuario.salvarDados(usuario.getImagemUsuarioUrl());
+                                                Toast.makeText(getActivity(), "Url salva com sucesso!", Toast.LENGTH_LONG).show();
+
+                                                progressBar.setVisibility(View.GONE);
+
+                                                //Direciona para a página anúncios
+                                                Intent intent = new Intent("TELA_ANUNCIOS_ACT");
+                                                intent.addCategory("TELA_ANUNCIOS_CTG");
+                                                startActivity(intent);
+                                            } else {
+                                                Toast.makeText(getActivity(), "Falha em salvar a Url da imagem", Toast.LENGTH_LONG).show();
+                                                progressBar.setVisibility(View.GONE);
+                                            }
+                                        }
+                                    });
+                                } else {
+                                    Toast.makeText(getActivity(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                    progressBar.setVisibility(View.GONE);
+                                }
+                            }
+                        });
 
 
                     //Efetua o LOGOUT do novo usuário antes de mandá-lo à tela de login
                     //ConfiguraçaoFirebase.getFirebaseAuth().signOut();
 
-                    //Direciona para a página de login. ****MUDAR PARA A DE ANÚNCIOS?***
-                    Intent intent = new Intent("TELA_LOGIN_ACT");
-                    intent.addCategory("TELA_LOGIN_CTG");
-                    startActivity(intent);
                 } else {
                     //Apresenta mensagem em casos de erro no cadastro.
                     Toast.makeText(getActivity(), task.getException().getLocalizedMessage(), Toast.LENGTH_LONG).show();
                 }
             }
         });
+    }
+
+    private Uri getUriresource() {
+        Uri uri = Uri.fromFile(new File("android.resource://" + BuildConfig.APPLICATION_ID + "/" + R.drawable.carinha_adc_foto));
+        return uri;
     }
 
 }
