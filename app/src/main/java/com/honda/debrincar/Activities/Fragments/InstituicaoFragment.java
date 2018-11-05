@@ -220,46 +220,52 @@ public class InstituicaoFragment extends Fragment {
                     usuario.setId(usuarioFirebase.getUid());
                     usuario.salvarDados();//Função para salvar dados do usuário no Firebase
 
-                    //Salva imagem do usuário no FireStorage
-                    ImagemContaUsuarioRef = ConfiguraçaoFirebase.getFirebaseStorage().child("Imagens Usuário");
-                    StorageReference pastaStorage = ImagemContaUsuarioRef.child(usuario.getId() + ".jpg");
-                    UploadTask uploadTask = pastaStorage.putFile(imagemUsuario);
-                    uploadTask.addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                            if(task.isSuccessful()){
-                                Toast.makeText(getActivity(),"Imagem do usuário salva com sucesso!", Toast.LENGTH_LONG).show();
-                                Task<Uri> imageUrl = task.getResult().getStorage().getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Uri> task) {
+                    if (imagemUsuario != null) {
+                        //Salva imagem do usuário no FireStorage
+                        ImagemContaUsuarioRef = ConfiguraçaoFirebase.getFirebaseStorage().child("Imagens Usuário");
+                        StorageReference pastaStorage = ImagemContaUsuarioRef.child(usuario.getId() + ".jpg");
+                        UploadTask uploadTask = pastaStorage.putFile(imagemUsuario);
+                        uploadTask.addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(getActivity(), "Imagem do usuário salva com sucesso!", Toast.LENGTH_LONG).show();
+                                    Task<Uri> imageUrl = task.getResult().getStorage().getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Uri> task) {
 
-                                        if(task.isSuccessful()){
-                                            usuario.setImagemUsuarioUrl(task.getResult().toString());
-                                            usuario.salvarDados(usuario.getImagemUsuarioUrl());
-                                            progressBar.setVisibility(View.GONE);
-                                            Toast.makeText(getActivity(),"Url salva com sucesso!", Toast.LENGTH_LONG).show();
-                                        }else{
-                                            progressBar.setVisibility(View.GONE);
-                                            Toast.makeText(getActivity(),"Falha em salvar a Url da imagem", Toast.LENGTH_LONG).show();
+                                            if (task.isSuccessful()) {
+                                                usuario.setImagemUsuarioUrl(task.getResult().toString());
+                                                usuario.salvarDados(usuario.getImagemUsuarioUrl());
+
+                                                Toast.makeText(getActivity(), "Url salva com sucesso!", Toast.LENGTH_LONG).show();
+
+                                                progressBar.setVisibility(View.GONE);
+
+                                                Intent intent = new Intent("TELA_ANUNCIOS_ACT");
+                                                intent.addCategory("TELA_ANUNCIOS_CTG");
+                                                startActivity(intent);
+                                            } else {
+                                                progressBar.setVisibility(View.GONE);
+                                                Toast.makeText(getActivity(), "Falha em salvar a Url da imagem", Toast.LENGTH_LONG).show();
+                                            }
                                         }
-                                    }
-                                });
-                            } else {
-                                progressBar.setVisibility(View.GONE);
-                                Toast.makeText(getActivity(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                    });
+                                } else {
+                                    progressBar.setVisibility(View.GONE);
+                                    Toast.makeText(getActivity(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                }
                             }
-                        }
-                    });
+                        });
+                    } else {
 
+                        progressBar.setVisibility(View.GONE);
+                        
+                        Intent intent = new Intent("TELA_ANUNCIOS_ACT");
+                        intent.addCategory("TELA_ANUNCIOS_CTG");
+                        startActivity(intent);
+                    }
 
-
-                    //Efetua o LOGOUT do novo usuário antes de mandá-lo à tela de login
-                    //ConfiguraçaoFirebase.getFirebaseAuth().signOut();
-
-                    //Direciona para a página de login. ****MUDAR PARA A DE ANÚNCIOS?***
-                    Intent intent = new Intent("TELA_ANUNCIOS_ACT");
-                    intent.addCategory("TELA_ANUNCIOS_CTG");
-                    startActivity(intent);
                 } else {
                     //Apresenta mensagem em casos de erro no cadastro.
                     Toast.makeText(getActivity(), task.getException().getLocalizedMessage(), Toast.LENGTH_LONG).show();

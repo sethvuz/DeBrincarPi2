@@ -228,10 +228,7 @@ public class PessoaFragment extends Fragment {
                         ImagemContaUsuarioRef = ConfiguraçaoFirebase.getFirebaseStorage().child("Imagem Usuário");
                         StorageReference pastaStorage = ImagemContaUsuarioRef.child(usuario.getId() + ".jpg");
 
-                        if(imagemUsuario == null){
-                                imagemUsuario = getUriresource();
-                        }
-
+                    if(imagemUsuario != null) {
                         pastaStorage.putFile(imagemUsuario).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                             @Override
                             public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
@@ -263,10 +260,20 @@ public class PessoaFragment extends Fragment {
                                 }
                             }
                         });
+                    } else {
+
+                        usuario.salvarDados(usuario.getImagemUsuarioUrl());
+
+                        progressBar.setVisibility(View.GONE);
+
+                        //Direciona para a página anúncios
+                        Intent intent = new Intent("TELA_ANUNCIOS_ACT");
+                        intent.addCategory("TELA_ANUNCIOS_CTG");
+                        startActivity(intent);
+                    }
 
 
-                    //Efetua o LOGOUT do novo usuário antes de mandá-lo à tela de login
-                    //ConfiguraçaoFirebase.getFirebaseAuth().signOut();
+
 
                 } else {
                     //Apresenta mensagem em casos de erro no cadastro.
@@ -274,10 +281,11 @@ public class PessoaFragment extends Fragment {
                 }
             }
         });
+
     }
 
     private Uri getUriresource() {
-        Uri uri = Uri.fromFile(new File("android.resource://" + BuildConfig.APPLICATION_ID + "/" + R.drawable.carinha_adc_foto));
+        Uri uri = Uri.parse("android.resource://" + BuildConfig.APPLICATION_ID + "/" + R.drawable.carinha_adc_foto);
         return uri;
     }
 

@@ -87,7 +87,9 @@ public class PrincipalAnuncios extends AppCompatActivity {
 
                     //Seta o nome e a imagem do usuário no menu de navegação
                     menuNomeUser.setText(nomeCompleto);
-                    Picasso.get().load(imagemPerfil).into(menuImagemUser);
+                    if (!imagemPerfil.equals("")) {
+                        Picasso.get().load(imagemPerfil).into(menuImagemUser);
+                    }
                 }
             }
 
