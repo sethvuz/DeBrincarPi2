@@ -11,16 +11,17 @@ public class Anuncio {
     private String dataCriacao;
     private String telefone, endereco;
 
-    private String anuncioType = "DOAÇÃO";
+    private String anuncioType;
 
 
     public Anuncio(){
 
     }
 
-    public Anuncio (String titulo, String descricao){
+    public Anuncio (String titulo, String descricao, String tipo){
         this.titulo = titulo;
         this.descricao = descricao;
+        anuncioType = tipo;
     }
 
 

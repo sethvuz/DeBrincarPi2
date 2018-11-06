@@ -35,19 +35,19 @@ public class Lista_Anuncios_Fragment extends Fragment {
 
         ArrayList<Anuncio> anuncios = new ArrayList<>();
 
-        anuncios.add(new Anuncio("Ursinho", "Ursinho de pelúcia"));
-        anuncios.add(new Anuncio("Carrinho", "Carrinho super novo"));
-        anuncios.add(new Anuncio("Peão", "Peão bem conservado"));
-        anuncios.add(new Anuncio("Boneca Barbie", "Como nova..."));
-        anuncios.add(new Anuncio("Caminhãozinho", "Meu filho não brinca mais"));
-        anuncios.add(new Anuncio("Chocalho", "Chocalho ainda muito novo"));
-        anuncios.add(new Anuncio("Bola de futebol", "Bem conservada"));
-        anuncios.add(new Anuncio("Jogo de quebra Cabeça", "Ótimo para o desenvolvimento"));
-        anuncios.add(new Anuncio("Jogo de xadrez", "Disponível pra quem precisar"));
-        anuncios.add(new Anuncio("Bicicleta", "Para quem precisar"));
-        anuncios.add(new Anuncio("Skate", "Em bom estado"));
-        anuncios.add(new Anuncio("Patins", "Em bom estado"));
-        anuncios.add(new Anuncio("Patinete", "Em bom estado"));
+        anuncios.add(new Anuncio("Ursinho", "Ursinho de pelúcia", "DOAÇÃO"));
+        anuncios.add(new Anuncio("Carrinho", "Carrinho super novo", "SOLICITAÇÃO"));
+        anuncios.add(new Anuncio("Peão", "Peão bem conservado", "DOAÇÃO"));
+        anuncios.add(new Anuncio("Boneca Barbie", "Como nova...", "DOAÇÃO"));
+        anuncios.add(new Anuncio("Caminhãozinho", "Meu filho não brinca mais", "CAMPANHA"));
+        anuncios.add(new Anuncio("Chocalho", "Chocalho ainda muito novo", "CAMPANHA"));
+        anuncios.add(new Anuncio("Bola de futebol", "Bem conservada", "SOLICITAÇÃO"));
+        anuncios.add(new Anuncio("Jogo de quebra Cabeça", "Ótimo para o desenvolvimento", "SOLICITAÇÃO"));
+        anuncios.add(new Anuncio("Jogo de xadrez", "Disponível pra quem precisar", "DOAÇÃO"));
+        anuncios.add(new Anuncio("Bicicleta", "Para quem precisar", "CAMPANHA"));
+        anuncios.add(new Anuncio("Skate", "Em bom estado", "DOAÇÃO"));
+        anuncios.add(new Anuncio("Patins", "Em bom estado", "DOAÇÃO"));
+        anuncios.add(new Anuncio("Patinete", "Em bom estado", "DOAÇÃO"));
 
         //INICIA O ADAPTER E A LISTVIEW E SETA O ADAPTER NA LISTVIEW
         AnunciosAdapter itemsAdapter = new AnunciosAdapter(getActivity(), R.layout.item_anuncio_layout, anuncios);

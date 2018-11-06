@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,6 +34,7 @@ public class AnunciosAdapter extends ArrayAdapter<Anuncio> {
 
     private Context atualContext;
     private Anuncio anuncioAtual;
+    private String anuncioType;
 
     public AnunciosAdapter(@NonNull Context context, int resource, @NonNull List<Anuncio> objects) {
         super(context, resource, objects);
@@ -54,6 +56,8 @@ public class AnunciosAdapter extends ArrayAdapter<Anuncio> {
         }
 
         anuncioAtual = getItem(position);
+        anuncioType = anuncioAtual.getAnuncioType();
+        anuncioAtual.setAnuncioType(anuncioType);
 
         TextView anuncioTitulo = listItemView.findViewById(R.id.item_anun_titulo);
         anuncioTitulo.setText(anuncioAtual.getTitulo());
@@ -61,52 +65,44 @@ public class AnunciosAdapter extends ArrayAdapter<Anuncio> {
         TextView anuncioDescricao = listItemView.findViewById(R.id.item_anun_desc);
         anuncioDescricao.setText(anuncioAtual.getDescricao());
 
-        LinearLayout layout_dados = listItemView.findViewById(R.id.item_anun_dados);
-        layout_dados.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                chamaFragmento();
-            }
-        });
-
-        CircleImageView imagemItem = listItemView.findViewById(R.id.item_anun_imagem);
-        imagemItem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                chamaFragmento();
-            }
-        });
-
-        final ImageView coracaoFav = listItemView.findViewById(R.id.coracao_fav);
-        coracaoFav.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(coracaoFav.getDrawable().getConstantState().equals(getContext().getResources().getDrawable(R.drawable.coracao_fav_branco).getConstantState()))
-                {
-                    Drawable imagem = getContext().getResources().getDrawable(R.drawable.coracao_fav_amarelo);
-                    coracaoFav.setImageDrawable(imagem);
-                }else
-                    {
-                    Drawable imagem = getContext().getResources().getDrawable(R.drawable.coracao_fav_branco);
-                    coracaoFav.setImageDrawable(imagem);
-
-                    }
-            }
-        });
-
         TextView textTipoAnuncio = listItemView.findViewById(R.id.tipo_anuncio);
+
+        switch (anuncioAtual.getAnuncioType()){
+            case "DOAÇÃO":
+                textTipoAnuncio.setText("DOAÇÃO");
+                textTipoAnuncio.setTextColor(ContextCompat.getColor(getContext(), R.color.amareloEscuro));
+                textTipoAnuncio.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.azulMedio));
+                setupOnclickListeners(listItemView, "DOAÇÃO");
+                break;
+            case "SOLICITAÇÃO":
+                textTipoAnuncio.setText("SOLICITAÇÃO");
+                textTipoAnuncio.setTextColor(ContextCompat.getColor(getContext(), R.color.azulMedio));
+                textTipoAnuncio.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.amareloEscuro));
+                setupOnclickListeners(listItemView, "SOLICITAÇÃO");
+                break;
+            case "CAMPANHA":
+                textTipoAnuncio.setText("CAMPANHA");
+                textTipoAnuncio.setTextColor(ContextCompat.getColor(getContext(), R.color.amareloClaro));
+                textTipoAnuncio.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.azulClaro));
+                setupOnclickListeners(listItemView, "CAMPANHA");
+                break;
+            default:
+                Toast.makeText(getContext(), "Erro ao carregar anuncios.", Toast.LENGTH_LONG).show();
+                break;
+        }
+
+
+
 
         return listItemView;
     }
 
-    private void chamaFragmento() {
-
-        String anunType = anuncioAtual.getAnuncioType();
+    private void chamaFragmento(String anunTipo) {
 
         FragmentManager fm = ((AppCompatActivity) atualContext).getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
 
-        switch (anunType){
+        switch (anunTipo){
             case "DOAÇÃO":
                 PaginaAnuncioDoaFragment paginaAnuncioDoaFragment = new PaginaAnuncioDoaFragment();
                 fragmentTransaction.replace(R.id.container_principal, paginaAnuncioDoaFragment)
@@ -129,8 +125,44 @@ public class AnunciosAdapter extends ArrayAdapter<Anuncio> {
                     Toast.makeText(getContext(), "Erro ao carregar anúncio.", Toast.LENGTH_LONG).show();
                     break;
         }
+    }
 
+    public void setupOnclickListeners(View listItemView, String anunTipo){
 
+        final String tipoAnuncio = anunTipo;
+
+        LinearLayout layout_dados = listItemView.findViewById(R.id.item_anun_dados);
+        layout_dados.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                chamaFragmento(tipoAnuncio);
+            }
+        });
+
+        CircleImageView imagemItem = listItemView.findViewById(R.id.item_anun_imagem);
+        imagemItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                chamaFragmento(tipoAnuncio);
+            }
+        });
+
+        final ImageView coracaoFav = listItemView.findViewById(R.id.coracao_fav);
+        coracaoFav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(coracaoFav.getDrawable().getConstantState().equals(getContext().getResources().getDrawable(R.drawable.coracao_fav_branco).getConstantState()))
+                {
+                    Drawable imagem = getContext().getResources().getDrawable(R.drawable.coracao_fav_amarelo);
+                    coracaoFav.setImageDrawable(imagem);
+                }else
+                {
+                    Drawable imagem = getContext().getResources().getDrawable(R.drawable.coracao_fav_branco);
+                    coracaoFav.setImageDrawable(imagem);
+
+                }
+            }
+        });
 
     }
 }
