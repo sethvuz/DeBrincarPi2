@@ -5,14 +5,14 @@ import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -23,8 +23,10 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
-import com.honda.debrincar.Config.Anun_PageAdapter;
+import com.honda.debrincar.Activities.Fragments.Lista_Anuncios_Fragment;
+import com.honda.debrincar.Activities.Fragments.preCadastro_dialog_anuncio;
 import com.honda.debrincar.Config.ConfiguraçaoFirebase;
+import com.honda.debrincar.Config.ConfiguraçãoApp;
 import com.honda.debrincar.R;
 import com.squareup.picasso.Picasso;
 
@@ -35,8 +37,8 @@ public class PrincipalAnuncios extends AppCompatActivity {
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
-    private RecyclerView listaAnuncios;
     private Toolbar mToolbar;
+
 
     private CircleImageView menuImagemUser;
     private TextView menuNomeUser;
@@ -99,22 +101,14 @@ public class PrincipalAnuncios extends AppCompatActivity {
             }
         });
 
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
+        //Inicializa o fragmento principal dos anúncios
+        Lista_Anuncios_Fragment anunciosFragment = new Lista_Anuncios_Fragment();
+        fragmentTransaction.add(R.id.container_principal, anunciosFragment);
+        fragmentTransaction.commit();
 
-
-
-        TabLayout tabLayout = findViewById(R.id.tabs_anuncios);
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            tabLayout.setElevation(30.0f);
-        }
-
-        ViewPager viewPager = findViewById(R.id.viewpager_anuncios);
-        Anun_PageAdapter anunAdapter = new Anun_PageAdapter(getSupportFragmentManager(), getResources().getStringArray(R.array.tab_titulos));
-
-                //Adicionar o FragmentAdapter ao ViewPager
-                viewPager.setAdapter(anunAdapter);
-                //Vincula o TabLayout e o ViewPager para que trabalhem juntos
-                tabLayout.setupWithViewPager(viewPager);
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -141,11 +135,16 @@ public class PrincipalAnuncios extends AppCompatActivity {
 
         switch (menuItem.getItemId()){
             case R.id.nav_anuncios:
-                Toast.makeText(this, "Anúncios", Toast.LENGTH_LONG).show();
+                ConfiguraçãoApp.carregaFragmento(getSupportFragmentManager(),
+                        new Lista_Anuncios_Fragment(),
+                        R.id.container_principal);
+                drawerLayout.closeDrawer(Gravity.START, true);
                 break;
 
             case R.id.nav_ins_anuncios:
-                Toast.makeText(this, "Inserir Anúncio", Toast.LENGTH_LONG).show();
+                preCadastro_dialog_anuncio dialog = new preCadastro_dialog_anuncio();
+                dialog.show(getSupportFragmentManager(), "Opção");
+                drawerLayout.closeDrawer(Gravity.START, true);
                 break;
 
             case R.id.nav_favoritos:
@@ -177,4 +176,14 @@ public class PrincipalAnuncios extends AppCompatActivity {
         }
 
     }
+
+    @Override
+    public void onBackPressed() {
+        if (!ConfiguraçãoApp.defineFragmentoDeRetorno(getSupportFragmentManager()))
+        {
+            super.onBackPressed();
+        }
+    }
 }
+
+

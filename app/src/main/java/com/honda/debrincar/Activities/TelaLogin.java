@@ -38,10 +38,6 @@ public class TelaLogin extends AppCompatActivity {
             public void onClick(View view) {
                 preCadastro_dialog dialog = new preCadastro_dialog();
                 dialog.show(getSupportFragmentManager(), "Opção");
-
-                /*Intent in = new Intent("TELA_CADASTRO_ACT");
-                in.addCategory("TELA_CADASTRO_CTG");
-                startActivity(in);*/
             }
         });
 

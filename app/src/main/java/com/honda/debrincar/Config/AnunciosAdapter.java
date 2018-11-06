@@ -2,11 +2,11 @@ package com.honda.debrincar.Config;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
-import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +15,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.support.v4.app.FragmentTransaction;
+import android.widget.Toast;
 
+import com.honda.debrincar.Activities.Fragments.Lista_Anuncios_Fragment;
+import com.honda.debrincar.Activities.Fragments.PaginaAnuncioCampFragment;
+import com.honda.debrincar.Activities.Fragments.PaginaAnuncioDoaFragment;
+import com.honda.debrincar.Activities.Fragments.PaginaAnuncioSolFragment;
 import com.honda.debrincar.Objetos.Anuncio;
 import com.honda.debrincar.R;
 
@@ -24,8 +30,14 @@ import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AnunciosAdapter extends ArrayAdapter<Anuncio> {
+
+    private Context atualContext;
+    private Anuncio anuncioAtual;
+
     public AnunciosAdapter(@NonNull Context context, int resource, @NonNull List<Anuncio> objects) {
         super(context, resource, objects);
+
+        atualContext = context;
     }
 
 
@@ -41,21 +53,19 @@ public class AnunciosAdapter extends ArrayAdapter<Anuncio> {
 
         }
 
-        Anuncio anuntioAtual = getItem(position);
+        anuncioAtual = getItem(position);
 
         TextView anuncioTitulo = listItemView.findViewById(R.id.item_anun_titulo);
-        anuncioTitulo.setText(anuntioAtual.getTitulo());
+        anuncioTitulo.setText(anuncioAtual.getTitulo());
 
         TextView anuncioDescricao = listItemView.findViewById(R.id.item_anun_desc);
-        anuncioDescricao.setText(anuntioAtual.getDescricao());
+        anuncioDescricao.setText(anuncioAtual.getDescricao());
 
         LinearLayout layout_dados = listItemView.findViewById(R.id.item_anun_dados);
         layout_dados.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent("PAGINA_ANUNCIO_ACT");
-                intent.addCategory("PAGINA_ANUNCIO_CTG");
-                getContext().startActivity(intent);
+                chamaFragmento();
             }
         });
 
@@ -63,9 +73,7 @@ public class AnunciosAdapter extends ArrayAdapter<Anuncio> {
         imagemItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent("PAGINA_ANUNCIO_ACT");
-                intent.addCategory("PAGINA_ANUNCIO_CTG");
-                getContext().startActivity(intent);
+                chamaFragmento();
             }
         });
 
@@ -86,12 +94,43 @@ public class AnunciosAdapter extends ArrayAdapter<Anuncio> {
             }
         });
 
-        Button botaoAcao = listItemView.findViewById(R.id.action_btn_anuncio);
-
-
-
-
+        TextView textTipoAnuncio = listItemView.findViewById(R.id.tipo_anuncio);
 
         return listItemView;
+    }
+
+    private void chamaFragmento() {
+
+        String anunType = anuncioAtual.getAnuncioType();
+
+        FragmentManager fm = ((AppCompatActivity) atualContext).getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+
+        switch (anunType){
+            case "DOAÇÃO":
+                PaginaAnuncioDoaFragment paginaAnuncioDoaFragment = new PaginaAnuncioDoaFragment();
+                fragmentTransaction.replace(R.id.container_principal, paginaAnuncioDoaFragment)
+                        .addToBackStack(null)
+                        .commit();
+                break;
+            case "SOLICITAÇÃO":
+                PaginaAnuncioSolFragment paginaAnuncioSolFragment =  new PaginaAnuncioSolFragment();
+                fragmentTransaction.replace(R.id.container_principal, paginaAnuncioSolFragment)
+                        .addToBackStack(null)
+                        .commit();
+                break;
+            case "CAMPANHA":
+                PaginaAnuncioCampFragment paginaAnuncioCampFragment = new PaginaAnuncioCampFragment();
+                fragmentTransaction.replace(R.id.container_principal, paginaAnuncioCampFragment)
+                        .addToBackStack(null)
+                        .commit();
+                break;
+                default:
+                    Toast.makeText(getContext(), "Erro ao carregar anúncio.", Toast.LENGTH_LONG).show();
+                    break;
+        }
+
+
+
     }
 }

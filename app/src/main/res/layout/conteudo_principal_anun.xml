@@ -6,32 +6,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewpager_anuncios"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginLeft="0dp"
-        android:layout_alignParentLeft="true">
-    </android.support.v4.view.ViewPager>
-
     <FrameLayout
         android:id="@+id/container_principal"
         android:layout_width="match_parent"
-        android:layout_height="511dp"
-        android:layout_marginTop="56dp"
+        android:layout_height="match_parent"
         android:layout_marginEnd="0dp"
         android:layout_marginRight="0dp"
         android:layout_marginBottom="0dp">
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/lista_anuncios_rec"
-            android:layout_width="match_parent"
-            android:layout_height="557dp" />
-
     </FrameLayout>
 
 </LinearLayout>

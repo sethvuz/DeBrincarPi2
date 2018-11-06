@@ -19,10 +19,10 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Anun_DoacaoFragment extends Fragment {
+public class Lista_Anuncios_Fragment extends Fragment {
 
 
-    public Anun_DoacaoFragment() {
+    public Lista_Anuncios_Fragment() {
         // Required empty public constructor
     }
 

@@ -11,6 +11,8 @@ public class Anuncio {
     private String dataCriacao;
     private String telefone, endereco;
 
+    private String anuncioType = "DOAÇÃO";
+
 
     public Anuncio(){
 
@@ -87,7 +89,7 @@ public class Anuncio {
         this.endereco = endereco;
     }
 
+    public String getAnuncioType() { return anuncioType; }
 
-
-
+    public void setAnuncioType(String anuncioType) { this.anuncioType = anuncioType; }
 }

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.PrincipalAnuncios"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:padding="90dp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_cad_doacao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cadastrar Doação"
+            android:background="@drawable/caixas_arredondadas"
+            android:backgroundTint="@color/amareloEscuro"
+            style="@style/TextoCadastro"
+            android:elevation="30dp"
+            />
+
+        <Button
+            android:id="@+id/btn_cad_solicitacao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Solicitar doação"
+            android:background="@drawable/caixas_arredondadas"
+            android:backgroundTint="@color/amareloEscuro"
+            style="@style/TextoCadastro"
+            android:elevation="30dp"
+            />
+
+        <Button
+            android:id="@+id/btn_cad_campanha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Criar campanha"
+            android:background="@drawable/caixas_arredondadas"
+            android:backgroundTint="@color/amareloEscuro"
+            style="@style/TextoCadastro"
+            android:elevation="30dp"
+            />
+
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

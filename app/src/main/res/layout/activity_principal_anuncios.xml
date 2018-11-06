@@ -11,7 +11,7 @@
     <!--tools:openDrawer="start"-->
         <include
             android:id="@+id/anuncios_list_toolbar"
-            layout="@layout/app_bar_layout">
+            layout="@layout/app_bar_layout_tab">
         </include>
 
 

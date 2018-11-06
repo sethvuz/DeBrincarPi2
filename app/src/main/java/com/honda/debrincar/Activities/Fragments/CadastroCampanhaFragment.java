@@ -12,10 +12,10 @@ import com.honda.debrincar.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Anun_CampanhaFragment extends Fragment {
+public class CadastroCampanhaFragment extends Fragment {
 
 
-    public Anun_CampanhaFragment() {
+    public CadastroCampanhaFragment() {
         // Required empty public constructor
     }
 
@@ -24,7 +24,10 @@ public class Anun_CampanhaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_anun__campanha, container, false);
+        View view = inflater.inflate(R.layout.fragment_cadastro_campanha, container, false);
+
+
+        return view;
     }
 
 }

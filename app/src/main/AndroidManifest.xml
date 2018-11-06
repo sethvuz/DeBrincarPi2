@@ -50,11 +50,11 @@
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
-        <activity android:name=".Activities.PaginaAnuncio">
+        <activity android:name=".Activities.CadastroAnuncio">
             <intent-filter>
-                <action android:name="PAGINA_ANUNCIO_ACT" />
+                <action android:name="TELA_CAD_ANUNCIOS_ACT" />
 
-                <category android:name="PAGINA_ANUNCIO_CTG" />
+                <category android:name="TELA_CAD_ANUNCIOS_CTG" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

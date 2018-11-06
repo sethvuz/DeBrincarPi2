@@ -58,9 +58,8 @@
         app:civ_border_color="@color/azulMedio"
         app:civ_border_width="1dp"/>
 
-    <Button
-        style="@style/Botao_List_Anuncio"
-        android:id="@+id/action_btn_anuncio"
+    <TextView
+        android:id="@+id/tipo_anuncio"
         android:layout_width="170dp"
         android:layout_height="40dp"
         android:layout_alignParentStart="true"
@@ -69,8 +68,13 @@
         android:layout_marginStart="71dp"
         android:layout_marginLeft="71dp"
         android:layout_marginBottom="3dp"
+        android:gravity="center"
         android:background="@drawable/botao_azul_medio"
-        android:text="Doar"
+        android:textAlignment="center"
+        android:text="DOAÇÃO"
+        android:textSize="15sp"
+        android:textColor="@color/amareloEscuro"
+        android:textStyle="bold"
         android:elevation="30dp"/>
 
     <ImageView

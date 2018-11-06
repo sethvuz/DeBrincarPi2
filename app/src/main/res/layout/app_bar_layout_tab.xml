@@ -16,20 +16,10 @@
             <android.support.v7.widget.Toolbar
                 android:id="@+id/app_bar_principal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:background="@color/colorPrimary"
                 app:popupTheme="@style/ToolbarTheme"/>
 
-            <android.support.design.widget.TabLayout
-                android:id="@+id/tabs_anuncios"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"
-                app:tabTextColor="@color/azulMedio"
-                app:tabSelectedTextColor="@color/colorPrimaryDark"
-                app:tabIndicatorColor="@color/colorPrimaryDark"
-                app:tabGravity="fill"
-                app:tabMode="fixed" />
 
     </android.support.design.widget.AppBarLayout>
 

@@ -37,12 +37,10 @@
     <string name="nav_config">Configurações</string>
     <string name="nav_logout">Sair</string>
     <string name="nav_seguidores">Seguidores</string>
+    <string name="btn_mensagem_anun">MENSAGEM</string>
+    <string name="btn_solicitara_anun">SOLICITAR</string>
+    <string name="btn_doar_anun">DOAR</string>
 
-    <string-array name="tab_titulos">
-        <item>Doações</item>
-        <item>Solicitações</item>
-        <item>Campanhas</item>
-    </string-array>
 
 
 </resources>
