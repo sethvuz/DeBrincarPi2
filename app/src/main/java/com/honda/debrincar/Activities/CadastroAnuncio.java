@@ -9,10 +9,7 @@ import android.widget.Toast;
 
 import com.honda.debrincar.Activities.Fragments.CadastroCampanhaFragment;
 import com.honda.debrincar.Activities.Fragments.CadastroSolicitacaoFragment;
-import com.honda.debrincar.Activities.Fragments.CadatroDoacaoFragment;
-import com.honda.debrincar.Activities.Fragments.PaginaAnuncioCampFragment;
-import com.honda.debrincar.Activities.Fragments.PaginaAnuncioDoaFragment;
-import com.honda.debrincar.Activities.Fragments.PaginaAnuncioSolFragment;
+import com.honda.debrincar.Activities.Fragments.CadastroDoacaoFragment;
 import com.honda.debrincar.R;
 
 public class CadastroAnuncio extends AppCompatActivity {
@@ -37,21 +34,18 @@ public class CadastroAnuncio extends AppCompatActivity {
         switch (anuncioType){
 
             case "DOAÇÃO":
-                CadatroDoacaoFragment cadatroDoacaoFragment = new CadatroDoacaoFragment();
-                fragmentTransaction.replace(R.id.container_principal, cadatroDoacaoFragment)
-                        .addToBackStack(null)
+                CadastroDoacaoFragment cadatroDoacaoFragment = new CadastroDoacaoFragment();
+                fragmentTransaction.replace(R.id.container_cadastro_anuncio, cadatroDoacaoFragment)
                         .commit();
                 break;
             case "SOLICITAÇÃO":
                 CadastroSolicitacaoFragment cadastroSolicitacaoFragment = new CadastroSolicitacaoFragment();
                 fragmentTransaction.replace(R.id.container_principal, cadastroSolicitacaoFragment)
-                        .addToBackStack(null)
                         .commit();
                 break;
             case "CAMPANHA":
                 CadastroCampanhaFragment cadastroCampanhaFragment = new CadastroCampanhaFragment();
                 fragmentTransaction.replace(R.id.container_principal, cadastroCampanhaFragment)
-                        .addToBackStack(null)
                         .commit();
                 break;
             default:

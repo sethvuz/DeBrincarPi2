@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/container_cadastro_anuncio"
-    tools:context=".Activities.CadastroAnuncio">
+    tools:context=".Activities.CadastroAnuncio"
+    android:background="@drawable/background_1080p_claro"
+    android:fitsSystemWindows="true">
 
 </android.support.constraint.ConstraintLayout>

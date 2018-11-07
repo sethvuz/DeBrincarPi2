@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Activities.CadastroUser"
     android:id="@+id/container_cadastro"
+    android:fitsSystemWindows="true"
     android:background="@drawable/background_1080p_claro">
 
 </RelativeLayout>

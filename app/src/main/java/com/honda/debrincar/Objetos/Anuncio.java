@@ -1,5 +1,10 @@
 package com.honda.debrincar.Objetos;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class Anuncio {
 
 
@@ -7,11 +12,13 @@ public class Anuncio {
 
     private String anumID, userID;
     private String titulo, descricao;
-    private int quantidade;
-    private String dataCriacao;
-    private String telefone, endereco;
+    private int quantidade = 1;
+    private String dataCriacao, dataFim;
+    private String telefone, endereco, cidade;
 
     private String anuncioType;
+
+    private List<String> imagensUrls = new ArrayList<>();
 
 
     public Anuncio(){
@@ -90,7 +97,33 @@ public class Anuncio {
         this.endereco = endereco;
     }
 
+    public String getCidade() { return cidade; }
+
+    public void setCidade(String cidade) { this.cidade = cidade; }
+
     public String getAnuncioType() { return anuncioType; }
 
     public void setAnuncioType(String anuncioType) { this.anuncioType = anuncioType; }
+
+    public String getDataFim() { return dataFim; }
+
+    public void setDataFim(String dataFim) { this.dataFim = dataFim; }
+
+    public List<String> getImagensUrls() { return imagensUrls; }
+
+    public void setImagensUrls(List<String> imagensUrls) { this.imagensUrls = imagensUrls; }
+
+    public Map<String, Object> MapaDados(){
+        HashMap<String, Object> dados = new HashMap<>();
+        dados.put("titulo", titulo);
+        dados.put("TipoAnuncio", anuncioType);
+        dados.put("descricao", descricao);
+        dados.put("endereco", endereco);
+        dados.put("telefone", telefone);
+        dados.put("cidade", cidade);
+        dados.put("dataCriacao", dataCriacao);
+        dados.put("dataFim", dataFim);
+
+        return dados;
+    }
 }

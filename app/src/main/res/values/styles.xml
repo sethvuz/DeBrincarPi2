@@ -100,6 +100,18 @@
         <item name="android:layout_marginRight">8dp</item>
     </style>
 
+    <style name="TextoCadastroThemeSemUnderline" parent="TextAppearance.AppCompat">
+    <item name="colorControlNormal">@color/cinzaClaro</item>
+    <item name="android:textSize">10sp</item>
+    <item name="colorPrimaryDark">@color/azulClaro</item>
+    <item name="colorPrimary">@color/cinzaClaro</item>
+    <item name="colorAccent">@color/colorPrimary</item>
+    <item name="android:layout_marginStart">8dp</item>
+    <item name="android:layout_marginLeft">8dp</item>
+    <item name="android:layout_marginEnd">8dp</item>
+    <item name="android:layout_marginRight">8dp</item>
+    </style>
+
     <style name="CaixaCadastro">
         <item name="android:textColor">@color/azulEscuro</item>
         <item name="android:padding">0.5dp</item>
@@ -138,6 +150,26 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="Add_Location_Style">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/azulMedio</item>
+        <item name="android:drawableLeft">@drawable/round_add_location_24</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:text">Adicionar Localização</item>
+    </style>
+
+    <style name="Cad_Anuncio_BTN">
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_marginTop">40dp</item>
+        <item name="android:text">CADASTRAR</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/azulMedio</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/caixas_arredondadas</item>
+        <item name="android:backgroundTint">@color/amareloEscuro</item>
+
+    </style>
 
 
 </resources>

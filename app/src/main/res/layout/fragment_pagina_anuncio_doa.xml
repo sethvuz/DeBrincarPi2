@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".Activities.Fragments.PaginaAnuncioDoaFragment">
+    tools:context=".Activities.Fragments.PaginaAnuncioDoaFragment"
+    android:background="@drawable/background_1080p_claro">
 
     <!-- TODO: Update blank fragment layout -->
     <android.support.v4.widget.NestedScrollView
@@ -15,7 +16,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background_1080p_claro"
         android:orientation="vertical">
 
         <RelativeLayout

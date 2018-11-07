@@ -10,6 +10,11 @@
     <dimen name="caixa_texto_alt">25dp</dimen>
     <dimen name="caixa_cadastro_alt">40dp</dimen>
     <dimen name="botao_alt">40dp</dimen>
+    <dimen name="botao_larg">140dp</dimen>
     <dimen name="left_padding_caixa">15dp</dimen>
     <dimen name="top_padding_caixa">6dp</dimen>
+    <dimen name="horizontal_margin_text_cad">11dp</dimen>
+    <dimen name="horizontal_margin_addImageModel_cad">20dp</dimen>
+    <dimen name="horizontal_margin_box_descricao">25dp</dimen>
+    <dimen name="descricao_box_alt">100dp</dimen>
 </resources>
