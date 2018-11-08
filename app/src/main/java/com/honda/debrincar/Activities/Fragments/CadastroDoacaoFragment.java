@@ -71,7 +71,7 @@ public class CadastroDoacaoFragment extends Fragment {
                 LocalDate date = LocalDate.now();
                 anuncio.setDataCriacao(date.toString());
 
-                
+
             }
         });
 
