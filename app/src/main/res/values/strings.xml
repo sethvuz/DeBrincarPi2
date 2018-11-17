@@ -40,7 +40,7 @@
     <string name="btn_mensagem_anun">MENSAGEM</string>
     <string name="btn_solicitara_anun">SOLICITAR</string>
     <string name="btn_doar_anun">DOAR</string>
-
+    <string name="title_activity_maps">Map</string>
 
 
 </resources>
