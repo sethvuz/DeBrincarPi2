@@ -52,6 +52,8 @@ public class CadastroDoacaoFragment extends Fragment {
     private ConstraintLayout addImagem;
     private Bitmap itemBitmap = null;
 
+    private CircleImageView addImageCircle;
+
 
 
     private int GALERIA = 1, CAMERA = 2;
@@ -96,6 +98,7 @@ public class CadastroDoacaoFragment extends Fragment {
         //ImageView com onClick para adicionar imagem
         addImagem = view.findViewById(R.id.container_add_imagem_cad_Doa);
 
+
         addImagem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -115,6 +118,7 @@ public class CadastroDoacaoFragment extends Fragment {
                     }
 
 
+                    /*
 
                     //Gera um Inflater para criar a view com a imagem
                     LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -122,7 +126,6 @@ public class CadastroDoacaoFragment extends Fragment {
                     //Cria a view e adiciona ao Linearlayout
                     final View imageView = inflater.inflate(R.layout.addimage_layout_model, null);
                     addImageContainer.addView(imageView);
-                    imageView.setVisibility(View.GONE);
                     final CircleImageView itemImagem = imageView.findViewById(R.id.cad__model_imagem_anun_doa);
 
                     //Define os parâmetros da view criada, alinhando-a no centro
@@ -148,14 +151,17 @@ public class CadastroDoacaoFragment extends Fragment {
                             //Remove view do conteiner de imagens do anúncio
                             onDelete(cancelBtn);
                         }
-                    });
+                    });*/
                 }
 
+                /*
                 //Faz desaparecer o botão de adicionar imagens caso o limite seja passado
                 if(cont>=6) {
                     addImagem.setVisibility(View.GONE);
                     Toast.makeText(getContext(), "Limite de 06 fotos por anúncio!", Toast.LENGTH_LONG).show();
-                }
+                }*/
+
+
             }
         });
 
@@ -234,11 +240,33 @@ public class CadastroDoacaoFragment extends Fragment {
                 try{
                     Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), contentUri);
                     itemBitmap = bitmap;
+                    criaImagemItem(bitmap);
                 }catch (IOException e){
 
                 }
             }
         }
+    }
+
+    public void criaImagemItem(Bitmap bitmap){
+
+        //Gera um Inflater para criar a view com a imagem
+        LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        //Cria a view e adiciona ao Linearlayout
+        View imageView = inflater.inflate(R.layout.addimage_layout_model, null);
+        addImageContainer.addView(imageView);
+
+        //Define os parâmetros da view criada, alinhando-a no centro
+        LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) imageView.getLayoutParams();
+        lp.gravity = Gravity.CENTER;
+        lp.height = LinearLayout.LayoutParams.MATCH_PARENT;
+        imageView.setLayoutParams(lp);
+
+        CircleImageView itemImagem = imageView.findViewById(R.id.cad__model_imagem_anun_doa);
+        itemImagem.setImageBitmap(bitmap);
+
+
     }
 
 

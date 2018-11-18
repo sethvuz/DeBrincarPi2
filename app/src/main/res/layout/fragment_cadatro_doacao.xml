@@ -37,7 +37,7 @@
                         android:id="@+id/container_add_imagem_cad_Doa">
 
                         <de.hdodenhof.circleimageview.CircleImageView
-                            android:id="@+id/add_imagem_cad_Doa"
+                            android:id="@+id/add_imagem_cad_doa"
                             android:layout_width="120dp"
                             android:layout_height="120dp"
                             android:layout_gravity="center"
