@@ -2,7 +2,7 @@ package com.honda.debrincar.Objetos;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Exclude;
-import com.honda.debrincar.Config.ConfiguraçaoFirebase;
+import com.honda.debrincar.Utilitarios.FirebaseMetodos;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -190,7 +190,7 @@ public class Usuario {
 
     public void salvarDados(){
         //Salva os dados do usuário no Firebase no nó RAIZ/USUÁRIOS/PF/ID DO USUÁRIO
-        DatabaseReference referenciaFirebase = ConfiguraçaoFirebase.getFirebaseData();
+        DatabaseReference referenciaFirebase = FirebaseMetodos.getFirebaseData();
         if(isPessoaFisica) {
             referenciaFirebase.child("Usuário").child("PF").child(id).setValue(MapaDados());
         } else{
@@ -200,7 +200,7 @@ public class Usuario {
 
     public void salvarDados(String imageUrl){
         //Seta url da imagem do usuário no Firebase
-        DatabaseReference referenciaFirebase = ConfiguraçaoFirebase.getFirebaseData();
+        DatabaseReference referenciaFirebase = FirebaseMetodos.getFirebaseData();
         if(isPessoaFisica) {
             referenciaFirebase.child("Usuário").child("PF").child(id).child("imagemUsuarioUrl").setValue(imageUrl);
         } else{

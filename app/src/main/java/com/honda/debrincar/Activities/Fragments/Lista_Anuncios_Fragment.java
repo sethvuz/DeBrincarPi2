@@ -1,16 +1,14 @@
 package com.honda.debrincar.Activities.Fragments;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.honda.debrincar.Config.AnunciosAdapter;
+import com.honda.debrincar.Utilitarios.AnunciosAdapter;
 import com.honda.debrincar.Objetos.Anuncio;
 import com.honda.debrincar.R;
 

@@ -3,7 +3,6 @@ package com.honda.debrincar.Activities.Fragments;
 
 import android.Manifest;
 import android.app.Activity;
-import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -30,13 +29,12 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.honda.debrincar.BuildConfig;
-import com.honda.debrincar.Config.ConfiguraçaoFirebase;
+import com.honda.debrincar.Utilitarios.FirebaseMetodos;
 import com.honda.debrincar.Objetos.Usuario;
 import com.honda.debrincar.R;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
-import java.io.File;
 import java.io.IOException;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -226,7 +224,7 @@ public class PessoaFragment extends Fragment {
                     usuario.salvarDados();//Função para salvar dados do usuário no Firebase
 
                     //Salva imagem do usuário no FireStorage
-                        ImagemContaUsuarioRef = ConfiguraçaoFirebase.getFirebaseStorage().child("Imagem Usuário");
+                        ImagemContaUsuarioRef = FirebaseMetodos.getFirebaseStorage().child("Imagem Usuário");
                         StorageReference pastaStorage = ImagemContaUsuarioRef.child(usuario.getId() + ".jpg");
 
                     if(imagemUsuario != null) {

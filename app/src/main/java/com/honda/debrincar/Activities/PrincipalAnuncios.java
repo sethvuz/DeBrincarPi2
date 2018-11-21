@@ -25,8 +25,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 import com.honda.debrincar.Activities.Fragments.Lista_Anuncios_Fragment;
 import com.honda.debrincar.Activities.Fragments.preCadastro_dialog_anuncio;
-import com.honda.debrincar.Config.ConfiguraçaoFirebase;
-import com.honda.debrincar.Config.ConfiguraçãoApp;
+import com.honda.debrincar.Utilitarios.FirebaseMetodos;
+import com.honda.debrincar.Utilitarios.ConfiguraçãoApp;
 import com.honda.debrincar.R;
 import com.squareup.picasso.Picasso;
 
@@ -42,7 +42,7 @@ public class PrincipalAnuncios extends AppCompatActivity {
 
     private CircleImageView menuImagemUser;
     private TextView menuNomeUser;
-   // private String imageUrl, nomeUser;
+
 
 
     //Encapsular?
@@ -74,10 +74,9 @@ public class PrincipalAnuncios extends AppCompatActivity {
         menuImagemUser = headView.findViewById(R.id.menu_img_usuario);
         menuNomeUser = headView.findViewById(R.id.menu_header_username);
 
-        userAuth = ConfiguraçaoFirebase.getFirebaseAuth();
-        userID = userAuth.getCurrentUser().getUid();
+        userID = FirebaseMetodos.getUserId();
 
-        userRef = ConfiguraçaoFirebase.getFirebaseData().child("Usuário").child("PF");
+        userRef = FirebaseMetodos.getFirebaseData().child("Usuário").child("PF");
         userRef.child(userID).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -164,7 +163,7 @@ public class PrincipalAnuncios extends AppCompatActivity {
                 break;
 
             case R.id.nav_logout:
-                ConfiguraçaoFirebase.getFirebaseAuth().signOut();
+                FirebaseMetodos.getFirebaseAuth().signOut();
                 Intent intent = new Intent("TELA_LOGIN_ACT");
                 intent.addCategory("TELA_LOGIN_CTG");
                 startActivity(intent);

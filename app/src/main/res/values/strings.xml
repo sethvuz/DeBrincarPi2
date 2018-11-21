@@ -8,6 +8,7 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+    <!-- Navigation menu -->
     <string name="drawer_open">Drawer Open</string>
     <string name="drawer_close">Drawer Close</string>
 
@@ -42,6 +43,17 @@
     <string name="btn_doar_anun">DOAR</string>
     <string name="title_activity_maps">Map</string>
     <string name="titulo_getimage_dialog">Selecione a opção:</string>
+
+    <!-- Tipos de imagens para upload no Firebase -->
+    <string name="nova_imagem_anuncio">nova_imagem_anuncio</string>
+    <string name="imagem_usuario">imagem_usuario</string>
+
+    <!-- Nós no Firebase Database -->
+    <string name="db_no_usuario">usuario</string>
+    <string name="db_no_anuncios">anuncios</string>
+    <string name="db_no_anuncios_imagens">anuncios_imagens</string>
+    <string name="db_no_usuario_anuncios">usuario_anuncios</string>
+
 
 
 </resources>

@@ -28,7 +28,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.honda.debrincar.Config.ConfiguraçaoFirebase;
+import com.honda.debrincar.Utilitarios.FirebaseMetodos;
 import com.honda.debrincar.Objetos.Usuario;
 import com.honda.debrincar.R;
 import com.theartofdev.edmodo.cropper.CropImage;
@@ -222,7 +222,7 @@ public class InstituicaoFragment extends Fragment {
 
                     if (imagemUsuario != null) {
                         //Salva imagem do usuário no FireStorage
-                        ImagemContaUsuarioRef = ConfiguraçaoFirebase.getFirebaseStorage().child("Imagens Usuário");
+                        ImagemContaUsuarioRef = FirebaseMetodos.getFirebaseStorage().child("Imagens Usuário");
                         StorageReference pastaStorage = ImagemContaUsuarioRef.child(usuario.getId() + ".jpg");
                         UploadTask uploadTask = pastaStorage.putFile(imagemUsuario);
                         uploadTask.addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {

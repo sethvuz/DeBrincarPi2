@@ -1,10 +1,8 @@
-package com.honda.debrincar.Config;
+package com.honda.debrincar.Utilitarios;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.view.View;
-import android.widget.LinearLayout;
 
 import java.util.List;
 
