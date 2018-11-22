@@ -48,7 +48,10 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.CadastroUser">
+
+        <activity
+            android:name=".Activities.CadastroUser"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="CADASTRO_ACT" />
 

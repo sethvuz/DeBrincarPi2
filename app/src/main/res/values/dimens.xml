@@ -17,4 +17,6 @@
     <dimen name="horizontal_margin_addImageModel_cad">20dp</dimen>
     <dimen name="horizontal_margin_box_descricao">25dp</dimen>
     <dimen name="descricao_box_alt">100dp</dimen>
+    <dimen name="progress_bar_width">150</dimen>
+    <dimen name="progress_bar_height">150</dimen>
 </resources>

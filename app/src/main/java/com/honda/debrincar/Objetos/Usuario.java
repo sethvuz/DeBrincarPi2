@@ -166,7 +166,7 @@ public class Usuario {
         isPessoaFisica = pessoaFisica;
     }
 
-    public Map<String, Object> MapaDados(){
+    public Map<String, Object> getMapaDados(){
         HashMap<String, Object> dados = new HashMap<>();
 
         if(isPessoaFisica){
@@ -188,23 +188,21 @@ public class Usuario {
         return dados;
     }
 
+    //Salva os dados do usuário
     public void salvarDados(){
         //Salva os dados do usuário no Firebase no nó RAIZ/USUÁRIOS/PF/ID DO USUÁRIO
         DatabaseReference referenciaFirebase = FirebaseMetodos.getFirebaseData();
-        if(isPessoaFisica) {
-            referenciaFirebase.child("Usuário").child("PF").child(id).setValue(MapaDados());
-        } else{
-            referenciaFirebase.child("Usuário").child("INST").child(id).setValue(MapaDados());
-        }
+
+            referenciaFirebase.child("usuario").child(id).updateChildren(getMapaDados());
+
     }
 
+    //salva imagem do usuário
     public void salvarDados(String imageUrl){
         //Seta url da imagem do usuário no Firebase
         DatabaseReference referenciaFirebase = FirebaseMetodos.getFirebaseData();
-        if(isPessoaFisica) {
-            referenciaFirebase.child("Usuário").child("PF").child(id).child("imagemUsuarioUrl").setValue(imageUrl);
-        } else{
-            referenciaFirebase.child("Usuário").child("INST").child(id).child("imagemUsuarioUrl").setValue(imageUrl);
-        }
+
+            referenciaFirebase.child("Usuário").child(id).child("imagemUsuarioUrl").setValue(imageUrl);
+
     }
 }

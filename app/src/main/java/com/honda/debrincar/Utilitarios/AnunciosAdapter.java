@@ -65,23 +65,23 @@ public class AnunciosAdapter extends ArrayAdapter<Anuncio> {
         TextView textTipoAnuncio = listItemView.findViewById(R.id.tipo_anuncio);
 
         switch (anuncioAtual.getAnuncioType()){
-            case "DOAÇÃO":
+            case "doacao":
                 textTipoAnuncio.setText("DOAÇÃO");
                 textTipoAnuncio.setTextColor(ContextCompat.getColor(getContext(), R.color.amareloEscuro));
                 textTipoAnuncio.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.azulMedio));
-                setupOnclickListeners(listItemView, "DOAÇÃO");
+                setupOnclickListeners(listItemView, "DOAÇÃO", anuncioAtual);
                 break;
-            case "SOLICITAÇÃO":
+            case "solicitacao":
                 textTipoAnuncio.setText("SOLICITAÇÃO");
                 textTipoAnuncio.setTextColor(ContextCompat.getColor(getContext(), R.color.azulMedio));
                 textTipoAnuncio.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.amareloEscuro));
-                setupOnclickListeners(listItemView, "SOLICITAÇÃO");
+                setupOnclickListeners(listItemView, "SOLICITAÇÃO", anuncioAtual);
                 break;
-            case "CAMPANHA":
+            case "campanha":
                 textTipoAnuncio.setText("CAMPANHA");
                 textTipoAnuncio.setTextColor(ContextCompat.getColor(getContext(), R.color.amareloClaro));
                 textTipoAnuncio.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.azulClaro));
-                setupOnclickListeners(listItemView, "CAMPANHA");
+                setupOnclickListeners(listItemView, "CAMPANHA", anuncioAtual);
                 break;
             default:
                 Toast.makeText(getContext(), "Erro ao carregar anuncios.", Toast.LENGTH_LONG).show();
@@ -94,7 +94,7 @@ public class AnunciosAdapter extends ArrayAdapter<Anuncio> {
         return listItemView;
     }
 
-    private void chamaFragmento(String anunTipo) {
+    private void chamaFragmento(String anunTipo, Anuncio anuncio) {
 
         FragmentManager fm = ((AppCompatActivity) atualContext).getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
@@ -102,6 +102,7 @@ public class AnunciosAdapter extends ArrayAdapter<Anuncio> {
         switch (anunTipo){
             case "DOAÇÃO":
                 PaginaAnuncioDoaFragment paginaAnuncioDoaFragment = new PaginaAnuncioDoaFragment();
+                paginaAnuncioDoaFragment.setAnuncio(anuncio);
                 fragmentTransaction.replace(R.id.container_principal, paginaAnuncioDoaFragment)
                         .addToBackStack(null)
                         .commit();
@@ -124,7 +125,7 @@ public class AnunciosAdapter extends ArrayAdapter<Anuncio> {
         }
     }
 
-    public void setupOnclickListeners(View listItemView, String anunTipo){
+    public void setupOnclickListeners(View listItemView, String anunTipo, final Anuncio anuncio){
 
         final String tipoAnuncio = anunTipo;
 
@@ -132,7 +133,7 @@ public class AnunciosAdapter extends ArrayAdapter<Anuncio> {
         layout_dados.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                chamaFragmento(tipoAnuncio);
+                chamaFragmento(tipoAnuncio, anuncio);
             }
         });
 
@@ -140,7 +141,7 @@ public class AnunciosAdapter extends ArrayAdapter<Anuncio> {
         imagemItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                chamaFragmento(tipoAnuncio);
+                chamaFragmento(tipoAnuncio, anuncio);
             }
         });
 

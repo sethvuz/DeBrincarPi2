@@ -44,15 +44,33 @@
     <string name="title_activity_maps">Map</string>
     <string name="titulo_getimage_dialog">Selecione a opção:</string>
 
+    <!-- Tipos de anúncio -->
+    <string name="anun_doacao">doacao</string>
+    <string name="anun_solicitacao">solicitacao</string>
+    <string name="anun_campanha">campanha</string>
+
     <!-- Tipos de imagens para upload no Firebase -->
     <string name="nova_imagem_anuncio">nova_imagem_anuncio</string>
     <string name="imagem_usuario">imagem_usuario</string>
 
     <!-- Nós no Firebase Database -->
     <string name="db_no_usuario">usuario</string>
+    <string name="db_no_pessoafisica">usuario_pessoafisica</string>
+    <string name="db_no_instituicao">usuario_instituicao</string>
     <string name="db_no_anuncios">anuncios</string>
     <string name="db_no_anuncios_imagens">anuncios_imagens</string>
     <string name="db_no_usuario_anuncios">usuario_anuncios</string>
+
+    <!-- Nós no Firebase Database -->
+    <string name="campo_nome_usuario">nome</string>
+    <string name="campo_sobrenome_usuario">sobrenome</string>
+
+    <!-- Nós referentes às categorias dos items  no Firebase -->
+    <string name="db_no_brinquedos">anun_brinquedos</string>
+    <string name="db_no_vestuario">anun_vestuario</string>
+    <string name="db_no_moveis">anun_moveis</string>
+    <string name="db_no_outros">anun_outros</string>
+
 
 
 

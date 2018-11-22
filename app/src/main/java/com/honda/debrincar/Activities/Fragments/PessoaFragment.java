@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +47,7 @@ import static android.app.Activity.RESULT_OK;
  */
 public class PessoaFragment extends Fragment {
 
+    private final static String TAG = "CADASTRO_USUARIO";
 
     private Usuario usuario = new Usuario();
 
@@ -137,7 +139,6 @@ public class PessoaFragment extends Fragment {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             try {
                 requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, 555);
-                pickImage();
             }catch (Exception e){
 
             }
@@ -211,35 +212,36 @@ public class PessoaFragment extends Fragment {
         progressBar.setVisibility(View.VISIBLE);
 
         //Cria um novo usuário no Firebase
-        Task<AuthResult> tarefa = FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, senha);
+        final Task<AuthResult> tarefa = FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, senha);
         tarefa.addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
 
                     //Resgata o ID do usuário cadastrado.
-                    final FirebaseUser usuarioFirebase = task.getResult().getUser();
-                    String userID = usuarioFirebase.getUid();
+                    String userID = FirebaseMetodos.getUserId();
                     usuario.setId(userID);
-                    usuario.salvarDados();//Função para salvar dados do usuário no Firebase
+                    FirebaseMetodos.cadastraDadosUsuario(getActivity(), usuario);//Função para salvar dados do usuário no Firebase
 
                     //Salva imagem do usuário no FireStorage
-                        ImagemContaUsuarioRef = FirebaseMetodos.getFirebaseStorage().child("Imagem Usuário");
-                        StorageReference pastaStorage = ImagemContaUsuarioRef.child(usuario.getId() + ".jpg");
+                        ImagemContaUsuarioRef = FirebaseMetodos.getFirebaseStorage().child(FirebaseMetodos.FIREBASE_IMAGE_STORAGE);
+                        StorageReference pastaStorage = ImagemContaUsuarioRef.child(usuario.getId()).child("imagemUsuario.jpg");
 
                     if(imagemUsuario != null) {
                         pastaStorage.putFile(imagemUsuario).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                             @Override
                             public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(getActivity(), "Imagem do usuário salva com sucesso!", Toast.LENGTH_LONG).show();
+                                    Log.d(TAG, "Imagem do usuário salva com sucesso!");
+                                    //Toast.makeText(getActivity(), "Imagem do usuário salva com sucesso!", Toast.LENGTH_LONG).show();
                                     Task<Uri> imageUrl = task.getResult().getStorage().getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Uri> task) {
                                             if (task.isSuccessful()) {
                                                 usuario.setImagemUsuarioUrl(task.getResult().toString());
-                                                usuario.salvarDados(usuario.getImagemUsuarioUrl());
-                                                Toast.makeText(getActivity(), "Url salva com sucesso!", Toast.LENGTH_LONG).show();
+                                                FirebaseMetodos.salvaImagemUsuarioDataBase(getActivity(), usuario);
+                                                Log.d(TAG, "Url da imagem salva com sucesso!");
+                                                //Toast.makeText(getActivity(), "Url salva com sucesso!", Toast.LENGTH_LONG).show();
 
                                                 progressBar.setVisibility(View.GONE);
 
@@ -248,20 +250,22 @@ public class PessoaFragment extends Fragment {
                                                 intent.addCategory("TELA_ANUNCIOS_CTG");
                                                 startActivity(intent);
                                             } else {
-                                                Toast.makeText(getActivity(), "Falha em salvar a Url da imagem", Toast.LENGTH_LONG).show();
+                                                Log.d(TAG, "Falha ao salvar a URL da imagem: " + task.getException().getMessage());
+                                                //Toast.makeText(getActivity(), "Falha em salvar a Url da imagem", Toast.LENGTH_LONG).show();
                                                 progressBar.setVisibility(View.GONE);
                                             }
                                         }
                                     });
                                 } else {
-                                    Toast.makeText(getActivity(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                    Log.d(TAG, "Falha ao salvar a imagem so usuário: " + task.getException().getMessage());
+                                    //Toast.makeText(getActivity(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
                                     progressBar.setVisibility(View.GONE);
                                 }
                             }
                         });
                     } else {
 
-                        usuario.salvarDados(usuario.getImagemUsuarioUrl());
+                        FirebaseMetodos.salvaImagemUsuarioDataBase(getActivity(), usuario);
 
                         progressBar.setVisibility(View.GONE);
 
@@ -276,16 +280,18 @@ public class PessoaFragment extends Fragment {
 
                 } else {
                     //Apresenta mensagem em casos de erro no cadastro.
-                    Toast.makeText(getActivity(), task.getException().getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                    Log.d(TAG, "Erro ao cadastrar usuário: " + task.getException().getMessage());
+                    //Toast.makeText(getActivity(), task.getException().getLocalizedMessage(), Toast.LENGTH_LONG).show();
                 }
             }
         });
 
     }
 
+    /*
     private Uri getUriresource() {
         Uri uri = Uri.parse("android.resource://" + BuildConfig.APPLICATION_ID + "/" + R.drawable.carinha_adc_foto);
         return uri;
-    }
+    }*/
 
 }

@@ -25,6 +25,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,6 +33,8 @@ import android.widget.Toast;
 import com.google.firebase.storage.StorageReference;
 import com.honda.debrincar.Objetos.Anuncio;
 import com.honda.debrincar.R;
+import com.honda.debrincar.Utilitarios.ConfiguraçãoApp;
+import com.honda.debrincar.Utilitarios.FirebaseMetodos;
 import com.honda.debrincar.Utilitarios.ImagemManipulations;
 import com.honda.debrincar.Utilitarios.Permissoes;
 import com.squareup.picasso.Picasso;
@@ -53,22 +56,14 @@ public class CadastroDoacaoFragment extends Fragment {
 
     private static final String TAG = "CADASTRO_DOACAO";
 
-    private int cont = 0, addImageCont = 0;
+    private int cont = 0;
     private Anuncio anuncio = new Anuncio();
-    private List<String> imagens = new ArrayList<>();
     private LinearLayout addImageContainer;
     private ConstraintLayout addImagem;
-
     private List<Uri> anuncioURIs = new ArrayList<>();
     private List<View> itemImageList = new ArrayList<>();
 
-    /*private Uri[] anuncioURIs = new Uri[6];
-
-    private ConstraintLayout[] imagemAnuncio = new ConstraintLayout[6];
-    private CircleImageView[] itemImagem = new CircleImageView[6];
-    private ImageView[] cancelBtn = new ImageView[6];*/
-
-
+    public ProgressBar progressBar;
 
 
     private int GALERIA = 1, CAMERA = 2;
@@ -84,6 +79,8 @@ public class CadastroDoacaoFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_cadatro_doacao, container, false);
+
+        progressBar = view.findViewById(R.id.progress_bar_cad_doa);
 
         final EditText titulo = view.findViewById(R.id.cad_titulo_anun_doa);
         final EditText endereco = view.findViewById(R.id.cad_endereco_anuncio_doa);
@@ -115,69 +112,6 @@ public class CadastroDoacaoFragment extends Fragment {
 
         //ImageView com onClick para adicionar imagem
         addImagem = view.findViewById(R.id.container_add_imagem_cad_Doa);
-
-        /*
-                imagemAnuncio[0] = view.findViewById(R.id.container_add_imagem_Doa_01);
-                imagemAnuncio[1] = view.findViewById(R.id.container_add_imagem_Doa_02);
-                imagemAnuncio[2] = view.findViewById(R.id.container_add_imagem_Doa_03);
-                imagemAnuncio[3] = view.findViewById(R.id.container_add_imagem_Doa_04);
-                imagemAnuncio[4] = view.findViewById(R.id.container_add_imagem_Doa_05);
-                imagemAnuncio[5] = view.findViewById(R.id.container_add_imagem_Doa_06);
-
-
-                itemImagem[0] = view.findViewById(R.id.cad_imagem_doa_01);
-                itemImagem[1] = view.findViewById(R.id.cad_imagem_doa_02);
-                itemImagem[2] = view.findViewById(R.id.cad_imagem_doa_03);
-                itemImagem[3] = view.findViewById(R.id.cad_imagem_doa_04);
-                itemImagem[4] = view.findViewById(R.id.cad_imagem_doa_05);
-                itemImagem[5] = view.findViewById(R.id.cad_imagem_doa_06);
-
-
-                cancelBtn[0] = view.findViewById(R.id.delete_image_cad_doa_01);
-                        cancelBtn[0].setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                               onDelete(0);
-                            }
-                        });
-                cancelBtn[1] = view.findViewById(R.id.delete_image_cad_doa_02);
-                        cancelBtn[1].setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                onDelete(1);
-                            }
-                        });
-                cancelBtn[2] = view.findViewById(R.id.delete_image_cad_doa_03);
-                        cancelBtn[2].setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                onDelete(2);
-                            }
-                        });
-                cancelBtn[3] = view.findViewById(R.id.delete_image_cad_doa_04);
-                        cancelBtn[3].setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                onDelete(3);
-                            }
-                        });
-                cancelBtn[4] = view.findViewById(R.id.delete_image_cad_doa_05);
-                        cancelBtn[4].setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                onDelete(4);
-                            }
-                        });
-                cancelBtn[5] = view.findViewById(R.id.delete_image_cad_doa_06);
-                        cancelBtn[5].setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                onDelete(5);
-                            }
-                        });*/
-
-
-
         addImagem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -194,22 +128,24 @@ public class CadastroDoacaoFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
+
+                progressBar.setIndeterminate(true);
+                progressBar.setVisibility(View.VISIBLE);
+
+                anuncio.setAnuncioType(getString(R.string.anun_doacao));
                 anuncio.setTitulo(titulo.getText().toString());
                 anuncio.setEndereco(endereco.getText().toString());
                 anuncio.setTelefone(telefone.getText().toString());
                 anuncio.setDescricao(descricao.getText().toString());
 
-                LocalDate date = null;
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                    date = LocalDate.now();
-                }
-                anuncio.setDataCriacao(date.toString());
+                anuncio.setDataCriacao(ConfiguraçãoApp.getData());
 
+                anuncio.setAnuncioID(FirebaseMetodos.getAnuncioId(getActivity()));
+
+                FirebaseMetodos.uploadImagemAnuncio(anuncioURIs, anuncio, FirebaseMetodos.FIREBASE_IMAGE_STORAGE, getActivity(), progressBar);
 
             }
         });
-
-
 
         return  view;
     }
@@ -257,9 +193,7 @@ public class CadastroDoacaoFragment extends Fragment {
                     case 1:
                         getImagemCamera();
                         break;
-
                 }
-
             }
         });
         getImagensDialog.show();
@@ -337,6 +271,9 @@ public class CadastroDoacaoFragment extends Fragment {
                     .centerCrop()
                     .into(itemImagem);
 
+        itemImageList.add(imageView);
+        anuncioURIs.add(imagemUri);
+
         // Define o OnClick do botão de deletar a imagem
         final ImageView cancelBtn = imageView.findViewById(R.id.delete_image_cad_anun_btn);
         cancelBtn.setOnClickListener(new View.OnClickListener() {
@@ -347,12 +284,7 @@ public class CadastroDoacaoFragment extends Fragment {
             }
         });
 
-        itemImageList.add(imageView);
-        anuncioURIs.add(imagemUri);
-
-
-
-
+        //Faz desaparecer o botão de adicionar imagem
         if(cont>= 6) {
             setAddImagemBtnGone();
         }
@@ -361,8 +293,6 @@ public class CadastroDoacaoFragment extends Fragment {
 
     //Remove view do conteiner de imagens do anúncio
     public void onDelete(View view){
-
-
 
         int num = itemImageList.indexOf(view);
         itemImageList.remove(num);

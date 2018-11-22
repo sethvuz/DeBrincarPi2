@@ -10,8 +10,8 @@ public class Anuncio {
 
 
 
-    private String anumID, userID;
-    private String titulo, descricao;
+    private String anuncioID, userID;
+    private String titulo, descricao, categoria;
     private int quantidade = 1;
     private String dataCriacao, dataFim;
     private String telefone, endereco, cidade;
@@ -33,12 +33,12 @@ public class Anuncio {
 
 
 
-    public String getAnumID() {
-        return anumID;
+    public String getAnuncioID() {
+        return anuncioID;
     }
 
-    public void setAnumID(String anumID) {
-        this.anumID = anumID;
+    public void setAnuncioID(String anuncioID) {
+        this.anuncioID = anuncioID;
     }
 
     public String getUserID() {
@@ -113,16 +113,19 @@ public class Anuncio {
 
     public void setImagensUrls(List<String> imagensUrls) { this.imagensUrls = imagensUrls; }
 
-    public Map<String, Object> MapaDados(){
+    public String getCategoria() { return categoria; }
+
+    public void setCategoria(String categoria) { this.categoria = categoria;  }
+
+    public Map<String, Object> getMapaDados(){
         HashMap<String, Object> dados = new HashMap<>();
         dados.put("titulo", titulo);
         dados.put("TipoAnuncio", anuncioType);
         dados.put("descricao", descricao);
         dados.put("endereco", endereco);
         dados.put("telefone", telefone);
-        dados.put("cidade", cidade);
+        //dados.put("cidade", cidade);
         dados.put("dataCriacao", dataCriacao);
-        dados.put("dataFim", dataFim);
 
         return dados;
     }

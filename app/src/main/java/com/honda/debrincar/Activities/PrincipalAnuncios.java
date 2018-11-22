@@ -76,8 +76,8 @@ public class PrincipalAnuncios extends AppCompatActivity {
 
         userID = FirebaseMetodos.getUserId();
 
-        userRef = FirebaseMetodos.getFirebaseData().child("Usuário").child("PF");
-        userRef.child(userID).addValueEventListener(new ValueEventListener() {
+        userRef = FirebaseMetodos.getFirebaseData().child(getString(R.string.db_no_usuario));
+        userRef.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists()){
@@ -89,7 +89,11 @@ public class PrincipalAnuncios extends AppCompatActivity {
                     //Seta o nome e a imagem do usuário no menu de navegação
                     menuNomeUser.setText(nomeCompleto);
                     if (!imagemPerfil.equals("")) {
-                        Picasso.get().load(imagemPerfil).into(menuImagemUser);
+                        Picasso.get()
+                                .load(imagemPerfil)
+                                .fit()
+                                .centerCrop()
+                                .into(menuImagemUser);
                     }
                 }
             }
