@@ -41,20 +41,6 @@ public class Lista_Anuncios_Fragment extends Fragment {
 
         ArrayList<Anuncio> anuncios = new ArrayList<>();
 
-        anuncios.add(new Anuncio("Ursinho", "Ursinho de pelúcia", "DOAÇÃO"));
-        anuncios.add(new Anuncio("Carrinho", "Carrinho super novo", "SOLICITAÇÃO"));
-        anuncios.add(new Anuncio("Peão", "Peão bem conservado", "DOAÇÃO"));
-        anuncios.add(new Anuncio("Boneca Barbie", "Como nova...", "DOAÇÃO"));
-        anuncios.add(new Anuncio("Caminhãozinho", "Meu filho não brinca mais", "CAMPANHA"));
-        anuncios.add(new Anuncio("Chocalho", "Chocalho ainda muito novo", "CAMPANHA"));
-        anuncios.add(new Anuncio("Bola de futebol", "Bem conservada", "SOLICITAÇÃO"));
-        anuncios.add(new Anuncio("Jogo de quebra Cabeça", "Ótimo para o desenvolvimento", "SOLICITAÇÃO"));
-        anuncios.add(new Anuncio("Jogo de xadrez", "Disponível pra quem precisar", "DOAÇÃO"));
-        anuncios.add(new Anuncio("Bicicleta", "Para quem precisar", "CAMPANHA"));
-        anuncios.add(new Anuncio("Skate", "Em bom estado", "DOAÇÃO"));
-        anuncios.add(new Anuncio("Patins", "Em bom estado", "DOAÇÃO"));
-        anuncios.add(new Anuncio("Patinete", "Em bom estado", "DOAÇÃO"));
-
         final ListView listView = view.findViewById(R.id.lista_anuncios_view);
 
 
@@ -73,7 +59,9 @@ public class Lista_Anuncios_Fragment extends Fragment {
                     anuncio = new Anuncio(
                             anuncioData.get("titulo").toString(),
                             anuncioData.get("descricao").toString(),
-                            anuncioData.get("TipoAnuncio").toString());
+                            anuncioData.get("TipoAnuncio").toString(),
+                            anuncioData.get("dataCriacao").toString());
+                            anuncio.setAnuncioID(anuncioData.get("id").toString());
                     listaAnuncios.add(anuncio);
                 }
 

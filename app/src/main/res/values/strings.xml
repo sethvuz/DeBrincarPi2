@@ -44,6 +44,10 @@
     <string name="title_activity_maps">Map</string>
     <string name="titulo_getimage_dialog">Selecione a opção:</string>
 
+    <!-- Tipos de usuário -->
+    <string name="profile_tipo_pessoa">Pessoa Física</string>
+    <string name="profile_tipo_instituicao">Instituição</string>
+
     <!-- Tipos de anúncio -->
     <string name="anun_doacao">doacao</string>
     <string name="anun_solicitacao">solicitacao</string>
@@ -71,7 +75,11 @@
     <string name="db_no_moveis">anun_moveis</string>
     <string name="db_no_outros">anun_outros</string>
 
-
+    <!-- Nomes dos fragmentos - opções do EditProfile -->
+    <string name="op_profile_editprofile">Editar cadastro</string>
+    <string name="op_profile_anuncios">Anúncios cadastrados</string>
+    <string name="op_profile_favoritos">Favoritos</string>
+    <string name="op_profile_seguidores">Seguidores</string>
 
 
 </resources>

@@ -13,16 +13,18 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.constraint.ConstraintLayout;
-import android.support.media.ExifInterface;
+
 import android.support.v4.app.Fragment;
-import android.util.Log;
+
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -30,7 +32,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.storage.StorageReference;
+
 import com.honda.debrincar.Objetos.Anuncio;
 import com.honda.debrincar.R;
 import com.honda.debrincar.Utilitarios.ConfiguraçãoApp;
@@ -39,11 +41,7 @@ import com.honda.debrincar.Utilitarios.ImagemManipulations;
 import com.honda.debrincar.Utilitarios.Permissoes;
 import com.squareup.picasso.Picasso;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.time.LocalDate;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -131,6 +129,9 @@ public class CadastroDoacaoFragment extends Fragment {
 
                 progressBar.setIndeterminate(true);
                 progressBar.setVisibility(View.VISIBLE);
+                iniciaLoading();
+
+
 
                 anuncio.setAnuncioType(getString(R.string.anun_doacao));
                 anuncio.setTitulo(titulo.getText().toString());
@@ -264,12 +265,15 @@ public class CadastroDoacaoFragment extends Fragment {
         //Verifica e corrige a rotação da imagem
         Float rotation = ImagemManipulations.setupRotation(ImagemManipulations.getImageBytes(getActivity(), imagemUri));
 
-            Picasso.get()
-                    .load(imagemUri)
-                    .rotate(rotation)
-                    .fit()
-                    .centerCrop()
-                    .into(itemImagem);
+
+        Picasso.get()
+                .load(imagemUri)
+                .rotate(rotation)
+                .fit()
+                .centerCrop()
+                .into(itemImagem);
+
+
 
         itemImageList.add(imageView);
         anuncioURIs.add(imagemUri);
@@ -309,9 +313,15 @@ public class CadastroDoacaoFragment extends Fragment {
 
     }
 
+    //FAZ DESAPARECER O BOTÃO DE ADICIONAR IMAGEM QUANDO CHEGADO O LIMITE DE IMAGENS
     public void setAddImagemBtnGone(){
         addImagem.setVisibility(View.GONE);
         Toast.makeText(getContext(), "Limite de 06 fotos por anúncio!", Toast.LENGTH_LONG).show();
+    }
+
+    void iniciaLoading(){
+        getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
     }
 
 }

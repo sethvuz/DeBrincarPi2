@@ -20,7 +20,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="300dp"
             android:orientation="horizontal">
 
             <RelativeLayout
@@ -28,14 +28,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="20dp"
-                android:background="@drawable/caixa_borda_pontilhada">
+                android:background="@drawable/caixa_borda_pontilhada"
+                android:padding="40dp"
+                android:gravity="center">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                        <android.support.v4.view.ViewPager
+                            android:id="@+id/image_pager_doa"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                </LinearLayout>
 
                 <ImageView
                     android:id="@+id/pagina_imagem_anuncio_doa"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:background="@drawable/ursinho_brinquedo" />
+                    android:background="@drawable/ursinho_brinquedo"
+                    android:visibility="gone"/>
 
             </RelativeLayout>
 

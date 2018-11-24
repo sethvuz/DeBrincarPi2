@@ -159,18 +159,24 @@ public class PrincipalAnuncios extends AppCompatActivity {
                 break;
 
             case R.id.nav_minha_conta:
-                Toast.makeText(this, "Minha Conta", Toast.LENGTH_LONG).show();
+                Intent intentUserProfile = new Intent("TELA_USER_PROFILE_ACT");
+                intentUserProfile.addCategory("TELA_USER_PROFILE_CTG");
+                startActivity(intentUserProfile);
+                drawerLayout.closeDrawer(Gravity.START, true);
                 break;
 
             case R.id.nav_config:
-                Toast.makeText(this, "Configurações", Toast.LENGTH_LONG).show();
+                Intent configIntent = new Intent ("TELA_CONFIGURACOES_ACT");
+                configIntent.addCategory("TELA_CONFIGURACOES_CTG");
+                startActivity(configIntent);
+                drawerLayout.closeDrawer(Gravity.START, true);
                 break;
 
             case R.id.nav_logout:
                 FirebaseMetodos.getFirebaseAuth().signOut();
-                Intent intent = new Intent("TELA_LOGIN_ACT");
-                intent.addCategory("TELA_LOGIN_CTG");
-                startActivity(intent);
+                Intent intentLogout = new Intent("TELA_LOGIN_ACT");
+                intentLogout.addCategory("TELA_LOGIN_CTG");
+                startActivity(intentLogout);
                 finish();
                 break;
 

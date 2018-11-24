@@ -28,7 +28,14 @@ public class Anuncio {
     public Anuncio (String titulo, String descricao, String tipo){
         this.titulo = titulo;
         this.descricao = descricao;
-        anuncioType = tipo;
+        this.anuncioType = tipo;
+    }
+
+    public Anuncio (String titulo, String descricao, String tipo, String dataCriacao){
+        this.titulo = titulo;
+        this.descricao = descricao;
+        this.dataCriacao = dataCriacao;
+        this.anuncioType = tipo;
     }
 
 
@@ -126,6 +133,7 @@ public class Anuncio {
         dados.put("telefone", telefone);
         //dados.put("cidade", cidade);
         dados.put("dataCriacao", dataCriacao);
+        dados.put("id", anuncioID);
 
         return dados;
     }
