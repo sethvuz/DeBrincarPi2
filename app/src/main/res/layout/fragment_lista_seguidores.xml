@@ -5,10 +5,18 @@
     android:layout_height="match_parent"
     tools:context=".Activities.Fragments.ListaSeguidoresFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical">
+
+        <include layout="@layout/app_bar_layout_transp_backbtn"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Seguidores" />
+
+    </LinearLayout>
 
 </FrameLayout>

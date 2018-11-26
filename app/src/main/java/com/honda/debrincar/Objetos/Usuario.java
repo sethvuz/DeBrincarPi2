@@ -24,7 +24,6 @@ public class Usuario {
     //dados de pessoa física
     private String sobrenome;
     private String cpf;
-    private String dataNascimento;
 
 
     //dados de instituição
@@ -72,14 +71,6 @@ public class Usuario {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
-    }
-
-    public String getDataNascimento() {
-        return dataNascimento;
-    }
-
-    public void setDataNascimento(String dataNascimento) {
-        this.dataNascimento = dataNascimento;
     }
 
     public String getEndereco() {
@@ -173,7 +164,6 @@ public class Usuario {
             dados.put("nome", nome);
             dados.put("sobrenome", sobrenome);
             dados.put("cpf", cpf);
-            dados.put("nascimento", dataNascimento);
             dados.put("cep", cep);
             dados.put("endereco", endereco);
             dados.put("PessoaFisica", isPessoaFisica);

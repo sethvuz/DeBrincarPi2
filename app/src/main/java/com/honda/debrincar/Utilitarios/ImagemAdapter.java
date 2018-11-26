@@ -45,9 +45,10 @@ public class ImagemAdapter extends PagerAdapter {
 
         ImageView imagem = itemView.findViewById(R.id.item_imagem_pager);
 
-
         Picasso.get()
                 .load(imagens.get(position))
+                .fit()
+                .centerCrop()
                 .into(imagem);
 
         container.addView(itemView);

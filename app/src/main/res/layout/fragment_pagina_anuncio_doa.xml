@@ -9,7 +9,7 @@
     android:background="@drawable/background_1080p_claro">
 
     <!-- TODO: Update blank fragment layout -->
-    <android.support.v4.widget.NestedScrollView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
@@ -23,26 +23,32 @@
             android:layout_height="300dp"
             android:orientation="horizontal">
 
+            <ImageView
+                android:id="@+id/coracao_fav_pag_doa"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="28dp"
+                android:layout_marginRight="28dp"
+                android:layout_marginBottom="45dp"
+                android:background="@drawable/ic_favorite_branco_24dp"
+                android:translationZ="100dp"/>
+
             <RelativeLayout
                 android:id="@+id/pagina_imagem_container_anuncio_doa"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="20dp"
-                android:background="@drawable/caixa_borda_pontilhada"
-                android:padding="40dp"
+                android:background="@drawable/fundo_caixa_borda_pontilhada"
                 android:gravity="center">
 
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
 
                         <android.support.v4.view.ViewPager
                             android:id="@+id/image_pager_doa"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent" />
-                </LinearLayout>
 
                 <ImageView
                     android:id="@+id/pagina_imagem_anuncio_doa"
@@ -63,8 +69,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginEnd="20dp"
                 android:layout_marginRight="20dp"
-                android:background="@drawable/caixa_anuncio_type"
-                android:backgroundTint="@color/azulMedio"
+                android:background="@drawable/fundo_caixa_azul_anuncio"
                 android:gravity="center"
                 android:text="DOAÇÃO"
                 android:textAlignment="center"
@@ -72,17 +77,6 @@
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
-            <ImageView
-                android:id="@+id/coracao_pag_doa"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginEnd="25dp"
-                android:layout_marginRight="25dp"
-                android:layout_marginBottom="45dp"
-                android:background="@drawable/coracao_fav_branco" />
 
         </RelativeLayout>
 
@@ -93,27 +87,72 @@
             android:layout_height="wrap_content"
             android:text="Ursinho de Pelúcia" />
 
-        <TextView
-            android:id="@+id/pagina_autor_anuncio_doa"
-            style="@style/Texto_Autor_pagAnuncio"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Criado por..." />
+        <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/azulEscuro" />
 
-        <TextView
-            android:id="@+id/data_criacao_anuncio_doa"
-            style="@style/Texto_Autor_pagAnuncio"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Criado em..." />
+       <android.support.constraint.ConstraintLayout
+           android:layout_width="match_parent"
+           android:layout_height="40dp">
+
+           <Button
+               android:id="@+id/btn_seguir_anuncio_doa"
+               android:layout_width="wrap_content"
+               android:layout_height="15dp"
+               android:layout_marginStart="4dp"
+               android:layout_marginLeft="4dp"
+               android:layout_marginTop="5dp"
+               android:background="@drawable/fundo_botao_azul_anuncio"
+               android:text="SEGUIR"
+               android:textSize="10sp"
+               android:textColor="@color/amareloEscuro"
+               app:layout_constraintStart_toEndOf="@+id/nome_autor_anuncio_doa"
+               app:layout_constraintTop_toTopOf="parent" />
+
+           <TextView
+               android:id="@+id/nome_autor_anuncio_doa"
+               style="@style/TextoCadastro"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="8dp"
+               android:layout_marginLeft="8dp"
+               android:layout_marginTop="4dp"
+               android:text="Fulano de tal"
+               android:textColor="@color/azulEscuro"
+               android:textStyle="italic|bold"
+               app:layout_constraintStart_toEndOf="@+id/pagina_autor_anuncio_doa"
+               app:layout_constraintTop_toTopOf="parent" />
+
+           <TextView
+               android:id="@+id/pagina_autor_anuncio_doa"
+               style="@style/Texto_Autor_pagAnuncio"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="4dp"
+               android:text="Criado por:"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toTopOf="parent" />
+
+           <TextView
+               android:id="@+id/data_criacao_anuncio_doa"
+               style="@style/Texto_Autor_pagAnuncio"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="4dp"
+               android:text="Em..."
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toBottomOf="@+id/pagina_autor_anuncio_doa" />
+       </android.support.constraint.ConstraintLayout>
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="2dp"
+            android:layout_height="1dp"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/azulMedio" />
+            android:layout_marginTop="5dp"
+            android:background="@color/azulEscuro" />
 
         <TextView
             android:id="@+id/descricao_label_pagina_anuncio_doa"
@@ -127,8 +166,7 @@
             style="@style/Descricao_pagAnuncio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/caixa_anuncio_type"
-            android:backgroundTint="@color/cinzaClaro"
+            android:background="@drawable/fundo_caixa_cinza_anuncio"
             android:text="Ursinho com pouco tempo de uso..." />
 
         <android.support.constraint.ConstraintLayout
@@ -145,7 +183,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
-                android:backgroundTint="@color/amareloEscuro"
+                android:background="@drawable/fundo_botao_amarelo_anuncio"
                 android:text="@string/btn_solicitara_anun"
                 android:textColor="@color/azulMedio"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -163,7 +201,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
-                android:backgroundTint="@color/azulMedio"
+                android:background="@drawable/fundo_botao_azul_anuncio"
                 android:text="@string/btn_mensagem_anun"
                 android:textColor="@color/amareloEscuro"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -198,6 +236,6 @@
 
     </LinearLayout>
 
-    </android.support.v4.widget.NestedScrollView>
+    </ScrollView>
 
 </FrameLayout>

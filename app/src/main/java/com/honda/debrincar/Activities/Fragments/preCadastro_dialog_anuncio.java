@@ -39,7 +39,7 @@ public class preCadastro_dialog_anuncio extends DialogFragment {
                 Intent intent = new Intent("TELA_CAD_ANUNCIOS_ACT");
                 intent.addCategory("TELA_CAD_ANUNCIOS_CTG");
                 Bundle bundle = new Bundle();
-                bundle.putString("anuncioType", "DOAÇÃO");
+                bundle.putString("anuncioType", getActivity().getString(R.string.anun_doacao));
                 intent.putExtras(bundle);
                 startActivity(intent);
                 getDialog().dismiss();
@@ -52,7 +52,7 @@ public class preCadastro_dialog_anuncio extends DialogFragment {
                 Intent intent = new Intent("TELA_CAD_ANUNCIOS_ACT");
                 intent.addCategory("TELA_CAD_ANUNCIOS_CTG");
                 Bundle bundle = new Bundle();
-                bundle.putString("anuncioType", "SOLICITAÇÃO");
+                bundle.putString("anuncioType", getActivity().getString(R.string.anun_solicitacao));
                 intent.putExtras(bundle);
                 startActivity(intent);
                 getDialog().dismiss();
@@ -65,7 +65,7 @@ public class preCadastro_dialog_anuncio extends DialogFragment {
                 Intent intent = new Intent("TELA_CAD_ANUNCIOS_ACT");
                 intent.addCategory("TELA_CAD_ANUNCIOS_CTG");
                 Bundle bundle = new Bundle();
-                bundle.putString("anuncioType", "CAMPANHA");
+                bundle.putString("anuncioType", getActivity().getString(R.string.anun_campanha));
                 intent.putExtras(bundle);
                 startActivity(intent);
                 getDialog().dismiss();

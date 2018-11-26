@@ -5,15 +5,19 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.honda.debrincar.Activities.Fragments.EditProfileFragment;
-import com.honda.debrincar.Activities.Fragments.ListaAnunciosFavoritosFragment;
+import com.honda.debrincar.Activities.Fragments.ListaAnunciosCadastradosFragment;
+import com.honda.debrincar.Activities.Fragments.ListaFavoritosFragment;
 import com.honda.debrincar.Activities.Fragments.ListaSeguidoresFragment;
 import com.honda.debrincar.R;
 import com.honda.debrincar.Utilitarios.FirebaseMetodos;
@@ -31,15 +35,31 @@ public class UserProfile extends AppCompatActivity {
 
     private int fragmentoAtual;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
 
+        Toolbar mToolbar = findViewById(R.id.toolbar_com_backbtn);
+        ImageView backBtn = mToolbar.findViewById(R.id.back_btn_appbar);
+        TextView toolbarTitulo = mToolbar.findViewById(R.id.titulo_appbar_backbtn);
+        toolbarTitulo.setText("Minha Conta");
+
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+
+
         fragmentsPager = findViewById(R.id.profile_fragment_container);
         rootRelativeLayout = findViewById(R.id.root_editprofile_layout);
         setupFragmentsOpcoes();
-
         setupListaOpcoes();
 
 
@@ -54,8 +74,8 @@ public class UserProfile extends AppCompatActivity {
     private void setupFragmentsOpcoes() {
         opcoesPageAdapter = new ProfileFragmentsPageAdapter(getSupportFragmentManager());
         opcoesPageAdapter.addFragment(new EditProfileFragment(), getString(R.string.op_profile_editprofile)); //fragmento 0
-        opcoesPageAdapter.addFragment(new ListaAnunciosFavoritosFragment(), getString(R.string.op_profile_anuncios)); //fragmento 1
-        opcoesPageAdapter.addFragment(new ListaAnunciosFavoritosFragment(), getString(R.string.op_profile_favoritos)); //fragmento 2
+        opcoesPageAdapter.addFragment(new ListaAnunciosCadastradosFragment(), getString(R.string.op_profile_anuncios)); //fragmento 1
+        opcoesPageAdapter.addFragment(new ListaFavoritosFragment(), getString(R.string.op_profile_favoritos)); //fragmento 2
         opcoesPageAdapter.addFragment(new ListaSeguidoresFragment(), getString(R.string.op_profile_seguidores)); //fragmento 3
     }
 
@@ -97,6 +117,8 @@ public class UserProfile extends AppCompatActivity {
             }
         });
     }
+
+
 
 
     @Override

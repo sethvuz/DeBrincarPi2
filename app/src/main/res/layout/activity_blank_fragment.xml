@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.Fragments.ListaFavoritosFragment">
+    tools:context=".Activities.BlankFragmentActivity"
+    android:background="@drawable/background_1080p_claro">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,12 +15,14 @@
 
         <include layout="@layout/app_bar_layout_transp_backbtn"/>
 
-        <TextView
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Favoritos" />
+            android:id="@+id/blank_activity_container"/>
 
     </LinearLayout>
 
 
-</FrameLayout>
+
+
+</RelativeLayout>

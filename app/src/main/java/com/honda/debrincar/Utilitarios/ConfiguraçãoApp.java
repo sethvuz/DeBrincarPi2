@@ -16,6 +16,7 @@ public final class ConfiguraçãoApp {
 
 /*-------------------------------FUNÇÕES COM FRAGMENTOS------------------------------------------------------*/
 
+    /*
     public static void carregaFragmento(FragmentManager fm, Fragment fragmento, int container ){
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
         fragmentTransaction.replace(container, fragmento)
@@ -49,7 +50,7 @@ public final class ConfiguraçãoApp {
         }
 
         return false;
-    }
+    }*/
 
     /*-----------------------------FUNÇÕES DIVERSAS---------------------------------------*/
 

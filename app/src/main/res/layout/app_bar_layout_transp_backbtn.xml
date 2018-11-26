@@ -9,7 +9,8 @@
 
         <android.support.v7.widget.Toolbar
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:id="@+id/toolbar_com_backbtn">
 
             <ImageView
                 android:id="@+id/back_btn_appbar"

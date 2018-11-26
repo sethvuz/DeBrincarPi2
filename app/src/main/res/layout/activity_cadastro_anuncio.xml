@@ -1,12 +1,369 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/container_cadastro_anuncio"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Activities.CadastroAnuncio"
-    android:background="@drawable/background_1080p_claro"
-    android:fitsSystemWindows="true">
+    android:clickable="true"
+    android:id="@+id/framelayout_cad_doa">
 
-</android.support.constraint.ConstraintLayout>
+    <ProgressBar
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:translationZ="100dp"
+        android:id="@+id/progress_bar_cad_doa"
+
+        />
+
+    <ScrollView
+        android:id="@+id/scroll_layout_cad_doa"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <HorizontalScrollView
+                android:id="@+id/scroll_layout_imagens_cad_doa"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:fillViewport="true"
+                android:scrollbarAlwaysDrawHorizontalTrack="true">
+
+                <LinearLayout
+                    android:id="@+id/container_principal_addImage_cad_doa"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="20dp"
+                    android:paddingLeft="20dp">
+
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/container_add_imagem_cad_Doa"
+                        android:layout_width="140dp"
+                        android:layout_height="match_parent">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/add_imagem_cad_doa"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginRight="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:background="@drawable/ursinho_brinquedo"
+                            android:backgroundTint="@color/cinzaClaro"
+                            android:backgroundTintMode="screen"
+                            app:civ_border_color="@color/azulMedio"
+                            app:civ_border_width="2dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/add_imagem_cad_Doa_moldura"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/circulo_borda_pontilhada"
+                            app:civ_border_color="@color/azulMedio"
+                            app:civ_border_width="2dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginRight="8dp"
+                            android:layout_marginBottom="20dp"
+                            android:background="@drawable/baseline_add_circle_black_48"
+                            android:backgroundTint="@color/azulMedio"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent" />
+
+                        <TextView
+                            style="@style/TextoCadastro"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginRight="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="Adicionar Foto"
+                            android:textAlignment="center"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent" />
+
+                    </android.support.constraint.ConstraintLayout>
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:textColorHint="@color/cinzaClaro"
+                android:theme="@style/TextoCadastroTheme"
+                app:hintAnimationEnabled="true">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/cad_titulo_anun_doa"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:ems="10"
+                    android:hint="Título"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/azulEscuro"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
+
+                <Spinner
+                    android:id="@+id/spinner_categoria_item_doa"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginBottom="3dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <android.support.constraint.Guideline
+                    android:id="@+id/guideline3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.5" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    style="@style/TextoCadastro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginBottom="3dp"
+                    android:text="Categoria:"
+                    android:textColor="@color/azulEscuro"
+                    app:layout_constraintBottom_toTopOf="@+id/spinner_categoria_item_doa"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    style="@style/TextoCadastro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="Quantidade:"
+                    android:textColor="@color/azulEscuro"
+                    app:layout_constraintBottom_toTopOf="@+id/num_quantidade_cad_doa"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.512"
+                    app:layout_constraintStart_toStartOf="@+id/guideline3" />
+
+                <TextView
+                    android:id="@+id/num_quantidade_cad_doa"
+                    style="@style/TextoCadastro"
+                    android:layout_width="30dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/fundo_caixa_quadrada_branca"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textColor="@color/azulEscuro"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/guideline3"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/btn_menos_cad_doa"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="3dp"
+                    android:layout_marginRight="3dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/fundo_botao_azul_anuncio"
+
+                    android:text="-"
+                    android:textColor="@color/amareloEscuro"
+                    android:textSize="35sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/num_quantidade_cad_doa"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/btn_mais_cad_doa"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/fundo_botao_azul_anuncio"
+                    android:text="+"
+                    android:textColor="@color/amareloEscuro"
+                    android:textSize="25sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/num_quantidade_cad_doa"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="5dp"
+                android:textColorHint="@color/cinzaClaro"
+                android:theme="@style/TextoCadastroTheme"
+                app:hintAnimationEnabled="true">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/cad_endereco_anuncio_doa"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:ems="10"
+                    android:hint="Endereço"
+                    android:inputType="textLongMessage"
+                    android:textColor="@color/azulEscuro"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/spinner_prazo_camp_container">
+
+                <TextView
+                    android:id="@+id/textView7"
+                    style="@style/TextoCadastro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="11dp"
+                    android:layout_marginLeft="11dp"
+                    android:text="Prazo da campanha:"
+                    android:textColor="@color/azulEscuro"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView8"
+                    style="@style/TextoCadastro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginTop="3dp"
+                    android:text="dias"
+                    android:textColor="@color/azulEscuro"
+                    app:layout_constraintStart_toEndOf="@+id/spinner_prazo_camp"
+                    app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+                <Spinner
+                    android:id="@+id/spinner_prazo_camp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="11dp"
+                    android:layout_marginLeft="11dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView7" />
+            </android.support.constraint.ConstraintLayout>
+
+
+
+            <TextView
+                style="@style/TextoCadastro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/horizontal_margin_text_cad"
+                android:layout_marginLeft="@dimen/horizontal_margin_text_cad"
+                android:layout_marginTop="5dp"
+                android:text="Descrição:"
+                android:textColor="@color/azulEscuro"/>
+
+
+            <EditText
+                android:id="@+id/cad_descricao_anuncio_doa"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/descricao_box_alt"
+                android:layout_marginStart="@dimen/horizontal_margin_box_descricao"
+                android:layout_marginLeft="@dimen/horizontal_margin_box_descricao"
+                android:layout_marginEnd="@dimen/horizontal_margin_box_descricao"
+                android:layout_marginRight="@dimen/horizontal_margin_box_descricao"
+                android:background="@drawable/caixa_anuncio_type"
+                android:backgroundTint="@color/cinzaClaro"
+                android:ems="10"
+                android:enabled="true"
+                android:focusableInTouchMode="true"
+                android:gravity="top"
+                android:hint="Uma breve descrição do seu item"
+                android:inputType="textMultiLine"
+                android:isScrollContainer="true"
+                android:nestedScrollingEnabled="true"
+                android:padding="@dimen/default_padding_bottom"
+                android:textColor="@color/azulEscuro"
+                android:textColorHint="#a4a3a3"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+
+            <Button
+                android:id="@+id/cad_anuncio_doa_btn"
+                style="@style/Cad_Anuncio_BTN"
+                android:layout_width="@dimen/botao_larg"
+                android:layout_height="@dimen/botao_alt"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/fundo_botao_amarelo_cadastrar"
+                android:elevation="10dp"/>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</FrameLayout>
