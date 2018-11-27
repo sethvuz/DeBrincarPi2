@@ -173,7 +173,8 @@ public class Usuario {
             dados.put("nome", nome);
             dados.put("sobrenome", sobrenome);
             dados.put("cpf", cpf);
-            //dados.put("cep", cep);
+            dados.put("estado", estado);
+            dados.put("cidade", cidade);
             dados.put("endereco", endereco);
             dados.put("telefone", telefone);
             dados.put("PessoaFisica", isPessoaFisica);
@@ -181,7 +182,8 @@ public class Usuario {
             dados.put("nome", nome);
             dados.put("descricao", descricao);
             dados.put("cnpj", cnpj);
-            //dados.put("cep", cep);
+            dados.put("estado", estado);
+            dados.put("cidade", cidade);
             dados.put("endereco", endereco);
             dados.put("telefone", telefone);
             dados.put("PessoaFisica", isPessoaFisica);

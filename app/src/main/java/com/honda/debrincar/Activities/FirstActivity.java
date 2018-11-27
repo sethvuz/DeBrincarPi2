@@ -17,6 +17,7 @@ public class FirstActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
 
+        ConfiguraçãoApp.getArquivoEstados(FirstActivity.this);
         ConfiguraçãoApp.setupEstadosCidades();
 
         Intent intent;

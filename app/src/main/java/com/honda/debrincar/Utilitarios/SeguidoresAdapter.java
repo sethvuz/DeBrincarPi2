@@ -61,8 +61,12 @@ public class SeguidoresAdapter extends ArrayAdapter<String> {
                     nome = dataSnapshot.child("nome").getValue().toString() +
                             " " +
                             dataSnapshot.child("sobrenome").getValue().toString();
-                    nomeSeguidor.setText(nome);
+                    local = dataSnapshot.child("cidade").getValue().toString() +
+                            " - " + dataSnapshot.child("estado").getValue().toString();
                     imagemUrl = dataSnapshot.child("imagemUsuarioUrl").getValue().toString();
+
+                    nomeSeguidor.setText(nome);
+                    localSeguidor.setText(local);
                     Picasso.get()
                             .load(imagemUrl)
                             .fit()

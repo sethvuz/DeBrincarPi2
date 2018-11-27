@@ -179,17 +179,17 @@ public final class FirebaseMetodos {
         Map<String, Object> toFirebase = new HashMap<>();
         toFirebase.put(context.getString(R.string.db_no_anuncios) + "/" + anuncioId, anuncioData);
         toFirebase.put(context.getString(R.string.db_no_anuncios_imagens) + "/" + anuncioId, anuncio.getImagensUrls());
-        toFirebase.put(context.getString(R.string.db_no_usuario_anuncios) + "/" + userId + "/" + anuncioId, anuncioId);
+        toFirebase.put(context.getString(R.string.db_no_usuario_anuncios) + "/" + userId + "/" + anuncioId, anuncioData);
 
         switch(anuncioType){
             case "doacao":
-                toFirebase.put(context.getString(R.string.anun_doacao) + "/" + anuncioId, anuncioId);
+                toFirebase.put(context.getString(R.string.anun_doacao) + "/" + anuncioId, anuncioData);
                 break;
             case "solicitacao":
-                toFirebase.put(context.getString(R.string.anun_solicitacao) + "/" + anuncioId, anuncioId);
+                toFirebase.put(context.getString(R.string.anun_solicitacao) + "/" + anuncioId, anuncioData);
                 break;
             case "campanha":
-                toFirebase.put(context.getString(R.string.anun_campanha) + "/" + anuncioId, anuncioId);
+                toFirebase.put(context.getString(R.string.anun_campanha) + "/" + anuncioId, anuncioData);
                 break;
                 default:
                     break;

@@ -57,16 +57,20 @@ public class Dialog_user_profile extends DialogFragment {
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        String nome, local, imagemUrl;
+                        String nome, local, tipo, imagemUrl;
                         nome = dataSnapshot.child("nome").getValue().toString() +
                                 " " +
                                 dataSnapshot.child("sobrenome").getValue().toString();
-                        String tipo = dataSnapshot.child("PessoaFisica").getValue().toString();
+                        tipo = dataSnapshot.child("PessoaFisica").getValue().toString();
+                        local = dataSnapshot.child("cidade").getValue().toString() +
+                                " - " + dataSnapshot.child("estado").getValue().toString();
                         if(!tipo.equals("true")){
                             tipoUsuario.setText("Pessoa Jurídica");
                         }
+
                         userName = nome;
                         nomeUsuario.setText(nome);
+                        localUsuario.setText(local);
                         imagemUrl = dataSnapshot.child("imagemUsuarioUrl").getValue().toString();
                         Picasso.get()
                                 .load(imagemUrl)

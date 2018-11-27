@@ -14,11 +14,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -29,13 +32,14 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.honda.debrincar.Objetos.Usuario;
 import com.honda.debrincar.R;
+import com.honda.debrincar.Utilitarios.ConfiguraçãoApp;
 import com.honda.debrincar.Utilitarios.FirebaseMetodos;
-import com.honda.debrincar.Utilitarios.WebServiceData;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -45,8 +49,9 @@ public class CadastroUser extends AppCompatActivity {
     //Variável que define se o usuário é Pessoa Física ou Instituição
     public String userType;
 
-    public static String dataLocal;
-    public static String[] estadosBrasil = new String[27];
+    private List<String> estadosBrasil = new ArrayList<>();
+    private HashMap<String, Integer> mapaEstados = new HashMap<>();
+    private HashMap<Integer, List<String>> mapaCidades = new HashMap<>();
 
     private final static String TAG = "CADASTRO_USUARIO";
 
@@ -65,6 +70,8 @@ public class CadastroUser extends AppCompatActivity {
     private EditText confSenha;
     private Uri imagemUsuario;
 
+    private String estadoUser, cidadeUser;
+
     private TextInputLayout sobrenomeContainer,
             cpfContainer,
             cnpjContainer,
@@ -78,6 +85,12 @@ public class CadastroUser extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_user);
+
+        estadosBrasil = ConfiguraçãoApp.estados;
+        mapaEstados = ConfiguraçãoApp.mapaEstados;
+        mapaCidades = ConfiguraçãoApp.mapaCidades;
+
+
 
         RadioButton radioButtonPF = findViewById(R.id.rb_pessoafisica);
         radioButtonPF.setChecked(true);
@@ -109,6 +122,47 @@ public class CadastroUser extends AppCompatActivity {
         senha = findViewById(R.id.cad_senha);
         confSenha = findViewById(R.id.cad_conf_senha);
 
+        //SETUP DOS SPINNERS
+        {
+            final Spinner spinnerEstados = findViewById(R.id.spinner_estados_user);
+            final Spinner spinnerCidades = findViewById(R.id.spinner_cidades_user);
+
+            ArrayAdapter spinnerAdapter = new ArrayAdapter<String>(CadastroUser.this, android.R.layout.simple_spinner_item, estadosBrasil);
+            spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinnerEstados.setAdapter(spinnerAdapter);
+
+            spinnerEstados.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                     estadoUser = parent.getItemAtPosition(position).toString();
+                     int estadoId = mapaEstados.get(estadoUser);
+                     List<String> listaCidades = mapaCidades.get(estadoId);
+
+                     ArrayAdapter spinnerCidadesAdapter = new ArrayAdapter<String>(CadastroUser.this, android.R.layout.simple_spinner_item, listaCidades);
+                     spinnerCidadesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+                         spinnerCidades.setAdapter(spinnerCidadesAdapter);
+                         spinnerCidades.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                             @Override
+                             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                 cidadeUser = parent.getItemAtPosition(position).toString();
+                             }
+
+                             @Override
+                             public void onNothingSelected(AdapterView<?> parent) {
+
+                             }
+                         });
+
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
+        }
+
         //CARREGAR IMAGEM
         CircleImageView userImage = findViewById(R.id.set_imagem);
         userImage.setOnClickListener(new View.OnClickListener() {
@@ -138,6 +192,8 @@ public class CadastroUser extends AppCompatActivity {
                         usuario.setEndereco(endereco.getText().toString());
                         //usuario.setCep(cep.getText().toString());
                         usuario.setTelefone(telefone.getText().toString());
+                        usuario.setEstado(estadoUser);
+                        usuario.setCidade(cidadeUser);
                     }else {
                         usuario.setPessoaFisica(false);
                         usuario.setNome(nome.getText().toString());
@@ -146,6 +202,8 @@ public class CadastroUser extends AppCompatActivity {
                         usuario.setEndereco(endereco.getText().toString());
                         usuario.setCep(cep.getText().toString());
                         usuario.setTelefone(telefone.getText().toString());
+                        usuario.setEstado(estadoUser);
+                        usuario.setCidade(cidadeUser);
                     }
 
                     //FUNÇÃO DE CADASTRO DO USUÁRIO NO FIREBASE.

@@ -33,6 +33,15 @@ public class TelaLogin extends AppCompatActivity {
             }
         });
 
+        TextView btnResetSenha = findViewById(R.id.btnEsqueciSenha);
+        btnResetSenha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Dialog_Recupera_Senha dialogRecuperaSenha = new Dialog_Recupera_Senha();
+                dialogRecuperaSenha.show(getSupportFragmentManager(), "Recupera_Senha");
+            }
+        });
+
         TextView btnSemCadastro = findViewById(R.id.btnSemCadastro);
         btnSemCadastro.setOnClickListener(new View.OnClickListener() {
             @Override

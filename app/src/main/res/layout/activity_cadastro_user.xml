@@ -25,6 +25,8 @@
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
         android:fillViewport="true">
 
         <LinearLayout
@@ -210,18 +212,52 @@
 
 
             <android.support.constraint.ConstraintLayout
-                android:layout_width="wrap_content"
-                android:layout_height="100dp">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/TextoCadastro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginBottom="2dp"
+                    android:text="Estado:"
+                    app:layout_constraintBottom_toTopOf="@+id/spinner_estados_user"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    style="@style/TextoCadastro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="173dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginBottom="2dp"
+                    android:text="Cidade:"
+                    app:layout_constraintBottom_toTopOf="@+id/spinner_cidades_user"
+                    app:layout_constraintEnd_toEndOf="parent" />
 
                 <Spinner
                     android:id="@+id/spinner_estados_user"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp" />
+                    android:layout_width="150dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginLeft="12dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <Spinner
                     android:id="@+id/spinner_cidades_user"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp" />
+                    android:layout_width="200dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/spinner_estados_user"
+                    app:layout_constraintTop_toTopOf="parent" />
 
 
             </android.support.constraint.ConstraintLayout>

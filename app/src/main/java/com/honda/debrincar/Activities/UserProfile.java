@@ -45,6 +45,7 @@ public class UserProfile extends AppCompatActivity {
 
     private TextView nomeProfile;
     private TextView tipoUserProfile;
+    private TextView localUserProfile;
     private CircleImageView fotoUserProfile;
 
     private String userId;
@@ -76,6 +77,7 @@ public class UserProfile extends AppCompatActivity {
         nomeProfile = findViewById(R.id.nome_userprofile);
         tipoUserProfile = findViewById(R.id.tipo_userprofile);
         fotoUserProfile = findViewById(R.id.foto_userprofile);
+        localUserProfile = findViewById(R.id.cidade_user_profile);
 
         userId = FirebaseMetodos.getUserId();
         userRef = FirebaseMetodos.getFirebaseData();
@@ -86,6 +88,9 @@ public class UserProfile extends AppCompatActivity {
                 if(dataSnapshot.exists()) {
                     userMapa = (HashMap<String, Object>) dataSnapshot.getValue();
                     String nome = userMapa.get("nome").toString() + " " + userMapa.get("sobrenome").toString();
+                    String local = userMapa.get("cidade").toString() + " - " +
+                            userMapa.get("estado").toString();
+                    localUserProfile.setText(local);
                     nomeProfile.setText(nome);
                     isPessoaFisica = userMapa.get("PessoaFisica").toString();
                     if(isPessoaFisica.equals("false")){
