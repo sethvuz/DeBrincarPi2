@@ -163,12 +163,11 @@
             android:text="Descrição:" />
 
         <TextView
-            android:id="@+id/descricao_pagina_anuncio_doa"
+            android:id="@+id/descricao_pagina_anuncio_sol"
             style="@style/Descricao_pagAnuncio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/caixa_anuncio_type"
-            android:backgroundTint="@color/cinzaClaro"
+            android:background="@drawable/fundo_caixa_cinza_anuncio"
             android:text="Ursinho com pouco tempo de uso..." />
 
         <android.support.constraint.ConstraintLayout

@@ -121,13 +121,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activities.BlankFragmentActivity"
+            android:name=".Activities.ListaFavoritosActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustResize|adjustPan">>
-            <intent-filter>
-                <action android:name="TELA_BLANKACTIVITY_ACT" />
+            android:windowSoftInputMode="stateHidden|adjustResize|adjustPan">
 
-                <category android:name="TELA_BLANKACTIVITY_CTG" />
+            <intent-filter>
+                <action android:name="TELA_LISTAFAVORITOS_ACT" />
+
+                <category android:name="TELA_LISTAFAVORITOS_CTG" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
 

@@ -154,7 +154,7 @@
                 style="@style/TextoCadastro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="E-mail:" />
+                android:text="Endereço:" />
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"

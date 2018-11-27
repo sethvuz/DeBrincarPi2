@@ -36,8 +36,9 @@ public class TelaLogin extends AppCompatActivity {
         btnSemCadastro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                preCadastro_dialog dialog = new preCadastro_dialog();
-                dialog.show(getSupportFragmentManager(), "Opção");
+               Intent intent = new Intent("CADASTRO_ACT");
+               intent.addCategory("CADASTRO_CTG");
+               startActivity(intent);
             }
         });
 

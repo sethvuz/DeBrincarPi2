@@ -30,6 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PaginaAnuncioDoaFragment extends Fragment {
+    private static final String TAG = "PaginaAnuncioDoaFragment";
 
 
     private Anuncio anuncio;
@@ -116,7 +117,7 @@ public class PaginaAnuncioDoaFragment extends Fragment {
                         favoritoView.setImageDrawable(coracaoAmarelo);
                         isFavorito = true;
                         databaseReference.child(getString(R.string.db_no_favoritos)).child(userId)
-                                .child(anuncio.getAnuncioID()).setValue(anuncio.getAnuncioID()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                .child(anuncio.getAnuncioID()).updateChildren(anuncio.getMapaDados()).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
                                 Toast.makeText(getActivity(), "Anuncio salvo em Favoritos!", Toast.LENGTH_LONG).show();

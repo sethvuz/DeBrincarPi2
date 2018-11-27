@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -57,6 +59,11 @@ public class CadastroUser extends AppCompatActivity {
     private EditText confSenha;
     private Uri imagemUsuario;
 
+    private TextInputLayout sobrenomeContainer,
+            cpfContainer,
+            cnpjContainer,
+            descricaoContainer;
+
     private StorageReference ImagemContaUsuarioRef;
 
     private ProgressBar progressBar;
@@ -66,11 +73,35 @@ public class CadastroUser extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_user);
 
-        //Captura o dado passado pela intent do DialogFragment e salva
-        //na variável userType
-        Intent intent = getIntent();
-        Bundle bundle = intent.getExtras();
-        userType = bundle.getString("userType");
+        RadioButton radioButtonPF = findViewById(R.id.rb_pessoafisica);
+        radioButtonPF.setChecked(true);
+
+        //SETUP DOS CAMPOS
+        //Todos
+        nome = findViewById(R.id.cad_nome);
+        endereco = findViewById(R.id.cad_endereco);
+        cep = findViewById(R.id.cad_cep);
+        telefone = findViewById(R.id.cad_telefone);
+
+
+        //Pessoa Física
+        sobrenome = findViewById(R.id.cad_sobrenome);
+        sobrenomeContainer = findViewById(R.id.cad_sobrenome_container);
+        cpf = findViewById(R.id.cad_cpf);
+        cpfContainer = findViewById(R.id.cad_cpf_container);
+
+        //Pessoa Jurídica
+        cnpj = findViewById(R.id.cad_cnpj);
+        cnpjContainer = findViewById(R.id.cad_cnpj_container);
+        descricao = findViewById(R.id.cad_descricao);
+        descricaoContainer = findViewById(R.id.cad_descricao_container);
+
+
+
+        //CAMPOS PARA LOGIN
+        email = findViewById(R.id.cad_email);
+        senha = findViewById(R.id.cad_senha);
+        confSenha = findViewById(R.id.cad_conf_senha);
 
         //CARREGAR IMAGEM
         CircleImageView userImage = findViewById(R.id.set_imagem);
@@ -86,28 +117,6 @@ public class CadastroUser extends AppCompatActivity {
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //SETUP DOS CAMPOS
-                //Todos
-                nome = findViewById(R.id.cad_nome);
-                endereco = findViewById(R.id.cad_endereco);
-                cep = findViewById(R.id.cad_cep);
-                telefone = findViewById(R.id.cad_telefone);
-
-
-                //Pessoa Física
-                sobrenome = findViewById(R.id.cad_sobrenome);
-                cpf = findViewById(R.id.cad_cpf);
-
-                //Pessoa Jurídica
-                cnpj = findViewById(R.id.cad_cnpj);
-                descricao = findViewById(R.id.cad_descricao);
-
-
-
-                //CAMPOS PARA LOGIN
-                email = findViewById(R.id.cad_email);
-                senha = findViewById(R.id.cad_senha);
-                confSenha = findViewById(R.id.cad_conf_senha);
 
                 usuario.setEmail(email.getText().toString());
                 usuario.setSenha(senha.getText().toString());
@@ -115,11 +124,23 @@ public class CadastroUser extends AppCompatActivity {
                 if (usuario.getSenha().equals(confirmaSenha)){
 
                     //SETA OS DADOS DO USUÁRIO.
-                    usuario.setNome(nome.getText().toString());
-                    usuario.setSobrenome(sobrenome.getText().toString());
-                    usuario.setCpf(cpf.getText().toString());
-                    usuario.setEndereco(endereco.getText().toString());
-                    usuario.setCep(cep.getText().toString());
+                    if(userType.equals(getString(R.string.profile_tipo_pessoa))) {
+                        usuario.setPessoaFisica(true);
+                        usuario.setNome(nome.getText().toString());
+                        usuario.setSobrenome(sobrenome.getText().toString());
+                        usuario.setCpf(cpf.getText().toString());
+                        usuario.setEndereco(endereco.getText().toString());
+                        usuario.setCep(cep.getText().toString());
+                        usuario.setTelefone(telefone.getText().toString());
+                    }else {
+                        usuario.setPessoaFisica(false);
+                        usuario.setNome(nome.getText().toString());
+                        usuario.setCnpj(cnpj.getText().toString());
+                        usuario.setDescricao(descricao.getText().toString());
+                        usuario.setEndereco(endereco.getText().toString());
+                        usuario.setCep(cep.getText().toString());
+                        usuario.setTelefone(telefone.getText().toString());
+                    }
 
                     //FUNÇÃO DE CADASTRO DO USUÁRIO NO FIREBASE.
                     cadastraUsuario(usuario.getEmail(), usuario.getSenha());
@@ -131,22 +152,22 @@ public class CadastroUser extends AppCompatActivity {
             }
         });
 
+    }
 
+    public void setPessoaFisica(View view){
+        sobrenomeContainer.setVisibility(View.VISIBLE);
+        cpfContainer.setVisibility(View.VISIBLE);
+        cnpjContainer.setVisibility(View.GONE);
+        descricaoContainer.setVisibility(View.GONE);
+        userType = getString(R.string.profile_tipo_pessoa);
+    }
 
-
-        /*FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-        //Define qual fragmente será inflado: Pessoa Física ou Instituição
-        if(userType.equals("pessoafisica")){
-            PessoaFragment pessoaFragment = new PessoaFragment();
-            fragmentTransaction.add(R.id.container_cadastro, pessoaFragment);
-            fragmentTransaction.commit();
-        } else {
-            InstituicaoFragment instituicaoFragment = new InstituicaoFragment();
-            fragmentTransaction.add(R.id.container_cadastro, instituicaoFragment);
-            fragmentTransaction.commit();
-        }*/
+    public void setPessoaJuridica(View view){
+        sobrenomeContainer.setVisibility(View.GONE);
+        cpfContainer.setVisibility(View.GONE);
+        cnpjContainer.setVisibility(View.VISIBLE);
+        descricaoContainer.setVisibility(View.VISIBLE);
+        userType = getString(R.string.profile_tipo_instituicao);
     }
 
     public void checkVersaoAndroid(){

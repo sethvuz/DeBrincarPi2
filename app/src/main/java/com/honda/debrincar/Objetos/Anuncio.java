@@ -12,7 +12,7 @@ public class Anuncio {
 
     private String anuncioID, userID;
     private String titulo, descricao, categoria;
-    private int quantidade = 1, prazo = 0;
+    private int quantidade = 1, prazo = 0, arrecadado = 0;
     private String dataCriacao, dataFim;
     private String telefone, endereco, cidade;
 
@@ -132,6 +132,14 @@ public class Anuncio {
         this.prazo = prazo;
     }
 
+    public int getArrecadado() {
+        return arrecadado;
+    }
+
+    public void setArrecadado(int arrecadado) {
+        this.arrecadado = arrecadado;
+    }
+
     public Map<String, Object> getMapaDados(){
         HashMap<String, Object> dados = new HashMap<>();
         dados.put("titulo", titulo);
@@ -141,12 +149,12 @@ public class Anuncio {
         dados.put("endereco", endereco);
         //dados.put("cidade", cidade);
         dados.put("dataCriacao", dataCriacao);
+        dados.put("quantidade", quantidade);
+        dados.put("arrecadado", arrecadado);
         dados.put("id", anuncioID);
         dados.put("userid",userID);
+        dados.put("prazo", prazo);
 
-        if(anuncioType.equals("campanha")){
-            dados.put("prazo", prazo);
-        }
 
         return dados;
     }

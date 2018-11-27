@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ProgressBar;
+import android.widget.Switch;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -163,10 +164,11 @@ public final class FirebaseMetodos {
      * @param context
      */
 
-    public static void postarAnuncio(Anuncio anuncio, Context context, ProgressBar progressBar) {
+    private static void postarAnuncio(Anuncio anuncio, Context context, ProgressBar progressBar) {
 
         final Context mContext = context;
         final ProgressBar pb = progressBar;
+        String anuncioType = anuncio.getAnuncioType();
 
         DatabaseReference dataRef = FirebaseMetodos.getFirebaseData();
         String anuncioId = anuncio.getAnuncioID();
@@ -178,7 +180,20 @@ public final class FirebaseMetodos {
         toFirebase.put(context.getString(R.string.db_no_anuncios) + "/" + anuncioId, anuncioData);
         toFirebase.put(context.getString(R.string.db_no_anuncios_imagens) + "/" + anuncioId, anuncio.getImagensUrls());
         toFirebase.put(context.getString(R.string.db_no_usuario_anuncios) + "/" + userId + "/" + anuncioId, anuncioId);
-        toFirebase.put(context.getString(R.string.anun_doacao) + "/" + anuncioId, anuncioId);
+
+        switch(anuncioType){
+            case "doacao":
+                toFirebase.put(context.getString(R.string.anun_doacao) + "/" + anuncioId, anuncioId);
+                break;
+            case "solicitacao":
+                toFirebase.put(context.getString(R.string.anun_solicitacao) + "/" + anuncioId, anuncioId);
+                break;
+            case "campanha":
+                toFirebase.put(context.getString(R.string.anun_campanha) + "/" + anuncioId, anuncioId);
+                break;
+                default:
+                    break;
+        }
 
         dataRef.updateChildren(toFirebase).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

@@ -5,24 +5,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.BlankFragmentActivity"
-    android:background="@drawable/background_1080p_claro">
+    tools:context=".Activities.ListaFavoritosActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <include layout="@layout/app_bar_layout_transp_backbtn"/>
-
-        <FrameLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/blank_activity_container"/>
+            android:orientation="vertical">
 
-    </LinearLayout>
+            <include layout="@layout/app_bar_layout_transp_backbtn"/>
 
+            <include layout="@layout/fragment_container_layout"/>
 
+            <include layout="@layout/listview"/>
 
+        </LinearLayout>
 
 </RelativeLayout>

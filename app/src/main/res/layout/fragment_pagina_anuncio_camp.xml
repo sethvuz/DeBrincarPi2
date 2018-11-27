@@ -82,7 +82,7 @@
 
 
         <TextView
-            android:id="@+id/periodo_anuncio_camp"
+            android:id="@+id/prazo_anuncio_camp"
             style="@style/AnuncioBtn"
             android:layout_width="170dp"
             android:layout_height="wrap_content"

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        tools:layout_editor_absoluteX="31dp"
+        tools:layout_editor_absoluteY="3dp"
+        android:orientation="vertical">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/dialog_imagem_usuario"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/carinha_adc_foto"
+        android:layout_gravity="center_horizontal"/>
+
+
+            <TextView
+                android:id="@+id/dialog_nome_usuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:text="Você é:"
+                style="@style/TextoCadastro"/>
+            <TextView
+                android:id="@+id/dialog_tipo_usuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:text="Pessoa Física"
+                android:fontFamily="casual"
+                style="@style/TextoCadastro"/>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp">
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="110dp"
+            android:layout_marginLeft="110dp"
+            android:background="@drawable/ic_location_drawable"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/dialog_local_usuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="110dp"
+            android:layout_marginRight="110dp"
+            android:layout_marginBottom="4dp"
+            android:text="Taguatinga - Distrito Federal"
+            android:textAlignment="center"
+            android:textSize="10sp"
+            android:textStyle="italic|bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView4" />
+    </android.support.constraint.ConstraintLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/azulEscuro"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"/>
+
+
+
+            <Button
+                android:id="@+id/btn_seguir_usuario"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="10dp"
+                android:text="SEGUIR"
+                android:background="@drawable/fundo_botao_azul_cadastrar"
+                android:textStyle="bold"
+                android:textColor="@color/amareloEscuro"
+                android:elevation="30dp"/>
+
+            <Button
+                android:id="@+id/btn_ver_anuncios"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="10dp"
+                android:text="VER SEUS ANÚNCIOS"
+                android:background="@drawable/fundo_botao_amarelo_cadastrar"
+                android:textStyle="bold"
+                android:textColor="@color/azulMedio"
+                android:elevation="30dp"/>
+
+
+</LinearLayout>

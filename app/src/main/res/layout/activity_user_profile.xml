@@ -10,9 +10,7 @@
     android:orientation="vertical">
 
 
-
-
-                <include layout="@layout/profile_container_viewpager"/>
+                <include layout="@layout/fragment_container_layout"/>
 
 
                 <LinearLayout
@@ -30,7 +28,7 @@
                             android:layout_height="200dp">
 
                             <de.hdodenhof.circleimageview.CircleImageView
-                                android:id="@+id/circleImageView"
+                                android:id="@+id/foto_userprofile"
                                 android:layout_width="100dp"
                                 android:layout_height="100dp"
                                 android:layout_marginStart="8dp"
@@ -44,7 +42,7 @@
                                 app:layout_constraintTop_toTopOf="parent" />
 
                             <TextView
-                                android:id="@+id/textView3"
+                                android:id="@+id/nome_userprofile"
                                 style="@style/TituloAnuncio"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -57,9 +55,10 @@
                                 android:textSize="15sp"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/circleImageView" />
+                                app:layout_constraintTop_toBottomOf="@+id/foto_userprofile" />
 
                             <TextView
+                                android:id="@+id/tipo_userprofile"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
@@ -73,7 +72,7 @@
                                 android:textStyle="bold"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/textView3" />
+                                app:layout_constraintTop_toBottomOf="@+id/nome_userprofile" />
 
                             <TextView
                                 android:id="@+id/textView4"
@@ -118,7 +117,7 @@
                         </android.support.constraint.ConstraintLayout>
 
 
-                        <include layout="@layout/lista_anuncios_layout"/>
+                        <include layout="@layout/listview"/>
 
                 </LinearLayout>
 

@@ -46,7 +46,7 @@
 
     <!-- Tipos de usuário -->
     <string name="profile_tipo_pessoa">Pessoa Física</string>
-    <string name="profile_tipo_instituicao">Instituição</string>
+    <string name="profile_tipo_instituicao">Pessoa Jurídica</string>
 
     <!-- Tipos de anúncio -->
     <string name="anun_doacao">doacao</string>
@@ -60,7 +60,7 @@
     <!-- Nós no Firebase Database -->
     <string name="db_no_usuario">usuario</string>
     <string name="db_no_pessoafisica">usuario_pessoafisica</string>
-    <string name="db_no_instituicao">usuario_instituicao</string>
+    <string name="db_no_instituicao">usuario_pessoajuridica</string>
     <string name="db_no_anuncios">anuncios</string>
     <string name="db_no_anuncios_imagens">anuncios_imagens</string>
     <string name="db_no_favoritos">favoritos</string>
@@ -100,10 +100,11 @@
     <string name="op_profile_favoritos">Favoritos</string>
     <string name="op_profile_seguidores">Seguidores</string>
 
-    <!-- Strings para TargetFragment -->
-    <string name="targetfragment">target_fragment</string>
-    <string name="targetfragment_favoritos">favoritos</string>
-    <string name="targetfragment_seguidores">seguidores</string>
+    <!-- Strings para TargetLista -->
+    <string name="targetLista">target_lista</string>
+    <string name="targetlista_favoritos">favoritos</string>
+    <string name="targetlista_anuncadastrados">anuncioscadastrados</string>
+    <string name="targetlista_seguidores">seguidores</string>
 
     <string name="seguir_btn">SEGUIR</string>
     <string name="seguindo_btn">SEGUINDO</string>

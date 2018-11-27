@@ -65,6 +65,7 @@ public class PrincipalAnuncios extends AppCompatActivity {
     private DatabaseReference userRef;
     private FirebaseAuth userAuth;
     private String userID;
+    private String isPessoaFisica;
 
 
 
@@ -101,6 +102,7 @@ public class PrincipalAnuncios extends AppCompatActivity {
                     String nomeCompleto = dataSnapshot.child("nome").getValue().toString()
                             + dataSnapshot.child("sobrenome").getValue().toString();
                     String imagemPerfil = dataSnapshot.child("imagemUsuarioUrl").getValue().toString();
+                    isPessoaFisica = dataSnapshot.child("PessoaFisica").getValue().toString();
 
                     //Seta o nome e a imagem do usuário no menu de navegação
                     menuNomeUser.setText(nomeCompleto);
@@ -140,6 +142,10 @@ public class PrincipalAnuncios extends AppCompatActivity {
                                 anuncioData.get("dataCriacao").toString());
                         anuncio.setAnuncioID(anuncioData.get("id").toString());
                         anuncio.setUserID(anuncioData.get("userid").toString());
+                        //anuncio.setQuantidade(Integer.parseInt(anuncioData.get("quantidade").toString()));
+                        //anuncio.setArrecadado(Integer.parseInt(anuncioData.get("arrecadado").toString()));
+                        //anuncio.setPrazo(Integer.parseInt(anuncioData.get("prazo").toString()));
+
                         listaAnuncios.add(anuncio);
                     }
 
@@ -155,10 +161,6 @@ public class PrincipalAnuncios extends AppCompatActivity {
             });
         }
 
-
-
-
-
         /*
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -168,7 +170,6 @@ public class PrincipalAnuncios extends AppCompatActivity {
         fragmentTransaction.add(R.id.container_principal, anunciosFragment);
         fragmentTransaction.commit();
         */
-
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -249,28 +250,25 @@ public class PrincipalAnuncios extends AppCompatActivity {
 
             case R.id.nav_ins_anuncios:
                 preCadastro_dialog_anuncio dialog = new preCadastro_dialog_anuncio();
+                dialog.setPessoaFisica(isPessoaFisica.equals("true"));
                 dialog.show(getSupportFragmentManager(), "Opção");
                 drawerLayout.closeDrawer(Gravity.START, true);
                 break;
 
             case R.id.nav_favoritos:
-                String targetFragmentfav = getString(R.string.targetfragment_favoritos);
-                Bundle bundlefav = new Bundle();
-                bundlefav.putString(getString(R.string.targetfragment), getString(R.string.targetfragment_favoritos));
-                Intent favIntent = new Intent("TELA_BLANKACTIVITY_ACT");
-                favIntent.addCategory("TELA_BLANKACTIVITY_ACT");
-                favIntent.putExtras(bundlefav);
-                startActivity(favIntent);
+                Intent intentFavoritos = new Intent("TELA_LISTAFAVORITOS_ACT");
+                intentFavoritos.addCategory("TELA_LISTAFAVORITOS_CTG");
+                intentFavoritos.putExtra(getString(R.string.targetLista), getString(R.string.targetlista_favoritos));
+                startActivity(intentFavoritos);
+                drawerLayout.closeDrawer(Gravity.START, true);
                 break;
 
             case R.id.nav_seguidores:
-                String targetFragmentseg = getString(R.string.targetfragment_seguidores);
-                Bundle bundleseg = new Bundle();
-                bundleseg.putString(getString(R.string.targetfragment), getString(R.string.targetfragment_seguidores));
-                Intent segIntent = new Intent("TELA_BLANKACTIVITY_ACT");
-                segIntent.addCategory("TELA_BLANKACTIVITY_ACT");
-                segIntent.putExtras(bundleseg);
-                startActivity(segIntent);
+                Intent intentSeguidores = new Intent("TELA_LISTAFAVORITOS_ACT");
+                intentSeguidores.addCategory("TELA_LISTAFAVORITOS_CTG");
+                intentSeguidores.putExtra(getString(R.string.targetLista), getString(R.string.targetlista_seguidores));
+                startActivity(intentSeguidores);
+                drawerLayout.closeDrawer(Gravity.START, true);
                 break;
 
             case R.id.nav_minha_conta:
@@ -307,6 +305,7 @@ public class PrincipalAnuncios extends AppCompatActivity {
         if (isOnFragment){
             getSupportFragmentManager().beginTransaction().remove(fragmentoAtual).commit();
             getSupportFragmentManager().popBackStack();
+            isOnFragment = false;
         } else super.onBackPressed();
     }
 }

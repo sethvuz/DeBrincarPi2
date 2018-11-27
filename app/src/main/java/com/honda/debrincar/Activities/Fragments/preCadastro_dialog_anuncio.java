@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.honda.debrincar.R;
 
@@ -18,20 +19,25 @@ public class preCadastro_dialog_anuncio extends DialogFragment {
 
     private static final String TAG = "preCad_dialog_anuncio";
 
-    //Widgets
-    private Button btnDoacao, btnSolicitacao, btnCampanha;
-
     //Var
-    private String anuncioType;
+    private Boolean isPessoaFisica = false;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.dialog_precadastro_anuncio, container, false);
 
-        btnDoacao = view.findViewById(R.id.btn_cad_doacao);
-        btnSolicitacao = view.findViewById(R.id.btn_cad_solicitacao);
-        btnCampanha = view.findViewById(R.id.btn_cad_campanha);
+        Button btnDoacao = view.findViewById(R.id.btn_cad_doacao);
+        Button btnSolicitacao = view.findViewById(R.id.btn_cad_solicitacao);
+        Button btnCampanha = view.findViewById(R.id.btn_cad_campanha);
+        TextView msgCamp = view.findViewById(R.id.msg_cannot_camp);
+
+        if(isPessoaFisica){
+            btnCampanha.setBackground(getActivity().getResources().getDrawable(R.drawable.fundo_botao_cinza_inativo_anuncio));
+            btnCampanha.setEnabled(false);
+            msgCamp.setVisibility(View.VISIBLE);
+
+        }
 
         btnDoacao.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +80,10 @@ public class preCadastro_dialog_anuncio extends DialogFragment {
 
 
         return view;
+    }
+
+    public void setPessoaFisica(Boolean pessoaFisica) {
+        isPessoaFisica = pessoaFisica;
     }
 
     @Override

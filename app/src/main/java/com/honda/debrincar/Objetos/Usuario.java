@@ -18,6 +18,7 @@ public class Usuario {
     private String cep;
     private String cidade;
     private String estado;
+    private String telefone;
 
     private Boolean isPessoaFisica = true;
 
@@ -157,6 +158,14 @@ public class Usuario {
         isPessoaFisica = pessoaFisica;
     }
 
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
     public Map<String, Object> getMapaDados(){
         HashMap<String, Object> dados = new HashMap<>();
 
@@ -166,6 +175,7 @@ public class Usuario {
             dados.put("cpf", cpf);
             dados.put("cep", cep);
             dados.put("endereco", endereco);
+            dados.put("telefone", telefone);
             dados.put("PessoaFisica", isPessoaFisica);
         } else {
             dados.put("nome", nome);
@@ -173,6 +183,22 @@ public class Usuario {
             dados.put("cnpj", cnpj);
             dados.put("cep", cep);
             dados.put("endereco", endereco);
+            dados.put("telefone", telefone);
+            dados.put("PessoaFisica", isPessoaFisica);
+        }
+        return dados;
+    }
+
+    public Map<String, Object> getMapaDadosSeguidor(){
+        HashMap<String, Object> dados = new HashMap<>();
+
+        if(isPessoaFisica){
+            dados.put("nome", nome);
+            dados.put("sobrenome", sobrenome);
+            dados.put("PessoaFisica", isPessoaFisica);
+        } else {
+            dados.put("nome", nome);
+            dados.put("descricao", descricao);
             dados.put("PessoaFisica", isPessoaFisica);
         }
         return dados;
