@@ -103,7 +103,8 @@
     <!-- Strings para TargetLista -->
     <string name="targetLista">target_lista</string>
     <string name="targetlista_favoritos">favoritos</string>
-    <string name="targetlista_anuncadastrados">anuncioscadastrados</string>
+    <string name="targetlista_anunciosdastrados">anuncioscadastrados</string>
+    <string name="targetlista_userid">userid</string>
     <string name="targetlista_seguidores">seguidores</string>
 
     <string name="seguir_btn">SEGUIR</string>

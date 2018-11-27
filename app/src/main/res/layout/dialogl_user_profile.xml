@@ -3,7 +3,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10dp"
         tools:layout_editor_absoluteX="31dp"
@@ -51,8 +51,8 @@
             android:id="@+id/imageView4"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_marginStart="110dp"
-            android:layout_marginLeft="110dp"
+            android:layout_marginStart="75dp"
+            android:layout_marginLeft="75dp"
             android:background="@drawable/ic_location_drawable"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -61,8 +61,8 @@
             android:id="@+id/dialog_local_usuario"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="110dp"
-            android:layout_marginRight="110dp"
+            android:layout_marginEnd="65dp"
+            android:layout_marginRight="65dp"
             android:layout_marginBottom="4dp"
             android:text="Taguatinga - Distrito Federal"
             android:textAlignment="center"
@@ -86,7 +86,7 @@
 
             <Button
                 android:id="@+id/btn_seguir_usuario"
-                android:layout_width="match_parent"
+                android:layout_width="300dp"
                 android:layout_height="30dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
@@ -101,7 +101,7 @@
 
             <Button
                 android:id="@+id/btn_ver_anuncios"
-                android:layout_width="match_parent"
+                android:layout_width="300dp"
                 android:layout_height="30dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"

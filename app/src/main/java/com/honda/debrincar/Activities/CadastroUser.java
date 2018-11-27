@@ -30,10 +30,13 @@ import com.google.firebase.storage.UploadTask;
 import com.honda.debrincar.Objetos.Usuario;
 import com.honda.debrincar.R;
 import com.honda.debrincar.Utilitarios.FirebaseMetodos;
+import com.honda.debrincar.Utilitarios.WebServiceData;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -41,6 +44,9 @@ public class CadastroUser extends AppCompatActivity {
 
     //Variável que define se o usuário é Pessoa Física ou Instituição
     public String userType;
+
+    public static String dataLocal;
+    public static String[] estadosBrasil = new String[27];
 
     private final static String TAG = "CADASTRO_USUARIO";
 
@@ -80,7 +86,7 @@ public class CadastroUser extends AppCompatActivity {
         //Todos
         nome = findViewById(R.id.cad_nome);
         endereco = findViewById(R.id.cad_endereco);
-        cep = findViewById(R.id.cad_cep);
+        //cep = findViewById(R.id.cad_cep);
         telefone = findViewById(R.id.cad_telefone);
 
 
@@ -130,7 +136,7 @@ public class CadastroUser extends AppCompatActivity {
                         usuario.setSobrenome(sobrenome.getText().toString());
                         usuario.setCpf(cpf.getText().toString());
                         usuario.setEndereco(endereco.getText().toString());
-                        usuario.setCep(cep.getText().toString());
+                        //usuario.setCep(cep.getText().toString());
                         usuario.setTelefone(telefone.getText().toString());
                     }else {
                         usuario.setPessoaFisica(false);
@@ -323,4 +329,5 @@ public class CadastroUser extends AppCompatActivity {
         });
 
     }
+
 }

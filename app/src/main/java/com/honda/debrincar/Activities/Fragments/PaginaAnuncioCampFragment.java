@@ -21,6 +21,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
+import com.honda.debrincar.Activities.Dialog_user_profile;
 import com.honda.debrincar.Objetos.Anuncio;
 import com.honda.debrincar.R;
 import com.honda.debrincar.Utilitarios.FirebaseMetodos;
@@ -104,6 +105,16 @@ public class PaginaAnuncioCampFragment extends Fragment {
         //Recupera o nome o usuário criador do anúncio
         anuncioAutor = view.findViewById(R.id.nome_autor_anuncio_camp);
         recuperaUserAnuncioData();
+
+        //ABRE DIAOLG COM O PERFIL DO AUTO DO ANÚNCIO
+        anuncioAutor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Dialog_user_profile dialogUser = new Dialog_user_profile();
+                dialogUser.setUsuarioId(userAnuncioId);
+                dialogUser.show(getActivity().getSupportFragmentManager(), "usuario_profile");
+            }
+        });
 
 
 

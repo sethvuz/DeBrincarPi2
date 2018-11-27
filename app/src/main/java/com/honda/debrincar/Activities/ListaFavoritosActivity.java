@@ -39,7 +39,7 @@ public class ListaFavoritosActivity extends AppCompatActivity {
     private DatabaseReference anunciosRef;
     private List<Anuncio> listaAnuncios = new ArrayList<>();
     private List<String> listaseguidores = new ArrayList<>();
-    private String userId;
+    private String userId,targetUserId;
     private String listaAtual;
     private Boolean isOnFragment = false;
     private Fragment fragmentoAtual;
@@ -51,11 +51,13 @@ public class ListaFavoritosActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         listaAtual = intent.getStringExtra(getString(R.string.targetLista));
+        if(listaAtual.equals(getString(R.string.targetlista_anunciosdastrados))){
+            targetUserId = intent.getStringExtra(getString(R.string.targetlista_userid));
+        }
 
         Toolbar mToolbar = findViewById(R.id.toolbar_com_backbtn);
         ImageView backBtn = mToolbar.findViewById(R.id.back_btn_appbar);
         TextView toolbarTitulo = mToolbar.findViewById(R.id.titulo_appbar_backbtn);
-        toolbarTitulo.setText("Favoritos");
 
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,17 +98,15 @@ public class ListaFavoritosActivity extends AppCompatActivity {
         anunciosRef.child(getString(R.string.db_no_seguidores)).child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String seguidorId;
+
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
-                    seguidorId = dataSnapshot.getValue().toString();
+                    String seguidorId = ds.getValue().toString();
                     listaseguidores.add(seguidorId);
                 }
                 SeguidoresAdapter seguidoresAdapter = new SeguidoresAdapter(ListaFavoritosActivity.this, R.layout.item_usuario_seguidor, listaseguidores);
                 listView.setAdapter(seguidoresAdapter);
                 setupClickListenersSeguidores(listaseguidores);
             }
-
-
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -123,9 +123,9 @@ public class ListaFavoritosActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //String anunTipo = anuncios.get(position).getAnuncioType();
-
-
+                Dialog_user_profile dialogUser = new Dialog_user_profile();
+                dialogUser.setUsuarioId(seguidores.get(position));
+                dialogUser.show(getSupportFragmentManager(), "usuario_profile");
             }
         });
     }
@@ -166,7 +166,7 @@ public class ListaFavoritosActivity extends AppCompatActivity {
     }
 
     private void setupAnunciosCadastrados(){
-        anunciosRef.child(getString(R.string.db_no_usuario_anuncios)).child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+        anunciosRef.child(getString(R.string.db_no_usuario_anuncios)).child(targetUserId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 

@@ -3,15 +3,32 @@ package com.honda.debrincar.Utilitarios;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.SparseArray;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
 
 public final class ConfiguraçãoApp {
+
+    public static HashMap<String, Integer> mapaEstados = new HashMap<>();
+    public static SparseArray<List<String>> mapaCidades = new SparseArray<>();
+    public static List<String> estados = new ArrayList<>();
+
+
+    public static void setupEstadosCidades(){
+        WebServiceData webServiceData = new WebServiceData();
+        webServiceData.execute();
+
+    }
+
 
 
 /*-------------------------------FUNÇÕES COM FRAGMENTOS------------------------------------------------------*/

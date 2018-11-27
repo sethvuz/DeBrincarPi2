@@ -1,6 +1,7 @@
 package com.honda.debrincar.Activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -57,6 +58,7 @@ public class UserProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
+
 
         Toolbar mToolbar = findViewById(R.id.toolbar_com_backbtn);
         ImageView backBtn = mToolbar.findViewById(R.id.back_btn_appbar);
@@ -150,7 +152,8 @@ public class UserProfile extends AppCompatActivity {
                     case 1:
                         Intent intentAnuncios = new Intent("TELA_LISTAFAVORITOS_ACT");
                         intentAnuncios.addCategory("TELA_LISTAFAVORITOS_CTG");
-                        intentAnuncios.putExtra(getString(R.string.targetLista), getString(R.string.targetlista_anuncadastrados));
+                        intentAnuncios.putExtra(getString(R.string.targetLista), getString(R.string.targetlista_anunciosdastrados));
+                        intentAnuncios.putExtra(getString(R.string.targetlista_userid), userId);
                         startActivity(intentAnuncios);
                         break;
                     case 2:

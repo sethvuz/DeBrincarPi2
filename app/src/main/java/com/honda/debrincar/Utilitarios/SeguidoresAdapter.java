@@ -43,7 +43,7 @@ public class SeguidoresAdapter extends ArrayAdapter<String> {
 
         if (listItemView == null){
 
-            listItemView = LayoutInflater.from(getContext()).inflate(R.layout.item_anuncio_layout, parent, false);
+            listItemView = LayoutInflater.from(getContext()).inflate(R.layout.item_usuario_seguidor, parent, false);
 
         }
 
