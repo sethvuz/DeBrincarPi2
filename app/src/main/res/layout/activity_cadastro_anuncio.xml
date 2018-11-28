@@ -6,7 +6,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Activities.CadastroAnuncio"
     android:clickable="true"
-    android:id="@+id/framelayout_cad_doa">
+    android:id="@+id/framelayout_cad_doa"
+    android:background="@drawable/background_1080p_claro">
 
     <ProgressBar
         android:layout_width="100dp"
@@ -190,13 +191,13 @@
                     android:layout_marginBottom="5dp"
                     android:text="Quantidade:"
                     android:textColor="@color/azulEscuro"
-                    app:layout_constraintBottom_toTopOf="@+id/num_quantidade_cad_doa"
+                    app:layout_constraintBottom_toTopOf="@+id/num_quantidade_solicitacao"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.512"
                     app:layout_constraintStart_toStartOf="@+id/guideline3" />
 
                 <TextView
-                    android:id="@+id/num_quantidade_cad_doa"
+                    android:id="@+id/num_quantidade_solicitacao"
                     style="@style/TextoCadastro"
                     android:layout_width="30dp"
                     android:layout_height="40dp"
@@ -217,7 +218,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <Button
-                    android:id="@+id/btn_menos_cad_doa"
+                    android:id="@+id/btn_menos"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="8dp"
@@ -230,11 +231,11 @@
                     android:textColor="@color/amareloEscuro"
                     android:textSize="35sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/num_quantidade_cad_doa"
+                    app:layout_constraintEnd_toStartOf="@+id/num_quantidade_solicitacao"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <Button
-                    android:id="@+id/btn_mais_cad_doa"
+                    android:id="@+id/btn_mais"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_marginStart="3dp"
@@ -246,7 +247,7 @@
                     android:textColor="@color/amareloEscuro"
                     android:textSize="25sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/num_quantidade_cad_doa"
+                    app:layout_constraintStart_toEndOf="@+id/num_quantidade_solicitacao"
                     app:layout_constraintTop_toTopOf="parent" />
 
 
@@ -276,7 +277,8 @@
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:id="@+id/spinner_prazo_camp_container">
+                android:id="@+id/spinner_prazo_camp_container"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/textView7"
@@ -327,7 +329,7 @@
 
 
             <EditText
-                android:id="@+id/cad_descricao_anuncio_doa"
+                android:id="@+id/msg_envia_solicitacao"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/descricao_box_alt"
                 android:layout_marginStart="@dimen/horizontal_margin_box_descricao"

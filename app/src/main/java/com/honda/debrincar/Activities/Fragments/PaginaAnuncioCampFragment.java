@@ -3,6 +3,7 @@ package com.honda.debrincar.Activities.Fragments;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -132,7 +133,7 @@ public class PaginaAnuncioCampFragment extends Fragment {
                         favoritoView.setImageDrawable(coracaoAmarelo);
                         isFavorito = true;
                         databaseReference.child(getString(R.string.db_no_favoritos)).child(userId)
-                                .child(anuncio.getAnuncioID()).setValue(anuncio.getAnuncioID()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                .child(anuncio.getAnuncioID()).setValue(anuncio.getMapaDados()).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
                                 Toast.makeText(getActivity(), "Anuncio salvo em Favoritos!", Toast.LENGTH_LONG).show();
@@ -215,13 +216,23 @@ public class PaginaAnuncioCampFragment extends Fragment {
         //SETUP DAS QUANTIDADES
         {
             TextView quantidadeAnun = view.findViewById(R.id.num_meta_camp);
-            TextView arrecadadoAnun = view.findViewById(R.id.num_arrecadados_sol);
+            TextView arrecadadoAnun = view.findViewById(R.id.num_arrecadados_camp);
             int quantidade = anuncioAtual.getQuantidade();
             int arrecadado = anuncioAtual.getArrecadado();
             arrecadadoAnun.setText(String.valueOf(arrecadado));
             quantidadeAnun.setText(String.valueOf(quantidade));
         }
 
+        Button solicitarBtn = view.findViewById(R.id.btn_solicitar_pag_anuncio_camp);
+        solicitarBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent("TELA_ENVIASOLICITACAO_ACT");
+                intent.addCategory("TELA_ENVIASOLICITACAO_CTG");
+                intent.putExtra("anuncioID", anuncioAtual.getAnuncioID());
+                startActivity(intent);
+            }
+        });
 
 
         return view;

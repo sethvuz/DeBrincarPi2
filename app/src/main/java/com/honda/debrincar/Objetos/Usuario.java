@@ -173,6 +173,7 @@ public class Usuario {
             dados.put("nome", nome);
             dados.put("sobrenome", sobrenome);
             dados.put("cpf", cpf);
+            dados.put("email", email);
             dados.put("estado", estado);
             dados.put("cidade", cidade);
             dados.put("endereco", endereco);
@@ -180,8 +181,10 @@ public class Usuario {
             dados.put("PessoaFisica", isPessoaFisica);
         } else {
             dados.put("nome", nome);
+            dados.put("sobrenome", "");
             dados.put("descricao", descricao);
             dados.put("cnpj", cnpj);
+            dados.put("email", email);
             dados.put("estado", estado);
             dados.put("cidade", cidade);
             dados.put("endereco", endereco);

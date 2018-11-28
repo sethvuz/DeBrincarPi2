@@ -81,7 +81,7 @@ public class CadastroAnuncio extends AppCompatActivity {
 
         final EditText titulo = findViewById(R.id.cad_titulo_anun_doa);
         final EditText endereco = findViewById(R.id.cad_endereco_anuncio_doa);
-        final EditText descricao = findViewById(R.id.cad_descricao_anuncio_doa);
+        final EditText descricao = findViewById(R.id.msg_envia_solicitacao);
         final ScrollView scrollView = findViewById(R.id.scroll_layout_cad_doa);
 
         //SETUP DOS SPINNERS
@@ -106,9 +106,9 @@ public class CadastroAnuncio extends AppCompatActivity {
 
         //SETUP DOS BOTÕES PARA DEFINIR QUANTIDADE
         {
-            final TextView quantidadeContainer = findViewById(R.id.num_quantidade_cad_doa);
-            final Button quantMais = findViewById(R.id.btn_mais_cad_doa);
-            final Button quantMenos = findViewById(R.id.btn_menos_cad_doa);
+            final TextView quantidadeContainer = findViewById(R.id.num_quantidade_solicitacao);
+            final Button quantMais = findViewById(R.id.btn_mais);
+            final Button quantMenos = findViewById(R.id.btn_menos);
 
             quantMais.setOnClickListener(new View.OnClickListener() {
                 @Override

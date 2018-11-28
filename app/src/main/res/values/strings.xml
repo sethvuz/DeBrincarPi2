@@ -66,6 +66,7 @@
     <string name="db_no_favoritos">favoritos</string>
     <string name="db_no_seguidores">seguidores</string>
     <string name="db_no_usuario_anuncios">usuario_anuncios</string>
+    <string name="db_no_solicitacoes">solicitacoes</string>
 
     <!-- Nós no Firebase Database -->
     <string name="campo_nome_usuario">nome</string>

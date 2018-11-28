@@ -78,9 +78,11 @@ public class ListaFavoritosActivity extends AppCompatActivity {
                     setupListaAnunciosFavoritos();
                     break;
                 case "anuncioscadastrados":
+                    toolbarTitulo.setText("Anúncios Cadastrados");
                     setupAnunciosCadastrados();
                     break;
                 case "seguidores":
+                    toolbarTitulo.setText("Usuário Salvos");
                     setupListaSeguidores();
                     break;
                     default:
@@ -146,9 +148,9 @@ public class ListaFavoritosActivity extends AppCompatActivity {
                             anuncioData.get("dataCriacao").toString());
                     anuncio.setAnuncioID(anuncioData.get("id").toString());
                     anuncio.setUserID(anuncioData.get("userid").toString());
-                    //anuncio.setQuantidade(Integer.parseInt(anuncioData.get("quantidade").toString()));
-                    //anuncio.setArrecadado(Integer.parseInt(anuncioData.get("arrecadado").toString()));
-                    //anuncio.setPrazo(Integer.parseInt(anuncioData.get("prazo").toString()));
+                    anuncio.setQuantidade(Integer.parseInt(anuncioData.get("quantidade").toString()));
+                    anuncio.setArrecadado(Integer.parseInt(anuncioData.get("arrecadado").toString()));
+                    anuncio.setPrazo(Integer.parseInt(anuncioData.get("prazo").toString()));
 
                     listaAnuncios.add(anuncio);
                 }
@@ -181,9 +183,9 @@ public class ListaFavoritosActivity extends AppCompatActivity {
                             anuncioData.get("dataCriacao").toString());
                     anuncio.setAnuncioID(anuncioData.get("id").toString());
                     anuncio.setUserID(anuncioData.get("userid").toString());
-                    //anuncio.setQuantidade(Integer.parseInt(anuncioData.get("quantidade").toString()));
-                    //anuncio.setArrecadado(Integer.parseInt(anuncioData.get("arrecadado").toString()));
-                    //anuncio.setPrazo(Integer.parseInt(anuncioData.get("prazo").toString()));
+                    anuncio.setQuantidade(Integer.parseInt(anuncioData.get("quantidade").toString()));
+                    anuncio.setArrecadado(Integer.parseInt(anuncioData.get("arrecadado").toString()));
+                    anuncio.setPrazo(Integer.parseInt(anuncioData.get("prazo").toString()));
 
                     listaAnuncios.add(anuncio);
                 }

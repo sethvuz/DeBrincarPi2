@@ -19,7 +19,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_debrinca_app_icon"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -57,7 +57,7 @@
         <activity
             android:name=".Activities.CadastroUser"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustResize|adjustPan">
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="CADASTRO_ACT" />
 
@@ -71,7 +71,7 @@
         <activity
             android:name=".Activities.CadastroAnuncio"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustResize|adjustPan">
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="TELA_CAD_ANUNCIOS_ACT" />
 
@@ -124,11 +124,33 @@
             android:name=".Activities.ListaFavoritosActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize|adjustPan">
-
             <intent-filter>
                 <action android:name="TELA_LISTAFAVORITOS_ACT" />
 
                 <category android:name="TELA_LISTAFAVORITOS_CTG" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Activities.SolicitarDoarActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize|adjustPan">
+            <intent-filter>
+                <action android:name="TELA_ENVIASOLICITACAO_ACT" />
+
+                <category android:name="TELA_ENVIASOLICITACAO_CTG" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Activities.FinalizaSolicitacaoActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize|adjustPan">
+
+            <intent-filter>
+                <action android:name="TELA_FINALIZASOLICITACAO_ACT" />
+
+                <category android:name="TELA_FINALIZASOLICITACAO_CTG" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
 

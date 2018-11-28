@@ -94,6 +94,7 @@ public class CadastroUser extends AppCompatActivity {
 
         RadioButton radioButtonPF = findViewById(R.id.rb_pessoafisica);
         radioButtonPF.setChecked(true);
+        userType = getString(R.string.profile_tipo_pessoa);
 
         //SETUP DOS CAMPOS
         //Todos
@@ -200,7 +201,7 @@ public class CadastroUser extends AppCompatActivity {
                         usuario.setCnpj(cnpj.getText().toString());
                         usuario.setDescricao(descricao.getText().toString());
                         usuario.setEndereco(endereco.getText().toString());
-                        usuario.setCep(cep.getText().toString());
+                        //usuario.setCep(cep.getText().toString());
                         usuario.setTelefone(telefone.getText().toString());
                         usuario.setEstado(estadoUser);
                         usuario.setCidade(cidadeUser);

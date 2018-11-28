@@ -7,7 +7,9 @@
     <group android:id="@+id/nav_menu_top">
         <item
             android:id="@+id/nav_anuncios"
-            android:title="@string/nav_anuncios" />
+            android:title="@string/nav_anuncios"
+
+            />
 
         <item
             android:id="@+id/nav_ins_anuncios"

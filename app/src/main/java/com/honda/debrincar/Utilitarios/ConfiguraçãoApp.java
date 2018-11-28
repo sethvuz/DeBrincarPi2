@@ -31,6 +31,8 @@ public final class ConfiguraçãoApp {
     public static HashMap<Integer, List<String>> mapaCidades = new HashMap<>();
     public static List<String> estados = new ArrayList<>();
 
+    public static Boolean temSolicitacao = false;
+
 
     public static void setupEstadosCidades(){
         WebServiceData webServiceData = new WebServiceData();
@@ -73,7 +75,7 @@ public final class ConfiguraçãoApp {
             OISMapaCidades.close();
             inputStreamMapaCidades.close();
 
-            Toast.makeText(context, "Listas de estados gerada com sucesso!", Toast.LENGTH_LONG).show();
+            //Toast.makeText(context, "Listas de estados gerada com sucesso!", Toast.LENGTH_LONG).show();
 
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();

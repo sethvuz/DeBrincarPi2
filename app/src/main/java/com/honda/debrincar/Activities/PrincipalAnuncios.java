@@ -206,6 +206,7 @@ public class PrincipalAnuncios extends AppCompatActivity {
                     case "solicitacao":
                         isOnFragment = true;
                         PaginaAnuncioSolFragment paginaAnuncioSolFragment =  new PaginaAnuncioSolFragment();
+                        paginaAnuncioSolFragment.setAnuncio(anuncios.get(position));
                         fragmentoAtual = paginaAnuncioSolFragment;
                         fragmentTransaction.replace(R.id.container_principal, paginaAnuncioSolFragment)
                                 .commit();
@@ -213,6 +214,7 @@ public class PrincipalAnuncios extends AppCompatActivity {
                     case "campanha":
                         isOnFragment = true;
                         PaginaAnuncioCampFragment paginaAnuncioCampFragment = new PaginaAnuncioCampFragment();
+                        paginaAnuncioCampFragment.setAnuncio(anuncios.get(position));
                         fragmentoAtual = paginaAnuncioCampFragment;
                         fragmentTransaction.replace(R.id.container_principal, paginaAnuncioCampFragment)
                                 .commit();

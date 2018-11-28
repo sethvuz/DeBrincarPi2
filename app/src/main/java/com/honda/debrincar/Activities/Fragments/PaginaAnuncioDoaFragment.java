@@ -2,6 +2,7 @@ package com.honda.debrincar.Activities.Fragments;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.Bundle;
@@ -69,7 +70,7 @@ public class PaginaAnuncioDoaFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_pagina_anuncio_doa, container, false);
@@ -210,6 +211,17 @@ public class PaginaAnuncioDoaFragment extends Fragment {
         }
 
 
+
+        Button solicitarBtn = view.findViewById(R.id.btn_solicitar_pag_anuncio_doa);
+        solicitarBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent("TELA_ENVIASOLICITACAO_ACT");
+                intent.addCategory("TELA_ENVIASOLICITACAO_CTG");
+                intent.putExtra("anuncioID", anuncioAtual.getAnuncioID());
+                startActivity(intent);
+            }
+        });
 
 
         return view;

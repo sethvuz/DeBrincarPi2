@@ -13,7 +13,13 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 import com.honda.debrincar.R;
+import com.honda.debrincar.Utilitarios.ConfiguraçãoApp;
+import com.honda.debrincar.Utilitarios.FirebaseMetodos;
 import com.honda.debrincar.Utilitarios.WebServiceData;
 
 public class TelaLogin extends AppCompatActivity {
@@ -72,11 +78,39 @@ public class TelaLogin extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()){
-                        Intent intent = new Intent("TELA_ANUNCIOS_ACT");
-                        intent.addCategory("TELA_ANUNCIOS_CTG");
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(intent);
-                        finish();
+                        String userId = FirebaseMetodos.getUserId();
+                        DatabaseReference userRef = FirebaseMetodos.getFirebaseData();
+                        userRef.child(getString(R.string.db_no_solicitacoes)).child("recebida").child(userId)
+                                .addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        if (dataSnapshot.exists()){
+                                            ConfiguraçãoApp.temSolicitacao = true;
+                                            String mensagem = dataSnapshot.child("mensagem").getValue().toString();
+                                            String solicitanteId = dataSnapshot.child("solicitante").getValue().toString();
+                                            Intent intent = new Intent("TELA_ANUNCIOS_ACT");
+                                            intent.addCategory("TELA_ANUNCIOS_CTG");
+                                            intent.putExtra("mensagem", mensagem);
+                                            intent.putExtra("solicitanteId", solicitanteId);
+                                            intent.putExtra("tem_solicitacao", true);
+                                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                            startActivity(intent);
+                                            finish();
+                                        } else {
+                                            Intent intent = new Intent("TELA_ANUNCIOS_ACT");
+                                            intent.addCategory("TELA_ANUNCIOS_CTG");
+                                            intent.putExtra("tem_solicitacao", false);
+                                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
                     } else {
                         Toast.makeText(TelaLogin.this, task.getException().getLocalizedMessage(), Toast.LENGTH_LONG).show();
                     }

@@ -6,8 +6,8 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:textColorPrimary">@color/azulMedio</item>
-        <item name="android:textColorSecondary">@color/azulMedio</item>
+        <item name="android:textColorPrimary">@color/amareloEscuro</item>
+        <item name="android:textColorSecondary">@color/amareloEscuro</item>
     </style>
 
 
@@ -37,6 +37,7 @@
 
     <style name="TextoCadastro">
         <item name="met_textColor">@color/azulMedio</item>
+        <item name="android:textColor">@color/azulMedio</item>
         <item name="met_floatingLabel">highlight</item>
         <item name="met_floatingLabelAlwaysShown">true</item>
         <item name="met_floatingLabelTextColor">@color/azulClaro</item>

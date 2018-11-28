@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#ffb73f</color>
-    <color name="colorPrimaryDark">#8190a5</color>
+    <color name="colorPrimary">#324969</color>
+    <color name="colorPrimaryDark">#0d1846</color>
     <color name="colorAccent">#fad86a</color>
-    <color name="colorText">#324969</color>
+    <color name="colorText">#ffb73f</color>
     <color name="branco">#ffff</color>
 
     <!-- TONS DE AZUL -->
